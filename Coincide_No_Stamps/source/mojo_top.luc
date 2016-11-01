@@ -1,0 +1,176 @@
+module mojo_top (
+    input clk,              // 50MHz clock
+    input rst_n,            // reset button (active low)
+    output led [8],         // 8 user controllable LEDs
+    input cclk,             // configuration clock, AVR ready when high
+    output spi_miso,        // AVR SPI MISO
+    input spi_ss,           // AVR SPI Slave Select
+    input spi_mosi,         // AVR SPI MOSI
+    input spi_sck,          // AVR SPI Clock
+    output spi_channel [4], // AVR general purpose pins (used by default to select ADC channel)
+    input avr_tx,           // AVR TX (FPGA RX)
+    output avr_rx,          // AVR RX (FPGA TX)
+    input avr_rx_busy,      // AVR RX buffer full
+    input pulseA,
+    input pulseB,
+    input pulseC,
+    input pulseD
+  ) {
+  
+  sig rst;                  // reset signal
+  const CLKSPEED = 200000000;
+  const PULSE_LEN = 2;
+  
+  fastclk fast(.CLK_IN1(clk));
+  .clk(fast.CLK_OUT2) {
+    reset_conditioner reset_cond;
+    .rst(rst){
+      // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
+      avr_interface avr(#CLK_FREQ(CLKSPEED));
+      reg_interface reg(#CLK_FREQ(CLKSPEED));
+      counter timer(#SIZE($clog2(CLKSPEED)),#TOP(CLKSPEED - 1));
+      dff pins[4];
+      dff count_store[15][$clog2(CLKSPEED/2)];
+      dff poll_flag;
+      
+      //pulse duplicators
+      duplicator dupA(#PULSE_LEN(PULSE_LEN));
+      duplicator dupB(#PULSE_LEN(PULSE_LEN));
+      duplicator dupC(#PULSE_LEN(PULSE_LEN));
+      duplicator dupD(#PULSE_LEN(PULSE_LEN));
+      
+      //channel comparators
+      comparator compA(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compAB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compAC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compAD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compBC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compBD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compABC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compABD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compACD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compBCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compABCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+
+    }
+  }
+  
+  always {
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset
+    
+    //pulse duplicator connections in
+    dupA.pulse = pulseA;
+    dupB.pulse = pulseB;
+    dupC.pulse = pulseC;
+    dupD.pulse = pulseD;
+    //pulse duplicator connections out
+    pins.d[0] = dupA.out;
+    pins.d[1] = dupB.out;
+    pins.d[2] = dupC.out;
+    pins.d[3] = dupD.out;
+    
+    //comparator connections in
+    compA.pins = (pins.q | b0111);
+    compB.pins = (pins.q | b1011);
+    compC.pins = (pins.q | b1101);
+    compD.pins = (pins.q | b1110);
+    compAB.pins = (pins.q | b0011);
+    compAC.pins = (pins.q | b0101);
+    compAD.pins = (pins.q | b0110);
+    compBC.pins = (pins.q | b1001);
+    compBD.pins = (pins.q | b1010);
+    compCD.pins = (pins.q | b1100);
+    compABC.pins = (pins.q | b0001);
+    compABD.pins = (pins.q | b0010);
+    compACD.pins = (pins.q | b0100);
+    compBCD.pins = (pins.q | b1000);
+    compABCD.pins = (pins.q | b0000);
+        
+    // connect inputs of avr
+    avr.cclk = cclk;
+    avr.spi_ss = spi_ss;
+    avr.spi_mosi = spi_mosi;
+    avr.spi_sck = spi_sck;
+    avr.rx = avr_tx;
+    avr.channel = hf;           // ADC is unused so disable
+    avr.tx_block = avr_rx_busy; // block TX when AVR is busy
+    
+    // connect outputs of avr
+    spi_miso = avr.spi_miso;
+    spi_channel = avr.spi_channel;
+    avr_rx = avr.tx;
+    
+    // connect reg interface to avr interface
+    reg.rx_data = avr.rx_data;
+    reg.new_rx_data = avr.new_rx_data;
+    avr.tx_data = reg.tx_data;
+    avr.new_tx_data = reg.new_tx_data;
+    reg.tx_busy = avr.tx_busy;   
+    reg.regIn.drdy = 0;                   // default to not ready
+    reg.regIn.data = 32bx;                // don't care
+    
+    //timer behavior
+    if(timer.value == CLKSPEED - 1) {
+      count_store.d[0] = compA.ctrval;
+      count_store.d[1] = compB.ctrval;
+      count_store.d[2] = compC.ctrval;
+      count_store.d[3] = compD.ctrval;
+      count_store.d[4] = compAB.ctrval;
+      count_store.d[5] = compAC.ctrval;
+      count_store.d[6] = compAD.ctrval;
+      count_store.d[7] = compBC.ctrval;
+      count_store.d[8] = compBD.ctrval;
+      count_store.d[9] = compCD.ctrval;
+      count_store.d[10] = compABC.ctrval;
+      count_store.d[11] = compABD.ctrval;
+      count_store.d[12] = compACD.ctrval;
+      count_store.d[13] = compBCD.ctrval;
+      count_store.d[14] = compABCD.ctrval;
+    }
+    
+    //register interface addressing behavior
+    if (reg.regOut.new_cmd) {             // new command
+      if (reg.regOut.write) {             // if write
+        if (reg.regOut.address == 98) {    // if address is 98
+          poll_flag.d = reg.regOut.data[0];  // write the poll flag
+        }
+      } else {                            // if read
+        case(reg.regOut.address) {
+          0:  reg.regIn.data = count_store.q[0];
+          1:  reg.regIn.data = count_store.q[1];
+          2:  reg.regIn.data = count_store.q[2];
+          3:  reg.regIn.data = count_store.q[3];
+          4:  reg.regIn.data = count_store.q[4];
+          5:  reg.regIn.data = count_store.q[5];
+          6:  reg.regIn.data = count_store.q[6];
+          7:  reg.regIn.data = count_store.q[7];
+          8:  reg.regIn.data = count_store.q[8];
+          9:  reg.regIn.data = count_store.q[9];
+          10: reg.regIn.data = count_store.q[10];
+          11: reg.regIn.data = count_store.q[11];
+          12: reg.regIn.data = count_store.q[12];
+          13: reg.regIn.data = count_store.q[13];
+          14: reg.regIn.data = count_store.q[14];
+          default: reg.regIn.data = poll_flag.q;
+        }
+        reg.regIn.drdy = 1;
+       // if (reg.regOut.address == 98) {    // if address is 98
+       //   reg.regIn.data = poll_flag.q;        // read the poll flag
+       //   reg.regIn.drdy = 1;             // signal data ready
+       // }                            
+       // else  {    // address is index of requested count
+       //   reg.regIn.data = count_store.q[reg.regOut.address[3:0]];        // read the stored counter
+       //   reg.regIn.drdy = 1;             // signal data ready
+       // }                            
+      }
+    }
+    
+    led[3:0] = pins.q;                         // connect the dff
+    led[7:4] = b0000;
+  }
+}

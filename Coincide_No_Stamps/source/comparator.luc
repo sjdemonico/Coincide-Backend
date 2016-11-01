@@ -1,0 +1,31 @@
+module comparator #(
+    CLK_FREQ = 50000000 : CLK_FREQ > 0,
+    PULSE_LEN = 2 : PULSE_LEN > 0
+  )(
+    input clk,  // clock
+    input rst,  // reset
+    input pins[4],
+    output ctrval[$clog2(CLK_FREQ/2)]
+  ) {
+  dff event_counts[$clog2(CLK_FREQ/2)](.clk(clk),.rst(rst));
+  dff ctr[2](.clk(clk),.rst(rst));
+  fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
+  
+  always {
+    ctrval = event_counts.q;
+    case (state.q) {
+      state.COMPARE:
+        if(&pins) {
+          event_counts.d = event_counts.q + 1;
+          state.d = state.SLEEP;
+        }
+      
+      state.SLEEP:
+        if(ctr.q == PULSE_LEN) {
+          ctr.d = 0;
+          state.d = state.COMPARE;
+        }
+        else ctr.d = ctr.q + 1;
+    }
+  }
+}

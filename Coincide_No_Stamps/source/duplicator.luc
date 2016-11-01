@@ -1,0 +1,33 @@
+module duplicator #(
+    PULSE_LEN = 2 : PULSE_LEN > 0
+  )(
+    input clk,  // clock
+    input rst,  // reset
+    input pulse,
+    output out
+  ) {
+  edge_detector edge(#RISE(1),#FALL(0),.clk(clk));
+  dff ctr[2](.clk(clk),.rst(rst));
+  pipeline sync[1](.clk(clk));
+  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE};
+  always {
+    out = 0;
+    sync.in = pulse;
+    edge.in = sync.out;
+    case (state.q) {
+      state.LISTEN:
+        if(edge.out) state.d = state.PULSE;
+        
+      state.PULSE:
+        if(ctr.q == PULSE_LEN) {
+          ctr.d = 0;
+          out = 0;
+          state.d = state.LISTEN;
+        }
+        else {
+          out = 1;
+          ctr.d = ctr.q + 1;
+        }
+    }
+  }
+}
