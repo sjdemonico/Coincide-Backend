@@ -1,6 +1,5 @@
 module comparator #(
-    CLK_FREQ = 50000000 : CLK_FREQ > 0,
-    PULSE_LEN = 2 : PULSE_LEN > 0
+    CLK_FREQ = 50000000 : CLK_FREQ > 0
   )(
     input clk,  // clock
     input rst,  // reset
@@ -9,7 +8,6 @@ module comparator #(
     output ctrval[$clog2(CLK_FREQ/2)]
   ) {
   dff event_counts[$clog2(CLK_FREQ/2)](.clk(clk),.rst(rst));
-  dff ctr[$clog2(PULSE_LEN) + 1](.clk(clk),.rst(rst));
   fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
   
   always {
@@ -24,11 +22,7 @@ module comparator #(
       
       state.SLEEP:       
         if(ctr_rst) event_counts.d = 0;
-        if(ctr.q == PULSE_LEN) {
-          ctr.d = 0;  
-          state.d = state.COMPARE;
-        }
-        else ctr.d = ctr.q + 1;
+        state.d = state.COMPARE;
     }
   }
 }

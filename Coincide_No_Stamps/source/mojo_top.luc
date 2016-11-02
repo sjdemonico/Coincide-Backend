@@ -40,21 +40,21 @@ module mojo_top (
       duplicator dupD(#PULSE_LEN(PULSE_LEN));
       
       //channel comparators
-      comparator compA(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compACD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compA(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compB(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAB(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compACD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
 
     }
   }
@@ -160,15 +160,7 @@ module mojo_top (
           14: reg.regIn.data = count_store.q[14];
           default: reg.regIn.data = poll_flag.q;
         }
-        reg.regIn.drdy = 1;
-       // if (reg.regOut.address == 98) {    // if address is 98
-       //   reg.regIn.data = poll_flag.q;        // read the poll flag
-       //   reg.regIn.drdy = 1;             // signal data ready
-       // }                            
-       // else  {    // address is index of requested count
-       //   reg.regIn.data = count_store.q[reg.regOut.address[3:0]];        // read the stored counter
-       //   reg.regIn.drdy = 1;             // signal data ready
-       // }                            
+        reg.regIn.drdy = 1;                    
       }
     }
     
