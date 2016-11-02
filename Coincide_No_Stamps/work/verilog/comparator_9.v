@@ -13,6 +13,7 @@ module comparator_9 (
     input clk,
     input rst,
     input [3:0] pins,
+    input ctr_rst,
     output reg [26:0] ctrval
   );
   
@@ -39,12 +40,18 @@ module comparator_9 (
     
     case (M_state_q)
       COMPARE_state: begin
+        if (ctr_rst) begin
+          M_event_counts_d = 1'h0;
+        end
         if ((&pins)) begin
           M_event_counts_d = M_event_counts_q + 1'h1;
           M_state_d = SLEEP_state;
         end
       end
       SLEEP_state: begin
+        if (ctr_rst) begin
+          M_event_counts_d = 1'h0;
+        end
         if (M_ctr_q == 2'h2) begin
           M_ctr_d = 1'h0;
           M_state_d = COMPARE_state;
@@ -54,6 +61,15 @@ module comparator_9 (
       end
     endcase
   end
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_ctr_q <= 1'h0;
+    end else begin
+      M_ctr_q <= M_ctr_d;
+    end
+  end
+  
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
@@ -69,15 +85,6 @@ module comparator_9 (
       M_event_counts_q <= 1'h0;
     end else begin
       M_event_counts_q <= M_event_counts_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_ctr_q <= 1'h0;
-    end else begin
-      M_ctr_q <= M_ctr_d;
     end
   end
   

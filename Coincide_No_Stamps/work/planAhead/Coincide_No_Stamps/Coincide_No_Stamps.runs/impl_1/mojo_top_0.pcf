@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Nov 01 14:27:58 2016
+// Written by: Map P.20131013 on Wed Nov 02 14:07:55 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -25,166 +25,165 @@ COMP "avr_rx" LOCATE = SITE "P59" LEVEL 1;
 COMP "avr_tx" LOCATE = SITE "P55" LEVEL 1;
 COMP "spi_ss" LOCATE = SITE "P48" LEVEL 1;
 COMP "pulseA" LOCATE = SITE "P140" LEVEL 1;
-COMP "pulseB" LOCATE = SITE "P141" LEVEL 1;
-COMP "pulseC" LOCATE = SITE "P142" LEVEL 1;
-COMP "pulseD" LOCATE = SITE "P143" LEVEL 1;
+COMP "pulseB" LOCATE = SITE "P8" LEVEL 1;
+COMP "pulseC" LOCATE = SITE "P22" LEVEL 1;
+COMP "pulseD" LOCATE = SITE "P35" LEVEL 1;
 COMP "spi_miso" LOCATE = SITE "P45" LEVEL 1;
 COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
 TIMEGRP fast_clkout1 = BEL "M_count_store_q_98" BEL "reset_cond/M_stage_q_3"
         BEL "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
         "reset_cond/M_stage_q_0" BEL "reset_cond/M_stage_q_3_1" BEL
         "M_count_store_q_99" BEL "M_pins_q_0" BEL "M_pins_q_1" BEL
-        "M_pins_q_2" BEL "M_pins_q_3" BEL "compABCD/M_ctr_q_1" BEL
-        "compABCD/M_ctr_q_0" BEL "compABCD/M_event_counts_q_26" BEL
+        "M_pins_q_2" BEL "M_pins_q_3" BEL "compABCD/M_ctr_q_0" BEL
+        "compABCD/M_ctr_q_1" BEL "compABCD/M_event_counts_q_26" BEL
         "compABCD/M_event_counts_q_25" BEL "compABCD/M_event_counts_q_24" BEL
-        "compABCD/M_event_counts_q_23" BEL "compABCD/M_event_counts_q_22" BEL
-        "compABCD/M_event_counts_q_21" BEL "compABCD/M_event_counts_q_20" BEL
-        "compABCD/M_event_counts_q_19" BEL "compABCD/M_event_counts_q_18" BEL
-        "compABCD/M_event_counts_q_17" BEL "compABCD/M_event_counts_q_16" BEL
-        "compABCD/M_event_counts_q_15" BEL "compABCD/M_event_counts_q_14" BEL
-        "compABCD/M_event_counts_q_13" BEL "compABCD/M_event_counts_q_12" BEL
-        "compABCD/M_event_counts_q_11" BEL "compABCD/M_event_counts_q_10" BEL
-        "compABCD/M_event_counts_q_9" BEL "compABCD/M_event_counts_q_8" BEL
-        "compABCD/M_event_counts_q_7" BEL "compABCD/M_event_counts_q_6" BEL
-        "compABCD/M_event_counts_q_5" BEL "compABCD/M_event_counts_q_4" BEL
-        "compABCD/M_event_counts_q_3" BEL "compABCD/M_event_counts_q_2" BEL
-        "compABCD/M_event_counts_q_1" BEL "compABCD/M_event_counts_q_0" BEL
-        "compABCD/M_state_q" BEL "compAB/M_ctr_q_1" BEL "compAB/M_ctr_q_0" BEL
-        "compAB/M_event_counts_q_26" BEL "compAB/M_event_counts_q_25" BEL
-        "compAB/M_event_counts_q_24" BEL "compAB/M_event_counts_q_23" BEL
-        "compAB/M_event_counts_q_22" BEL "compAB/M_event_counts_q_21" BEL
-        "compAB/M_event_counts_q_20" BEL "compAB/M_event_counts_q_19" BEL
-        "compAB/M_event_counts_q_18" BEL "compAB/M_event_counts_q_17" BEL
-        "compAB/M_event_counts_q_16" BEL "compAB/M_event_counts_q_15" BEL
-        "compAB/M_event_counts_q_14" BEL "compAB/M_event_counts_q_13" BEL
+        "compABCD/M_state_q" BEL "compABCD/M_event_counts_q_13" BEL
+        "compABCD/M_event_counts_q_12" BEL "compABCD/M_event_counts_q_11" BEL
+        "compABCD/M_event_counts_q_10" BEL "compABCD/M_event_counts_q_9" BEL
+        "compABCD/M_event_counts_q_8" BEL "compABCD/M_event_counts_q_7" BEL
+        "compABCD/M_event_counts_q_6" BEL "compABCD/M_event_counts_q_5" BEL
+        "compABCD/M_event_counts_q_4" BEL "compABCD/M_event_counts_q_3" BEL
+        "compABCD/M_event_counts_q_2" BEL "compABCD/M_event_counts_q_1" BEL
+        "compABCD/M_event_counts_q_0" BEL "compABCD/M_event_counts_q_14" BEL
+        "compABCD/M_event_counts_q_15" BEL "compABCD/M_event_counts_q_16" BEL
+        "compABCD/M_event_counts_q_17" BEL "compABCD/M_event_counts_q_18" BEL
+        "compABCD/M_event_counts_q_19" BEL "compABCD/M_event_counts_q_20" BEL
+        "compABCD/M_event_counts_q_21" BEL "compABCD/M_event_counts_q_22" BEL
+        "compABCD/M_event_counts_q_23" BEL "compAB/M_ctr_q_0" BEL
+        "compAB/M_ctr_q_1" BEL "compAB/M_event_counts_q_26" BEL
+        "compAB/M_event_counts_q_25" BEL "compAB/M_event_counts_q_24" BEL
+        "compAB/M_state_q" BEL "compAB/M_event_counts_q_13" BEL
         "compAB/M_event_counts_q_12" BEL "compAB/M_event_counts_q_11" BEL
         "compAB/M_event_counts_q_10" BEL "compAB/M_event_counts_q_9" BEL
         "compAB/M_event_counts_q_8" BEL "compAB/M_event_counts_q_7" BEL
         "compAB/M_event_counts_q_6" BEL "compAB/M_event_counts_q_5" BEL
         "compAB/M_event_counts_q_4" BEL "compAB/M_event_counts_q_3" BEL
         "compAB/M_event_counts_q_2" BEL "compAB/M_event_counts_q_1" BEL
-        "compAB/M_event_counts_q_0" BEL "compAB/M_state_q" BEL
-        "compAC/M_ctr_q_1" BEL "compAC/M_ctr_q_0" BEL
-        "compAC/M_event_counts_q_26" BEL "compAC/M_event_counts_q_25" BEL
-        "compAC/M_event_counts_q_24" BEL "compAC/M_event_counts_q_23" BEL
-        "compAC/M_event_counts_q_22" BEL "compAC/M_event_counts_q_21" BEL
-        "compAC/M_event_counts_q_20" BEL "compAC/M_event_counts_q_19" BEL
-        "compAC/M_event_counts_q_18" BEL "compAC/M_event_counts_q_17" BEL
-        "compAC/M_event_counts_q_16" BEL "compAC/M_event_counts_q_15" BEL
-        "compAC/M_event_counts_q_14" BEL "compAC/M_event_counts_q_13" BEL
+        "compAB/M_event_counts_q_0" BEL "compAB/M_event_counts_q_14" BEL
+        "compAB/M_event_counts_q_15" BEL "compAB/M_event_counts_q_16" BEL
+        "compAB/M_event_counts_q_17" BEL "compAB/M_event_counts_q_18" BEL
+        "compAB/M_event_counts_q_19" BEL "compAB/M_event_counts_q_20" BEL
+        "compAB/M_event_counts_q_21" BEL "compAB/M_event_counts_q_22" BEL
+        "compAB/M_event_counts_q_23" BEL "compAC/M_ctr_q_0" BEL
+        "compAC/M_ctr_q_1" BEL "compAC/M_event_counts_q_26" BEL
+        "compAC/M_event_counts_q_25" BEL "compAC/M_event_counts_q_24" BEL
+        "compAC/M_state_q" BEL "compAC/M_event_counts_q_13" BEL
         "compAC/M_event_counts_q_12" BEL "compAC/M_event_counts_q_11" BEL
         "compAC/M_event_counts_q_10" BEL "compAC/M_event_counts_q_9" BEL
         "compAC/M_event_counts_q_8" BEL "compAC/M_event_counts_q_7" BEL
         "compAC/M_event_counts_q_6" BEL "compAC/M_event_counts_q_5" BEL
         "compAC/M_event_counts_q_4" BEL "compAC/M_event_counts_q_3" BEL
         "compAC/M_event_counts_q_2" BEL "compAC/M_event_counts_q_1" BEL
-        "compAC/M_event_counts_q_0" BEL "compAC/M_state_q" BEL
-        "compAD/M_ctr_q_1" BEL "compAD/M_ctr_q_0" BEL
-        "compAD/M_event_counts_q_26" BEL "compAD/M_event_counts_q_25" BEL
-        "compAD/M_event_counts_q_24" BEL "compAD/M_event_counts_q_23" BEL
-        "compAD/M_event_counts_q_22" BEL "compAD/M_event_counts_q_21" BEL
-        "compAD/M_event_counts_q_20" BEL "compAD/M_event_counts_q_19" BEL
-        "compAD/M_event_counts_q_18" BEL "compAD/M_event_counts_q_17" BEL
-        "compAD/M_event_counts_q_16" BEL "compAD/M_event_counts_q_15" BEL
-        "compAD/M_event_counts_q_14" BEL "compAD/M_event_counts_q_13" BEL
+        "compAC/M_event_counts_q_0" BEL "compAC/M_event_counts_q_14" BEL
+        "compAC/M_event_counts_q_15" BEL "compAC/M_event_counts_q_16" BEL
+        "compAC/M_event_counts_q_17" BEL "compAC/M_event_counts_q_18" BEL
+        "compAC/M_event_counts_q_19" BEL "compAC/M_event_counts_q_20" BEL
+        "compAC/M_event_counts_q_21" BEL "compAC/M_event_counts_q_22" BEL
+        "compAC/M_event_counts_q_23" BEL "compAD/M_ctr_q_0" BEL
+        "compAD/M_ctr_q_1" BEL "compAD/M_event_counts_q_26" BEL
+        "compAD/M_event_counts_q_25" BEL "compAD/M_event_counts_q_24" BEL
+        "compAD/M_state_q" BEL "compAD/M_event_counts_q_13" BEL
         "compAD/M_event_counts_q_12" BEL "compAD/M_event_counts_q_11" BEL
         "compAD/M_event_counts_q_10" BEL "compAD/M_event_counts_q_9" BEL
         "compAD/M_event_counts_q_8" BEL "compAD/M_event_counts_q_7" BEL
         "compAD/M_event_counts_q_6" BEL "compAD/M_event_counts_q_5" BEL
         "compAD/M_event_counts_q_4" BEL "compAD/M_event_counts_q_3" BEL
         "compAD/M_event_counts_q_2" BEL "compAD/M_event_counts_q_1" BEL
-        "compAD/M_event_counts_q_0" BEL "compAD/M_state_q" BEL
-        "compBC/M_ctr_q_1" BEL "compBC/M_ctr_q_0" BEL
-        "compBC/M_event_counts_q_26" BEL "compBC/M_event_counts_q_25" BEL
-        "compBC/M_event_counts_q_24" BEL "compBC/M_event_counts_q_23" BEL
-        "compBC/M_event_counts_q_22" BEL "compBC/M_event_counts_q_21" BEL
-        "compBC/M_event_counts_q_20" BEL "compBC/M_event_counts_q_19" BEL
-        "compBC/M_event_counts_q_18" BEL "compBC/M_event_counts_q_17" BEL
-        "compBC/M_event_counts_q_16" BEL "compBC/M_event_counts_q_15" BEL
-        "compBC/M_event_counts_q_14" BEL "compBC/M_event_counts_q_13" BEL
+        "compAD/M_event_counts_q_0" BEL "compAD/M_event_counts_q_14" BEL
+        "compAD/M_event_counts_q_15" BEL "compAD/M_event_counts_q_16" BEL
+        "compAD/M_event_counts_q_17" BEL "compAD/M_event_counts_q_18" BEL
+        "compAD/M_event_counts_q_19" BEL "compAD/M_event_counts_q_20" BEL
+        "compAD/M_event_counts_q_21" BEL "compAD/M_event_counts_q_22" BEL
+        "compAD/M_event_counts_q_23" BEL "compBC/M_ctr_q_0" BEL
+        "compBC/M_ctr_q_1" BEL "compBC/M_event_counts_q_26" BEL
+        "compBC/M_event_counts_q_25" BEL "compBC/M_event_counts_q_24" BEL
+        "compBC/M_state_q" BEL "compBC/M_event_counts_q_13" BEL
         "compBC/M_event_counts_q_12" BEL "compBC/M_event_counts_q_11" BEL
         "compBC/M_event_counts_q_10" BEL "compBC/M_event_counts_q_9" BEL
         "compBC/M_event_counts_q_8" BEL "compBC/M_event_counts_q_7" BEL
         "compBC/M_event_counts_q_6" BEL "compBC/M_event_counts_q_5" BEL
         "compBC/M_event_counts_q_4" BEL "compBC/M_event_counts_q_3" BEL
         "compBC/M_event_counts_q_2" BEL "compBC/M_event_counts_q_1" BEL
-        "compBC/M_event_counts_q_0" BEL "compBC/M_state_q" BEL
-        "compBD/M_ctr_q_1" BEL "compBD/M_ctr_q_0" BEL
-        "compBD/M_event_counts_q_26" BEL "compBD/M_event_counts_q_25" BEL
-        "compBD/M_event_counts_q_24" BEL "compBD/M_event_counts_q_23" BEL
-        "compBD/M_event_counts_q_22" BEL "compBD/M_event_counts_q_21" BEL
-        "compBD/M_event_counts_q_20" BEL "compBD/M_event_counts_q_19" BEL
-        "compBD/M_event_counts_q_18" BEL "compBD/M_event_counts_q_17" BEL
-        "compBD/M_event_counts_q_16" BEL "compBD/M_event_counts_q_15" BEL
-        "compBD/M_event_counts_q_14" BEL "compBD/M_event_counts_q_13" BEL
+        "compBC/M_event_counts_q_0" BEL "compBC/M_event_counts_q_14" BEL
+        "compBC/M_event_counts_q_15" BEL "compBC/M_event_counts_q_16" BEL
+        "compBC/M_event_counts_q_17" BEL "compBC/M_event_counts_q_18" BEL
+        "compBC/M_event_counts_q_19" BEL "compBC/M_event_counts_q_20" BEL
+        "compBC/M_event_counts_q_21" BEL "compBC/M_event_counts_q_22" BEL
+        "compBC/M_event_counts_q_23" BEL "compBD/M_ctr_q_0" BEL
+        "compBD/M_ctr_q_1" BEL "compBD/M_event_counts_q_26" BEL
+        "compBD/M_event_counts_q_25" BEL "compBD/M_event_counts_q_24" BEL
+        "compBD/M_state_q" BEL "compBD/M_event_counts_q_13" BEL
         "compBD/M_event_counts_q_12" BEL "compBD/M_event_counts_q_11" BEL
         "compBD/M_event_counts_q_10" BEL "compBD/M_event_counts_q_9" BEL
         "compBD/M_event_counts_q_8" BEL "compBD/M_event_counts_q_7" BEL
         "compBD/M_event_counts_q_6" BEL "compBD/M_event_counts_q_5" BEL
         "compBD/M_event_counts_q_4" BEL "compBD/M_event_counts_q_3" BEL
         "compBD/M_event_counts_q_2" BEL "compBD/M_event_counts_q_1" BEL
-        "compBD/M_event_counts_q_0" BEL "compBD/M_state_q" BEL
-        "compCD/M_ctr_q_1" BEL "compCD/M_ctr_q_0" BEL
-        "compCD/M_event_counts_q_26" BEL "compCD/M_event_counts_q_25" BEL
-        "compCD/M_event_counts_q_24" BEL "compCD/M_event_counts_q_23" BEL
-        "compCD/M_event_counts_q_22" BEL "compCD/M_event_counts_q_21" BEL
-        "compCD/M_event_counts_q_20" BEL "compCD/M_event_counts_q_19" BEL
-        "compCD/M_event_counts_q_18" BEL "compCD/M_event_counts_q_17" BEL
-        "compCD/M_event_counts_q_16" BEL "compCD/M_event_counts_q_15" BEL
-        "compCD/M_event_counts_q_14" BEL "compCD/M_event_counts_q_13" BEL
+        "compBD/M_event_counts_q_0" BEL "compBD/M_event_counts_q_14" BEL
+        "compBD/M_event_counts_q_15" BEL "compBD/M_event_counts_q_16" BEL
+        "compBD/M_event_counts_q_17" BEL "compBD/M_event_counts_q_18" BEL
+        "compBD/M_event_counts_q_19" BEL "compBD/M_event_counts_q_20" BEL
+        "compBD/M_event_counts_q_21" BEL "compBD/M_event_counts_q_22" BEL
+        "compBD/M_event_counts_q_23" BEL "compCD/M_ctr_q_0" BEL
+        "compCD/M_ctr_q_1" BEL "compCD/M_event_counts_q_26" BEL
+        "compCD/M_event_counts_q_25" BEL "compCD/M_event_counts_q_24" BEL
+        "compCD/M_state_q" BEL "compCD/M_event_counts_q_13" BEL
         "compCD/M_event_counts_q_12" BEL "compCD/M_event_counts_q_11" BEL
         "compCD/M_event_counts_q_10" BEL "compCD/M_event_counts_q_9" BEL
         "compCD/M_event_counts_q_8" BEL "compCD/M_event_counts_q_7" BEL
         "compCD/M_event_counts_q_6" BEL "compCD/M_event_counts_q_5" BEL
         "compCD/M_event_counts_q_4" BEL "compCD/M_event_counts_q_3" BEL
         "compCD/M_event_counts_q_2" BEL "compCD/M_event_counts_q_1" BEL
-        "compCD/M_event_counts_q_0" BEL "compCD/M_state_q" BEL
-        "fast/clkout2_buf" BEL "timer/M_ctr_q_0" BEL "timer/M_ctr_q_1" BEL
-        "timer/M_ctr_q_2" BEL "timer/M_ctr_q_3" BEL "timer/M_ctr_q_6" BEL
-        "timer/M_ctr_q_4" BEL "timer/M_ctr_q_5" BEL "timer/M_ctr_q_7" BEL
-        "timer/M_ctr_q_8" BEL "timer/M_ctr_q_9" BEL "timer/M_ctr_q_10" BEL
-        "timer/M_ctr_q_13" BEL "timer/M_ctr_q_11" BEL "timer/M_ctr_q_12" BEL
-        "timer/M_ctr_q_14" BEL "timer/M_ctr_q_15" BEL "timer/M_ctr_q_16" BEL
-        "timer/M_ctr_q_17" BEL "timer/M_ctr_q_20" BEL "timer/M_ctr_q_18" BEL
-        "timer/M_ctr_q_19" BEL "timer/M_ctr_q_21" BEL "timer/M_ctr_q_22" BEL
-        "timer/M_ctr_q_23" BEL "timer/M_ctr_q_24" BEL "timer/M_ctr_q_27" BEL
-        "timer/M_ctr_q_25" BEL "timer/M_ctr_q_26" BEL "compA/M_ctr_q_1" BEL
-        "compA/M_ctr_q_0" BEL "compA/M_event_counts_q_26" BEL
+        "compCD/M_event_counts_q_0" BEL "compCD/M_event_counts_q_14" BEL
+        "compCD/M_event_counts_q_15" BEL "compCD/M_event_counts_q_16" BEL
+        "compCD/M_event_counts_q_17" BEL "compCD/M_event_counts_q_18" BEL
+        "compCD/M_event_counts_q_19" BEL "compCD/M_event_counts_q_20" BEL
+        "compCD/M_event_counts_q_21" BEL "compCD/M_event_counts_q_22" BEL
+        "compCD/M_event_counts_q_23" BEL "fast/clkout2_buf" BEL "M_pins_q_0_1"
+        BEL "tmr/M_ctr_q_0" BEL "tmr/M_ctr_q_1" BEL "tmr/M_ctr_q_2" BEL
+        "tmr/M_ctr_q_3" BEL "tmr/M_ctr_q_6" BEL "tmr/M_ctr_q_4" BEL
+        "tmr/M_ctr_q_5" BEL "tmr/M_ctr_q_7" BEL "tmr/M_ctr_q_8" BEL
+        "tmr/M_ctr_q_9" BEL "tmr/M_ctr_q_10" BEL "tmr/M_ctr_q_13" BEL
+        "tmr/M_ctr_q_11" BEL "tmr/M_ctr_q_12" BEL "tmr/M_ctr_q_14" BEL
+        "tmr/M_ctr_q_15" BEL "tmr/M_ctr_q_16" BEL "tmr/M_ctr_q_17" BEL
+        "tmr/M_ctr_q_20" BEL "tmr/M_ctr_q_18" BEL "tmr/M_ctr_q_19" BEL
+        "tmr/M_ctr_q_21" BEL "tmr/M_ctr_q_22" BEL "tmr/M_ctr_q_23" BEL
+        "tmr/M_ctr_q_24" BEL "tmr/M_ctr_q_27" BEL "tmr/M_ctr_q_25" BEL
+        "tmr/M_ctr_q_26" BEL "M_pins_q_1_1" BEL "M_pins_q_1_2" BEL
+        "M_pins_q_2_1" BEL "M_pins_q_2_2" BEL "compA/M_ctr_q_0" BEL
+        "compA/M_ctr_q_1" BEL "compA/M_event_counts_q_26" BEL
         "compA/M_event_counts_q_25" BEL "compA/M_event_counts_q_24" BEL
-        "compA/M_event_counts_q_23" BEL "compA/M_event_counts_q_22" BEL
-        "compA/M_event_counts_q_21" BEL "compA/M_event_counts_q_20" BEL
-        "compA/M_event_counts_q_19" BEL "compA/M_event_counts_q_18" BEL
-        "compA/M_event_counts_q_17" BEL "compA/M_event_counts_q_16" BEL
-        "compA/M_event_counts_q_15" BEL "compA/M_event_counts_q_14" BEL
-        "compA/M_event_counts_q_13" BEL "compA/M_event_counts_q_12" BEL
-        "compA/M_event_counts_q_11" BEL "compA/M_event_counts_q_10" BEL
-        "compA/M_event_counts_q_9" BEL "compA/M_event_counts_q_8" BEL
-        "compA/M_event_counts_q_7" BEL "compA/M_event_counts_q_6" BEL
-        "compA/M_event_counts_q_5" BEL "compA/M_event_counts_q_4" BEL
-        "compA/M_event_counts_q_3" BEL "compA/M_event_counts_q_2" BEL
-        "compA/M_event_counts_q_1" BEL "compA/M_event_counts_q_0" BEL
-        "compA/M_state_q" BEL "compB/M_ctr_q_1" BEL "compB/M_ctr_q_0" BEL
-        "compB/M_event_counts_q_26" BEL "compB/M_event_counts_q_25" BEL
-        "compB/M_event_counts_q_24" BEL "compB/M_event_counts_q_23" BEL
-        "compB/M_event_counts_q_22" BEL "compB/M_event_counts_q_21" BEL
-        "compB/M_event_counts_q_20" BEL "compB/M_event_counts_q_19" BEL
-        "compB/M_event_counts_q_18" BEL "compB/M_event_counts_q_17" BEL
-        "compB/M_event_counts_q_16" BEL "compB/M_event_counts_q_15" BEL
-        "compB/M_event_counts_q_14" BEL "compB/M_event_counts_q_13" BEL
+        "compA/M_state_q" BEL "compA/M_event_counts_q_13" BEL
+        "compA/M_event_counts_q_12" BEL "compA/M_event_counts_q_11" BEL
+        "compA/M_event_counts_q_10" BEL "compA/M_event_counts_q_9" BEL
+        "compA/M_event_counts_q_8" BEL "compA/M_event_counts_q_7" BEL
+        "compA/M_event_counts_q_6" BEL "compA/M_event_counts_q_5" BEL
+        "compA/M_event_counts_q_4" BEL "compA/M_event_counts_q_3" BEL
+        "compA/M_event_counts_q_2" BEL "compA/M_event_counts_q_1" BEL
+        "compA/M_event_counts_q_0" BEL "compA/M_event_counts_q_14" BEL
+        "compA/M_event_counts_q_15" BEL "compA/M_event_counts_q_16" BEL
+        "compA/M_event_counts_q_17" BEL "compA/M_event_counts_q_18" BEL
+        "compA/M_event_counts_q_19" BEL "compA/M_event_counts_q_20" BEL
+        "compA/M_event_counts_q_21" BEL "compA/M_event_counts_q_22" BEL
+        "compA/M_event_counts_q_23" BEL "compB/M_ctr_q_0" BEL
+        "compB/M_ctr_q_1" BEL "compB/M_event_counts_q_26" BEL
+        "compB/M_event_counts_q_25" BEL "compB/M_event_counts_q_24" BEL
+        "compB/M_state_q" BEL "compB/M_event_counts_q_13" BEL
         "compB/M_event_counts_q_12" BEL "compB/M_event_counts_q_11" BEL
         "compB/M_event_counts_q_10" BEL "compB/M_event_counts_q_9" BEL
         "compB/M_event_counts_q_8" BEL "compB/M_event_counts_q_7" BEL
         "compB/M_event_counts_q_6" BEL "compB/M_event_counts_q_5" BEL
         "compB/M_event_counts_q_4" BEL "compB/M_event_counts_q_3" BEL
         "compB/M_event_counts_q_2" BEL "compB/M_event_counts_q_1" BEL
-        "compB/M_event_counts_q_0" BEL "compB/M_state_q" BEL "compC/M_ctr_q_1"
-        BEL "compC/M_ctr_q_0" BEL "compC/M_event_counts_q_26" BEL
-        "compC/M_event_counts_q_25" BEL "compC/M_event_counts_q_24" BEL
-        "compC/M_event_counts_q_23" BEL "compC/M_event_counts_q_22" BEL
-        "compC/M_event_counts_q_21" BEL "compC/M_event_counts_q_20" BEL
-        "compC/M_event_counts_q_19" BEL "compC/M_event_counts_q_18" BEL
-        "compC/M_event_counts_q_17" BEL "compC/M_event_counts_q_16" BEL
-        "compC/M_event_counts_q_15" BEL "compC/M_event_counts_q_14" BEL
+        "compB/M_event_counts_q_0" BEL "compB/M_event_counts_q_14" BEL
+        "compB/M_event_counts_q_15" BEL "compB/M_event_counts_q_16" BEL
+        "compB/M_event_counts_q_17" BEL "compB/M_event_counts_q_18" BEL
+        "compB/M_event_counts_q_19" BEL "compB/M_event_counts_q_20" BEL
+        "compB/M_event_counts_q_21" BEL "compB/M_event_counts_q_22" BEL
+        "compB/M_event_counts_q_23" BEL "M_pins_q_3_1" BEL "M_pins_q_3_2" BEL
+        "compC/M_ctr_q_0" BEL "compC/M_ctr_q_1" BEL
+        "compC/M_event_counts_q_26" BEL "compC/M_event_counts_q_25" BEL
+        "compC/M_event_counts_q_24" BEL "compC/M_state_q" BEL
         "compC/M_event_counts_q_13" BEL "compC/M_event_counts_q_12" BEL
         "compC/M_event_counts_q_11" BEL "compC/M_event_counts_q_10" BEL
         "compC/M_event_counts_q_9" BEL "compC/M_event_counts_q_8" BEL
@@ -192,21 +191,26 @@ TIMEGRP fast_clkout1 = BEL "M_count_store_q_98" BEL "reset_cond/M_stage_q_3"
         "compC/M_event_counts_q_5" BEL "compC/M_event_counts_q_4" BEL
         "compC/M_event_counts_q_3" BEL "compC/M_event_counts_q_2" BEL
         "compC/M_event_counts_q_1" BEL "compC/M_event_counts_q_0" BEL
-        "compC/M_state_q" BEL "compD/M_ctr_q_1" BEL "compD/M_ctr_q_0" BEL
+        "compC/M_event_counts_q_14" BEL "compC/M_event_counts_q_15" BEL
+        "compC/M_event_counts_q_16" BEL "compC/M_event_counts_q_17" BEL
+        "compC/M_event_counts_q_18" BEL "compC/M_event_counts_q_19" BEL
+        "compC/M_event_counts_q_20" BEL "compC/M_event_counts_q_21" BEL
+        "compC/M_event_counts_q_22" BEL "compC/M_event_counts_q_23" BEL
+        "compD/M_ctr_q_0" BEL "compD/M_ctr_q_1" BEL
         "compD/M_event_counts_q_26" BEL "compD/M_event_counts_q_25" BEL
-        "compD/M_event_counts_q_24" BEL "compD/M_event_counts_q_23" BEL
-        "compD/M_event_counts_q_22" BEL "compD/M_event_counts_q_21" BEL
-        "compD/M_event_counts_q_20" BEL "compD/M_event_counts_q_19" BEL
-        "compD/M_event_counts_q_18" BEL "compD/M_event_counts_q_17" BEL
-        "compD/M_event_counts_q_16" BEL "compD/M_event_counts_q_15" BEL
-        "compD/M_event_counts_q_14" BEL "compD/M_event_counts_q_13" BEL
-        "compD/M_event_counts_q_12" BEL "compD/M_event_counts_q_11" BEL
-        "compD/M_event_counts_q_10" BEL "compD/M_event_counts_q_9" BEL
-        "compD/M_event_counts_q_8" BEL "compD/M_event_counts_q_7" BEL
-        "compD/M_event_counts_q_6" BEL "compD/M_event_counts_q_5" BEL
-        "compD/M_event_counts_q_4" BEL "compD/M_event_counts_q_3" BEL
-        "compD/M_event_counts_q_2" BEL "compD/M_event_counts_q_1" BEL
-        "compD/M_event_counts_q_0" BEL "compD/M_state_q" BEL
+        "compD/M_event_counts_q_24" BEL "compD/M_state_q" BEL
+        "compD/M_event_counts_q_13" BEL "compD/M_event_counts_q_12" BEL
+        "compD/M_event_counts_q_11" BEL "compD/M_event_counts_q_10" BEL
+        "compD/M_event_counts_q_9" BEL "compD/M_event_counts_q_8" BEL
+        "compD/M_event_counts_q_7" BEL "compD/M_event_counts_q_6" BEL
+        "compD/M_event_counts_q_5" BEL "compD/M_event_counts_q_4" BEL
+        "compD/M_event_counts_q_3" BEL "compD/M_event_counts_q_2" BEL
+        "compD/M_event_counts_q_1" BEL "compD/M_event_counts_q_0" BEL
+        "compD/M_event_counts_q_14" BEL "compD/M_event_counts_q_15" BEL
+        "compD/M_event_counts_q_16" BEL "compD/M_event_counts_q_17" BEL
+        "compD/M_event_counts_q_18" BEL "compD/M_event_counts_q_19" BEL
+        "compD/M_event_counts_q_20" BEL "compD/M_event_counts_q_21" BEL
+        "compD/M_event_counts_q_22" BEL "compD/M_event_counts_q_23" BEL
         "L_reg/M_addr_ct_q_0" BEL "L_reg/M_addr_ct_q_1" BEL
         "L_reg/M_addr_ct_q_2" BEL "L_reg/M_addr_ct_q_3" BEL
         "L_reg/M_addr_ct_q_4" BEL "L_reg/M_addr_ct_q_5" BEL "L_reg/M_addr_q_0"
@@ -218,21 +222,20 @@ TIMEGRP fast_clkout1 = BEL "M_count_store_q_98" BEL "reset_cond/M_stage_q_3"
         BEL "L_reg/M_data_q_6" BEL "L_reg/M_data_q_7" BEL "L_reg/M_data_q_8"
         BEL "L_reg/M_data_q_9" BEL "L_reg/M_byte_ct_q_0" BEL
         "L_reg/M_byte_ct_q_1" BEL "L_reg/M_state_q_FSM_FFd1_1" BEL
-        "L_reg/M_state_q_FSM_FFd1_2" BEL "L_reg/M_state_q_FSM_FFd2_1" BEL
-        "L_reg/M_state_q_FSM_FFd3_1" BEL "L_reg/M_state_q_FSM_FFd3_2" BEL
-        "L_reg/M_state_q_FSM_FFd1" BEL "L_reg/M_state_q_FSM_FFd2" BEL
-        "L_reg/M_state_q_FSM_FFd3" BEL "L_reg/M_inc_q" BEL "L_reg/M_addr_q_10"
-        BEL "L_reg/M_addr_q_11" BEL "L_reg/M_addr_q_12" BEL
-        "L_reg/M_addr_q_13" BEL "L_reg/M_addr_q_14" BEL "L_reg/M_addr_q_20"
-        BEL "L_reg/M_addr_q_15" BEL "L_reg/M_addr_q_21" BEL
-        "L_reg/M_addr_q_16" BEL "L_reg/M_addr_q_22" BEL "L_reg/M_addr_q_17"
-        BEL "L_reg/M_timeout_q_0" BEL "L_reg/M_addr_q_23" BEL
-        "L_reg/M_addr_q_18" BEL "L_reg/M_timeout_q_1" BEL "L_reg/M_addr_q_24"
-        BEL "L_reg/M_addr_q_19" BEL "L_reg/M_timeout_q_2" BEL
-        "L_reg/M_addr_q_30" BEL "L_reg/M_addr_q_25" BEL "L_reg/M_timeout_q_3"
-        BEL "L_reg/M_addr_q_31" BEL "L_reg/M_addr_q_26" BEL
-        "L_reg/M_timeout_q_4" BEL "L_reg/M_addr_q_27" BEL
-        "L_reg/M_timeout_q_5" BEL "L_reg/M_addr_q_28" BEL
+        "L_reg/M_state_q_FSM_FFd2_1" BEL "L_reg/M_state_q_FSM_FFd3_1" BEL
+        "L_reg/M_state_q_FSM_FFd3_2" BEL "L_reg/M_state_q_FSM_FFd1" BEL
+        "L_reg/M_state_q_FSM_FFd2" BEL "L_reg/M_state_q_FSM_FFd3" BEL
+        "L_reg/M_inc_q" BEL "L_reg/M_addr_q_10" BEL "L_reg/M_addr_q_11" BEL
+        "L_reg/M_addr_q_12" BEL "L_reg/M_addr_q_13" BEL "L_reg/M_addr_q_14"
+        BEL "L_reg/M_addr_q_20" BEL "L_reg/M_addr_q_15" BEL
+        "L_reg/M_addr_q_21" BEL "L_reg/M_addr_q_16" BEL "L_reg/M_addr_q_22"
+        BEL "L_reg/M_addr_q_17" BEL "L_reg/M_timeout_q_0" BEL
+        "L_reg/M_addr_q_23" BEL "L_reg/M_addr_q_18" BEL "L_reg/M_timeout_q_1"
+        BEL "L_reg/M_addr_q_24" BEL "L_reg/M_addr_q_19" BEL
+        "L_reg/M_timeout_q_2" BEL "L_reg/M_addr_q_30" BEL "L_reg/M_addr_q_25"
+        BEL "L_reg/M_timeout_q_3" BEL "L_reg/M_addr_q_31" BEL
+        "L_reg/M_addr_q_26" BEL "L_reg/M_timeout_q_4" BEL "L_reg/M_addr_q_27"
+        BEL "L_reg/M_timeout_q_5" BEL "L_reg/M_addr_q_28" BEL
         "L_reg/M_timeout_q_6" BEL "L_reg/M_addr_q_29" BEL
         "L_reg/M_timeout_q_7" BEL "L_reg/M_timeout_q_8" BEL
         "L_reg/M_timeout_q_9" BEL "L_reg/M_timeout_q_10" BEL
@@ -265,66 +268,66 @@ TIMEGRP fast_clkout1 = BEL "M_count_store_q_98" BEL "reset_cond/M_stage_q_3"
         BEL "M_count_store_q_3" BEL "M_count_store_q_4" BEL
         "M_count_store_q_5" BEL "M_count_store_q_6" BEL "M_count_store_q_7"
         BEL "M_count_store_q_8" BEL "M_count_store_q_9" BEL
-        "compABC/M_ctr_q_1" BEL "compABC/M_ctr_q_0" BEL
+        "compABC/M_ctr_q_0" BEL "compABC/M_ctr_q_1" BEL
         "compABC/M_event_counts_q_26" BEL "compABC/M_event_counts_q_25" BEL
-        "compABC/M_event_counts_q_24" BEL "compABC/M_event_counts_q_23" BEL
-        "compABC/M_event_counts_q_22" BEL "compABC/M_event_counts_q_21" BEL
-        "compABC/M_event_counts_q_20" BEL "compABC/M_event_counts_q_19" BEL
-        "compABC/M_event_counts_q_18" BEL "compABC/M_event_counts_q_17" BEL
-        "compABC/M_event_counts_q_16" BEL "compABC/M_event_counts_q_15" BEL
-        "compABC/M_event_counts_q_14" BEL "compABC/M_event_counts_q_13" BEL
-        "compABC/M_event_counts_q_12" BEL "compABC/M_event_counts_q_11" BEL
-        "compABC/M_event_counts_q_10" BEL "compABC/M_event_counts_q_9" BEL
-        "compABC/M_event_counts_q_8" BEL "compABC/M_event_counts_q_7" BEL
-        "compABC/M_event_counts_q_6" BEL "compABC/M_event_counts_q_5" BEL
-        "compABC/M_event_counts_q_4" BEL "compABC/M_event_counts_q_3" BEL
-        "compABC/M_event_counts_q_2" BEL "compABC/M_event_counts_q_1" BEL
-        "compABC/M_event_counts_q_0" BEL "compABC/M_state_q" BEL
-        "compABD/M_ctr_q_1" BEL "compABD/M_ctr_q_0" BEL
+        "compABC/M_event_counts_q_24" BEL "compABC/M_state_q" BEL
+        "compABC/M_event_counts_q_13" BEL "compABC/M_event_counts_q_12" BEL
+        "compABC/M_event_counts_q_11" BEL "compABC/M_event_counts_q_10" BEL
+        "compABC/M_event_counts_q_9" BEL "compABC/M_event_counts_q_8" BEL
+        "compABC/M_event_counts_q_7" BEL "compABC/M_event_counts_q_6" BEL
+        "compABC/M_event_counts_q_5" BEL "compABC/M_event_counts_q_4" BEL
+        "compABC/M_event_counts_q_3" BEL "compABC/M_event_counts_q_2" BEL
+        "compABC/M_event_counts_q_1" BEL "compABC/M_event_counts_q_0" BEL
+        "compABC/M_event_counts_q_14" BEL "compABC/M_event_counts_q_15" BEL
+        "compABC/M_event_counts_q_16" BEL "compABC/M_event_counts_q_17" BEL
+        "compABC/M_event_counts_q_18" BEL "compABC/M_event_counts_q_19" BEL
+        "compABC/M_event_counts_q_20" BEL "compABC/M_event_counts_q_21" BEL
+        "compABC/M_event_counts_q_22" BEL "compABC/M_event_counts_q_23" BEL
+        "compABD/M_ctr_q_0" BEL "compABD/M_ctr_q_1" BEL
         "compABD/M_event_counts_q_26" BEL "compABD/M_event_counts_q_25" BEL
-        "compABD/M_event_counts_q_24" BEL "compABD/M_event_counts_q_23" BEL
-        "compABD/M_event_counts_q_22" BEL "compABD/M_event_counts_q_21" BEL
-        "compABD/M_event_counts_q_20" BEL "compABD/M_event_counts_q_19" BEL
-        "compABD/M_event_counts_q_18" BEL "compABD/M_event_counts_q_17" BEL
-        "compABD/M_event_counts_q_16" BEL "compABD/M_event_counts_q_15" BEL
-        "compABD/M_event_counts_q_14" BEL "compABD/M_event_counts_q_13" BEL
-        "compABD/M_event_counts_q_12" BEL "compABD/M_event_counts_q_11" BEL
-        "compABD/M_event_counts_q_10" BEL "compABD/M_event_counts_q_9" BEL
-        "compABD/M_event_counts_q_8" BEL "compABD/M_event_counts_q_7" BEL
-        "compABD/M_event_counts_q_6" BEL "compABD/M_event_counts_q_5" BEL
-        "compABD/M_event_counts_q_4" BEL "compABD/M_event_counts_q_3" BEL
-        "compABD/M_event_counts_q_2" BEL "compABD/M_event_counts_q_1" BEL
-        "compABD/M_event_counts_q_0" BEL "compABD/M_state_q" BEL
-        "compACD/M_ctr_q_1" BEL "compACD/M_ctr_q_0" BEL
+        "compABD/M_event_counts_q_24" BEL "compABD/M_state_q" BEL
+        "compABD/M_event_counts_q_13" BEL "compABD/M_event_counts_q_12" BEL
+        "compABD/M_event_counts_q_11" BEL "compABD/M_event_counts_q_10" BEL
+        "compABD/M_event_counts_q_9" BEL "compABD/M_event_counts_q_8" BEL
+        "compABD/M_event_counts_q_7" BEL "compABD/M_event_counts_q_6" BEL
+        "compABD/M_event_counts_q_5" BEL "compABD/M_event_counts_q_4" BEL
+        "compABD/M_event_counts_q_3" BEL "compABD/M_event_counts_q_2" BEL
+        "compABD/M_event_counts_q_1" BEL "compABD/M_event_counts_q_0" BEL
+        "compABD/M_event_counts_q_14" BEL "compABD/M_event_counts_q_15" BEL
+        "compABD/M_event_counts_q_16" BEL "compABD/M_event_counts_q_17" BEL
+        "compABD/M_event_counts_q_18" BEL "compABD/M_event_counts_q_19" BEL
+        "compABD/M_event_counts_q_20" BEL "compABD/M_event_counts_q_21" BEL
+        "compABD/M_event_counts_q_22" BEL "compABD/M_event_counts_q_23" BEL
+        "compACD/M_ctr_q_0" BEL "compACD/M_ctr_q_1" BEL
         "compACD/M_event_counts_q_26" BEL "compACD/M_event_counts_q_25" BEL
-        "compACD/M_event_counts_q_24" BEL "compACD/M_event_counts_q_23" BEL
-        "compACD/M_event_counts_q_22" BEL "compACD/M_event_counts_q_21" BEL
-        "compACD/M_event_counts_q_20" BEL "compACD/M_event_counts_q_19" BEL
-        "compACD/M_event_counts_q_18" BEL "compACD/M_event_counts_q_17" BEL
-        "compACD/M_event_counts_q_16" BEL "compACD/M_event_counts_q_15" BEL
-        "compACD/M_event_counts_q_14" BEL "compACD/M_event_counts_q_13" BEL
-        "compACD/M_event_counts_q_12" BEL "compACD/M_event_counts_q_11" BEL
-        "compACD/M_event_counts_q_10" BEL "compACD/M_event_counts_q_9" BEL
-        "compACD/M_event_counts_q_8" BEL "compACD/M_event_counts_q_7" BEL
-        "compACD/M_event_counts_q_6" BEL "compACD/M_event_counts_q_5" BEL
-        "compACD/M_event_counts_q_4" BEL "compACD/M_event_counts_q_3" BEL
-        "compACD/M_event_counts_q_2" BEL "compACD/M_event_counts_q_1" BEL
-        "compACD/M_event_counts_q_0" BEL "compACD/M_state_q" BEL
-        "compBCD/M_ctr_q_1" BEL "compBCD/M_ctr_q_0" BEL
+        "compACD/M_event_counts_q_24" BEL "compACD/M_state_q" BEL
+        "compACD/M_event_counts_q_13" BEL "compACD/M_event_counts_q_12" BEL
+        "compACD/M_event_counts_q_11" BEL "compACD/M_event_counts_q_10" BEL
+        "compACD/M_event_counts_q_9" BEL "compACD/M_event_counts_q_8" BEL
+        "compACD/M_event_counts_q_7" BEL "compACD/M_event_counts_q_6" BEL
+        "compACD/M_event_counts_q_5" BEL "compACD/M_event_counts_q_4" BEL
+        "compACD/M_event_counts_q_3" BEL "compACD/M_event_counts_q_2" BEL
+        "compACD/M_event_counts_q_1" BEL "compACD/M_event_counts_q_0" BEL
+        "compACD/M_event_counts_q_14" BEL "compACD/M_event_counts_q_15" BEL
+        "compACD/M_event_counts_q_16" BEL "compACD/M_event_counts_q_17" BEL
+        "compACD/M_event_counts_q_18" BEL "compACD/M_event_counts_q_19" BEL
+        "compACD/M_event_counts_q_20" BEL "compACD/M_event_counts_q_21" BEL
+        "compACD/M_event_counts_q_22" BEL "compACD/M_event_counts_q_23" BEL
+        "compBCD/M_ctr_q_0" BEL "compBCD/M_ctr_q_1" BEL
         "compBCD/M_event_counts_q_26" BEL "compBCD/M_event_counts_q_25" BEL
-        "compBCD/M_event_counts_q_24" BEL "compBCD/M_event_counts_q_23" BEL
-        "compBCD/M_event_counts_q_22" BEL "compBCD/M_event_counts_q_21" BEL
-        "compBCD/M_event_counts_q_20" BEL "compBCD/M_event_counts_q_19" BEL
-        "compBCD/M_event_counts_q_18" BEL "compBCD/M_event_counts_q_17" BEL
-        "compBCD/M_event_counts_q_16" BEL "compBCD/M_event_counts_q_15" BEL
-        "compBCD/M_event_counts_q_14" BEL "compBCD/M_event_counts_q_13" BEL
-        "compBCD/M_event_counts_q_12" BEL "compBCD/M_event_counts_q_11" BEL
-        "compBCD/M_event_counts_q_10" BEL "compBCD/M_event_counts_q_9" BEL
-        "compBCD/M_event_counts_q_8" BEL "compBCD/M_event_counts_q_7" BEL
-        "compBCD/M_event_counts_q_6" BEL "compBCD/M_event_counts_q_5" BEL
-        "compBCD/M_event_counts_q_4" BEL "compBCD/M_event_counts_q_3" BEL
-        "compBCD/M_event_counts_q_2" BEL "compBCD/M_event_counts_q_1" BEL
-        "compBCD/M_event_counts_q_0" BEL "compBCD/M_state_q" BEL
+        "compBCD/M_event_counts_q_24" BEL "compBCD/M_state_q" BEL
+        "compBCD/M_event_counts_q_13" BEL "compBCD/M_event_counts_q_12" BEL
+        "compBCD/M_event_counts_q_11" BEL "compBCD/M_event_counts_q_10" BEL
+        "compBCD/M_event_counts_q_9" BEL "compBCD/M_event_counts_q_8" BEL
+        "compBCD/M_event_counts_q_7" BEL "compBCD/M_event_counts_q_6" BEL
+        "compBCD/M_event_counts_q_5" BEL "compBCD/M_event_counts_q_4" BEL
+        "compBCD/M_event_counts_q_3" BEL "compBCD/M_event_counts_q_2" BEL
+        "compBCD/M_event_counts_q_1" BEL "compBCD/M_event_counts_q_0" BEL
+        "compBCD/M_event_counts_q_14" BEL "compBCD/M_event_counts_q_15" BEL
+        "compBCD/M_event_counts_q_16" BEL "compBCD/M_event_counts_q_17" BEL
+        "compBCD/M_event_counts_q_18" BEL "compBCD/M_event_counts_q_19" BEL
+        "compBCD/M_event_counts_q_20" BEL "compBCD/M_event_counts_q_21" BEL
+        "compBCD/M_event_counts_q_22" BEL "compBCD/M_event_counts_q_23" BEL
         "M_poll_flag_q" BEL "M_count_store_q_100" BEL "M_count_store_q_101"
         BEL "M_count_store_q_102" BEL "M_count_store_q_103" BEL
         "M_count_store_q_104" BEL "M_count_store_q_110" BEL
@@ -383,7 +386,7 @@ TIMEGRP fast_clkout1 = BEL "M_count_store_q_98" BEL "reset_cond/M_stage_q_3"
         "avr/uart_tx/M_savedData_q_1" BEL "avr/uart_tx/M_savedData_q_0" BEL
         "avr/uart_tx/M_blockFlag_q" BEL "avr/uart_tx/M_state_q_FSM_FFd1" BEL
         "avr/uart_tx/M_state_q_FSM_FFd1_1" BEL
-        "avr/uart_tx/M_state_q_FSM_FFd1_2" BEL "avr/Mshreg_M_block_q_2" BEL
+        "avr/uart_tx/M_state_q_FSM_FFd2_1" BEL "avr/Mshreg_M_block_q_2" BEL
         "M_count_store_q_137" BEL "M_count_store_q_143" BEL
         "M_count_store_q_138" BEL "M_count_store_q_139" BEL
         "M_count_store_q_144" BEL "M_count_store_q_145" BEL

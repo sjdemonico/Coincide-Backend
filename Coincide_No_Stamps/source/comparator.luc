@@ -5,24 +5,27 @@ module comparator #(
     input clk,  // clock
     input rst,  // reset
     input pins[4],
+    input ctr_rst,
     output ctrval[$clog2(CLK_FREQ/2)]
   ) {
   dff event_counts[$clog2(CLK_FREQ/2)](.clk(clk),.rst(rst));
-  dff ctr[2](.clk(clk),.rst(rst));
+  dff ctr[$clog2(PULSE_LEN) + 1](.clk(clk),.rst(rst));
   fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
   
   always {
     ctrval = event_counts.q;
     case (state.q) {
       state.COMPARE:
+        if(ctr_rst) event_counts.d = 0;
         if(&pins) {
           event_counts.d = event_counts.q + 1;
           state.d = state.SLEEP;
         }
       
-      state.SLEEP:
+      state.SLEEP:       
+        if(ctr_rst) event_counts.d = 0;
         if(ctr.q == PULSE_LEN) {
-          ctr.d = 0;
+          ctr.d = 0;  
           state.d = state.COMPARE;
         }
         else ctr.d = ctr.q + 1;

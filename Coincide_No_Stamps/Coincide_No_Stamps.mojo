@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Coincide_No_Stamps" board="Mojo V3" language="Lucid">
   <files>
+    <src>timer.luc</src>
     <src top="true">mojo_top.luc</src>
     <src>duplicator.luc</src>
     <src>comparator.luc</src>

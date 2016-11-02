@@ -106,11 +106,13 @@ module mojo_top_0 (
     .new_tx_data(M_reg_new_tx_data),
     .regOut(M_reg_regOut)
   );
-  wire [28-1:0] M_timer_value;
-  counter_4 timer (
+  wire [1-1:0] M_tmr_maxval;
+  wire [28-1:0] M_tmr_value;
+  timer_4 tmr (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .value(M_timer_value)
+    .maxval(M_tmr_maxval),
+    .value(M_tmr_value)
   );
   reg [3:0] M_pins_d, M_pins_q = 1'h0;
   reg [404:0] M_count_store_d, M_count_store_q = 1'h0;
@@ -152,6 +154,7 @@ module mojo_top_0 (
   comparator_9 compA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compA_pins),
     .ctrval(M_compA_ctrval)
   );
@@ -160,6 +163,7 @@ module mojo_top_0 (
   comparator_9 compB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compB_pins),
     .ctrval(M_compB_ctrval)
   );
@@ -168,6 +172,7 @@ module mojo_top_0 (
   comparator_9 compC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compC_pins),
     .ctrval(M_compC_ctrval)
   );
@@ -176,6 +181,7 @@ module mojo_top_0 (
   comparator_9 compD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compD_pins),
     .ctrval(M_compD_ctrval)
   );
@@ -184,6 +190,7 @@ module mojo_top_0 (
   comparator_9 compAB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compAB_pins),
     .ctrval(M_compAB_ctrval)
   );
@@ -192,6 +199,7 @@ module mojo_top_0 (
   comparator_9 compAC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compAC_pins),
     .ctrval(M_compAC_ctrval)
   );
@@ -200,6 +208,7 @@ module mojo_top_0 (
   comparator_9 compAD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compAD_pins),
     .ctrval(M_compAD_ctrval)
   );
@@ -208,6 +217,7 @@ module mojo_top_0 (
   comparator_9 compBC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compBC_pins),
     .ctrval(M_compBC_ctrval)
   );
@@ -216,6 +226,7 @@ module mojo_top_0 (
   comparator_9 compBD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compBD_pins),
     .ctrval(M_compBD_ctrval)
   );
@@ -224,6 +235,7 @@ module mojo_top_0 (
   comparator_9 compCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compCD_pins),
     .ctrval(M_compCD_ctrval)
   );
@@ -232,6 +244,7 @@ module mojo_top_0 (
   comparator_9 compABC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compABC_pins),
     .ctrval(M_compABC_ctrval)
   );
@@ -240,6 +253,7 @@ module mojo_top_0 (
   comparator_9 compABD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compABD_pins),
     .ctrval(M_compABD_ctrval)
   );
@@ -248,6 +262,7 @@ module mojo_top_0 (
   comparator_9 compACD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compACD_pins),
     .ctrval(M_compACD_ctrval)
   );
@@ -256,6 +271,7 @@ module mojo_top_0 (
   comparator_9 compBCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compBCD_pins),
     .ctrval(M_compBCD_ctrval)
   );
@@ -264,6 +280,7 @@ module mojo_top_0 (
   comparator_9 compABCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .ctr_rst(M_tmr_maxval),
     .pins(M_compABCD_pins),
     .ctrval(M_compABCD_ctrval)
   );
@@ -283,20 +300,20 @@ module mojo_top_0 (
     M_pins_d[1+0-:1] = M_dupB_out;
     M_pins_d[2+0-:1] = M_dupC_out;
     M_pins_d[3+0-:1] = M_dupD_out;
-    M_compA_pins = (M_pins_q | 4'h7);
-    M_compB_pins = (M_pins_q | 4'hb);
-    M_compC_pins = (M_pins_q | 4'hd);
-    M_compD_pins = (M_pins_q | 4'he);
-    M_compAB_pins = (M_pins_q | 4'h3);
-    M_compAC_pins = (M_pins_q | 4'h5);
+    M_compA_pins = (M_pins_q | 4'he);
+    M_compB_pins = (M_pins_q | 4'hd);
+    M_compC_pins = (M_pins_q | 4'hb);
+    M_compD_pins = (M_pins_q | 4'h7);
+    M_compAB_pins = (M_pins_q | 4'hc);
+    M_compAC_pins = (M_pins_q | 4'ha);
     M_compAD_pins = (M_pins_q | 4'h6);
     M_compBC_pins = (M_pins_q | 4'h9);
-    M_compBD_pins = (M_pins_q | 4'ha);
-    M_compCD_pins = (M_pins_q | 4'hc);
-    M_compABC_pins = (M_pins_q | 4'h1);
-    M_compABD_pins = (M_pins_q | 4'h2);
-    M_compACD_pins = (M_pins_q | 4'h4);
-    M_compBCD_pins = (M_pins_q | 4'h8);
+    M_compBD_pins = (M_pins_q | 4'h5);
+    M_compCD_pins = (M_pins_q | 4'h3);
+    M_compABC_pins = (M_pins_q | 4'h8);
+    M_compABD_pins = (M_pins_q | 4'h4);
+    M_compACD_pins = (M_pins_q | 4'h2);
+    M_compBCD_pins = (M_pins_q | 4'h1);
     M_compABCD_pins = (M_pins_q | 4'h0);
     M_avr_cclk = cclk;
     M_avr_spi_ss = spi_ss;
@@ -315,7 +332,7 @@ module mojo_top_0 (
     M_reg_tx_busy = M_avr_tx_busy;
     M_reg_regIn[32+0-:1] = 1'h0;
     M_reg_regIn[0+31-:32] = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
-    if (M_timer_value == 29'h0bebc1ff) begin
+    if (M_tmr_maxval) begin
       M_count_store_d[0+26-:27] = M_compA_ctrval;
       M_count_store_d[27+26-:27] = M_compB_ctrval;
       M_count_store_d[54+26-:27] = M_compC_ctrval;
@@ -331,6 +348,7 @@ module mojo_top_0 (
       M_count_store_d[324+26-:27] = M_compACD_ctrval;
       M_count_store_d[351+26-:27] = M_compBCD_ctrval;
       M_count_store_d[378+26-:27] = M_compABCD_ctrval;
+      M_poll_flag_d = 1'h1;
     end
     if (M_reg_regOut[0+0-:1]) begin
       if (M_reg_regOut[1+0-:1]) begin
@@ -392,8 +410,7 @@ module mojo_top_0 (
         M_reg_regIn[32+0-:1] = 1'h1;
       end
     end
-    led[0+3-:4] = M_pins_q;
-    led[4+3-:4] = 4'h0;
+    led = M_compA_ctrval[0+7-:8];
   end
   
   always @(posedge M_fast_CLK_OUT2) begin

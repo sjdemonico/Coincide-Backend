@@ -1,8 +1,8 @@
 NET "pulseA" LOC = P140;
 NET "pulseA" IOSTANDARD = LVTTL;
-NET "pulseB" LOC = P141;
+NET "pulseB" LOC = P8;
 NET "pulseB" IOSTANDARD = LVTTL;
-NET "pulseC" LOC = P142;
+NET "pulseC" LOC = P22;
 NET "pulseC" IOSTANDARD = LVTTL;
-NET "pulseD" LOC = P143;
+NET "pulseD" LOC = P35;
 NET "pulseD" IOSTANDARD = LVTTL;

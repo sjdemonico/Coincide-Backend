@@ -7,7 +7,7 @@ module duplicator #(
     output out
   ) {
   edge_detector edge(#RISE(1),#FALL(0),.clk(clk));
-  dff ctr[2](.clk(clk),.rst(rst));
+  dff ctr[$clog2(PULSE_LEN) + 1](.clk(clk),.rst(rst));
   pipeline sync[1](.clk(clk));
   fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE};
   always {

@@ -11,9 +11,10 @@
      TOP = CLKSPEED-1
      UP = 1
 */
-module counter_4 (
+module timer_4 (
     input clk,
     input rst,
+    output reg maxval,
     output reg [27:0] value
   );
   
@@ -31,10 +32,12 @@ module counter_4 (
     M_ctr_d = M_ctr_q;
     
     value = M_ctr_q[0+27-:28];
+    maxval = 1'h0;
     if (1'h1) begin
       M_ctr_d = M_ctr_q + 1'h1;
       if (1'h1 && M_ctr_q == 29'h0bebc1ff) begin
         M_ctr_d = 1'h0;
+        maxval = 1'h1;
       end
     end else begin
       M_ctr_d = M_ctr_q - 1'h1;

@@ -28,7 +28,7 @@ module mojo_top (
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
       avr_interface avr(#CLK_FREQ(CLKSPEED));
       reg_interface reg(#CLK_FREQ(CLKSPEED));
-      counter timer(#SIZE($clog2(CLKSPEED)),#TOP(CLKSPEED - 1));
+      timer tmr(#SIZE($clog2(CLKSPEED)),#TOP(CLKSPEED - 1));
       dff pins[4];
       dff count_store[15][$clog2(CLKSPEED/2)];
       dff poll_flag;
@@ -40,21 +40,21 @@ module mojo_top (
       duplicator dupD(#PULSE_LEN(PULSE_LEN));
       
       //channel comparators
-      comparator compA(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compAB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compAC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compAD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compBC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compBD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compABC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compABD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compACD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compBCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
-      comparator compABCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED));
+      comparator compA(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAB(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compAD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABC(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compACD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compBCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compABCD(#PULSE_LEN(PULSE_LEN),#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
 
     }
   }
@@ -75,21 +75,22 @@ module mojo_top (
     pins.d[3] = dupD.out;
     
     //comparator connections in
-    compA.pins = (pins.q | b0111);
-    compB.pins = (pins.q | b1011);
-    compC.pins = (pins.q | b1101);
-    compD.pins = (pins.q | b1110);
-    compAB.pins = (pins.q | b0011);
-    compAC.pins = (pins.q | b0101);
+    compA.pins = (pins.q | b1110);
+    compB.pins = (pins.q | b1101);
+    compC.pins = (pins.q | b1011);
+    compD.pins = (pins.q | b0111);
+    compAB.pins = (pins.q | b1100);
+    compAC.pins = (pins.q | b1010);
     compAD.pins = (pins.q | b0110);
     compBC.pins = (pins.q | b1001);
-    compBD.pins = (pins.q | b1010);
-    compCD.pins = (pins.q | b1100);
-    compABC.pins = (pins.q | b0001);
-    compABD.pins = (pins.q | b0010);
-    compACD.pins = (pins.q | b0100);
-    compBCD.pins = (pins.q | b1000);
+    compBD.pins = (pins.q | b0101);
+    compCD.pins = (pins.q | b0011);
+    compABC.pins = (pins.q | b1000);
+    compABD.pins = (pins.q | b0100);
+    compACD.pins = (pins.q | b0010);
+    compBCD.pins = (pins.q | b0001);
     compABCD.pins = (pins.q | b0000);
+    
         
     // connect inputs of avr
     avr.cclk = cclk;
@@ -115,7 +116,7 @@ module mojo_top (
     reg.regIn.data = 32bx;                // don't care
     
     //timer behavior
-    if(timer.value == CLKSPEED - 1) {
+    if(tmr.maxval) {
       count_store.d[0] = compA.ctrval;
       count_store.d[1] = compB.ctrval;
       count_store.d[2] = compC.ctrval;
@@ -131,6 +132,7 @@ module mojo_top (
       count_store.d[12] = compACD.ctrval;
       count_store.d[13] = compBCD.ctrval;
       count_store.d[14] = compABCD.ctrval;
+      poll_flag.d = 1;
     }
     
     //register interface addressing behavior
@@ -170,7 +172,6 @@ module mojo_top (
       }
     }
     
-    led[3:0] = pins.q;                         // connect the dff
-    led[7:4] = b0000;
+    led = compA.ctrval[7:0];
   }
 }
