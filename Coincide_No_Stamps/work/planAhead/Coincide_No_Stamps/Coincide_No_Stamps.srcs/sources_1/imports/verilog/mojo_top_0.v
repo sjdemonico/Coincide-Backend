@@ -29,7 +29,7 @@ module mojo_top_0 (
   
   localparam CLKSPEED = 28'hbebc200;
   
-  localparam PULSE_LEN = 2'h2;
+  integer i;
   
   wire [1-1:0] M_fast_CLK_OUT1;
   wire [1-1:0] M_fast_CLK_OUT2;
@@ -115,6 +115,7 @@ module mojo_top_0 (
     .value(M_tmr_value)
   );
   reg [3:0] M_pins_d, M_pins_q = 1'h0;
+  reg [404:0] M_counts_d, M_counts_q = 1'h0;
   reg [404:0] M_count_store_d, M_count_store_q = 1'h0;
   reg M_poll_flag_d, M_poll_flag_q = 1'h0;
   wire [1-1:0] M_dupA_out;
@@ -149,146 +150,132 @@ module mojo_top_0 (
     .pulse(M_dupD_pulse),
     .out(M_dupD_out)
   );
-  wire [27-1:0] M_compA_ctrval;
+  wire [1-1:0] M_compA_incr;
   reg [4-1:0] M_compA_pins;
   comparator_9 compA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compA_pins),
-    .ctrval(M_compA_ctrval)
+    .incr(M_compA_incr)
   );
-  wire [27-1:0] M_compB_ctrval;
+  wire [1-1:0] M_compB_incr;
   reg [4-1:0] M_compB_pins;
   comparator_9 compB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compB_pins),
-    .ctrval(M_compB_ctrval)
+    .incr(M_compB_incr)
   );
-  wire [27-1:0] M_compC_ctrval;
+  wire [1-1:0] M_compC_incr;
   reg [4-1:0] M_compC_pins;
   comparator_9 compC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compC_pins),
-    .ctrval(M_compC_ctrval)
+    .incr(M_compC_incr)
   );
-  wire [27-1:0] M_compD_ctrval;
+  wire [1-1:0] M_compD_incr;
   reg [4-1:0] M_compD_pins;
   comparator_9 compD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compD_pins),
-    .ctrval(M_compD_ctrval)
+    .incr(M_compD_incr)
   );
-  wire [27-1:0] M_compAB_ctrval;
+  wire [1-1:0] M_compAB_incr;
   reg [4-1:0] M_compAB_pins;
   comparator_9 compAB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compAB_pins),
-    .ctrval(M_compAB_ctrval)
+    .incr(M_compAB_incr)
   );
-  wire [27-1:0] M_compAC_ctrval;
+  wire [1-1:0] M_compAC_incr;
   reg [4-1:0] M_compAC_pins;
   comparator_9 compAC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compAC_pins),
-    .ctrval(M_compAC_ctrval)
+    .incr(M_compAC_incr)
   );
-  wire [27-1:0] M_compAD_ctrval;
+  wire [1-1:0] M_compAD_incr;
   reg [4-1:0] M_compAD_pins;
   comparator_9 compAD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compAD_pins),
-    .ctrval(M_compAD_ctrval)
+    .incr(M_compAD_incr)
   );
-  wire [27-1:0] M_compBC_ctrval;
+  wire [1-1:0] M_compBC_incr;
   reg [4-1:0] M_compBC_pins;
   comparator_9 compBC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compBC_pins),
-    .ctrval(M_compBC_ctrval)
+    .incr(M_compBC_incr)
   );
-  wire [27-1:0] M_compBD_ctrval;
+  wire [1-1:0] M_compBD_incr;
   reg [4-1:0] M_compBD_pins;
   comparator_9 compBD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compBD_pins),
-    .ctrval(M_compBD_ctrval)
+    .incr(M_compBD_incr)
   );
-  wire [27-1:0] M_compCD_ctrval;
+  wire [1-1:0] M_compCD_incr;
   reg [4-1:0] M_compCD_pins;
   comparator_9 compCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compCD_pins),
-    .ctrval(M_compCD_ctrval)
+    .incr(M_compCD_incr)
   );
-  wire [27-1:0] M_compABC_ctrval;
+  wire [1-1:0] M_compABC_incr;
   reg [4-1:0] M_compABC_pins;
   comparator_9 compABC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compABC_pins),
-    .ctrval(M_compABC_ctrval)
+    .incr(M_compABC_incr)
   );
-  wire [27-1:0] M_compABD_ctrval;
+  wire [1-1:0] M_compABD_incr;
   reg [4-1:0] M_compABD_pins;
   comparator_9 compABD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compABD_pins),
-    .ctrval(M_compABD_ctrval)
+    .incr(M_compABD_incr)
   );
-  wire [27-1:0] M_compACD_ctrval;
+  wire [1-1:0] M_compACD_incr;
   reg [4-1:0] M_compACD_pins;
   comparator_9 compACD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compACD_pins),
-    .ctrval(M_compACD_ctrval)
+    .incr(M_compACD_incr)
   );
-  wire [27-1:0] M_compBCD_ctrval;
+  wire [1-1:0] M_compBCD_incr;
   reg [4-1:0] M_compBCD_pins;
   comparator_9 compBCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compBCD_pins),
-    .ctrval(M_compBCD_ctrval)
+    .incr(M_compBCD_incr)
   );
-  wire [27-1:0] M_compABCD_ctrval;
+  wire [1-1:0] M_compABCD_incr;
   reg [4-1:0] M_compABCD_pins;
   comparator_9 compABCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .ctr_rst(M_tmr_maxval),
     .pins(M_compABCD_pins),
-    .ctrval(M_compABCD_ctrval)
+    .incr(M_compABCD_incr)
   );
   
   always @* begin
     M_pins_d = M_pins_q;
     M_poll_flag_d = M_poll_flag_q;
     M_count_store_d = M_count_store_q;
+    M_counts_d = M_counts_q;
     
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
@@ -332,22 +319,56 @@ module mojo_top_0 (
     M_reg_tx_busy = M_avr_tx_busy;
     M_reg_regIn[32+0-:1] = 1'h0;
     M_reg_regIn[0+31-:32] = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
+    if (M_compA_incr) begin
+      M_counts_d[0+26-:27] = M_counts_q[0+26-:27] + 1'h1;
+    end
+    if (M_compB_incr) begin
+      M_counts_d[27+26-:27] = M_counts_q[27+26-:27] + 1'h1;
+    end
+    if (M_compC_incr) begin
+      M_counts_d[54+26-:27] = M_counts_q[54+26-:27] + 1'h1;
+    end
+    if (M_compD_incr) begin
+      M_counts_d[81+26-:27] = M_counts_q[81+26-:27] + 1'h1;
+    end
+    if (M_compAB_incr) begin
+      M_counts_d[108+26-:27] = M_counts_q[108+26-:27] + 1'h1;
+    end
+    if (M_compAC_incr) begin
+      M_counts_d[135+26-:27] = M_counts_q[135+26-:27] + 1'h1;
+    end
+    if (M_compAD_incr) begin
+      M_counts_d[162+26-:27] = M_counts_q[162+26-:27] + 1'h1;
+    end
+    if (M_compBC_incr) begin
+      M_counts_d[189+26-:27] = M_counts_q[189+26-:27] + 1'h1;
+    end
+    if (M_compBD_incr) begin
+      M_counts_d[216+26-:27] = M_counts_q[216+26-:27] + 1'h1;
+    end
+    if (M_compCD_incr) begin
+      M_counts_d[243+26-:27] = M_counts_q[243+26-:27] + 1'h1;
+    end
+    if (M_compABC_incr) begin
+      M_counts_d[270+26-:27] = M_counts_q[270+26-:27] + 1'h1;
+    end
+    if (M_compABD_incr) begin
+      M_counts_d[297+26-:27] = M_counts_q[297+26-:27] + 1'h1;
+    end
+    if (M_compACD_incr) begin
+      M_counts_d[324+26-:27] = M_counts_q[324+26-:27] + 1'h1;
+    end
+    if (M_compBCD_incr) begin
+      M_counts_d[351+26-:27] = M_counts_q[351+26-:27] + 1'h1;
+    end
+    if (M_compABCD_incr) begin
+      M_counts_d[378+26-:27] = M_counts_q[378+26-:27] + 1'h1;
+    end
     if (M_tmr_maxval) begin
-      M_count_store_d[0+26-:27] = M_compA_ctrval;
-      M_count_store_d[27+26-:27] = M_compB_ctrval;
-      M_count_store_d[54+26-:27] = M_compC_ctrval;
-      M_count_store_d[81+26-:27] = M_compD_ctrval;
-      M_count_store_d[108+26-:27] = M_compAB_ctrval;
-      M_count_store_d[135+26-:27] = M_compAC_ctrval;
-      M_count_store_d[162+26-:27] = M_compAD_ctrval;
-      M_count_store_d[189+26-:27] = M_compBC_ctrval;
-      M_count_store_d[216+26-:27] = M_compBD_ctrval;
-      M_count_store_d[243+26-:27] = M_compCD_ctrval;
-      M_count_store_d[270+26-:27] = M_compABC_ctrval;
-      M_count_store_d[297+26-:27] = M_compABD_ctrval;
-      M_count_store_d[324+26-:27] = M_compACD_ctrval;
-      M_count_store_d[351+26-:27] = M_compBCD_ctrval;
-      M_count_store_d[378+26-:27] = M_compABCD_ctrval;
+      for (i = 1'h0; i < 4'hf; i = i + 1) begin
+        M_count_store_d[(i)*27+26-:27] = M_counts_q[(i)*27+26-:27];
+        M_counts_d[(i)*27+26-:27] = 1'h0;
+      end
       M_poll_flag_d = 1'h1;
     end
     if (M_reg_regOut[0+0-:1]) begin
@@ -410,16 +431,18 @@ module mojo_top_0 (
         M_reg_regIn[32+0-:1] = 1'h1;
       end
     end
-    led = M_compA_ctrval[0+7-:8];
+    led = M_counts_q[0+0+7-:8];
   end
   
   always @(posedge M_fast_CLK_OUT2) begin
     if (rst == 1'b1) begin
       M_pins_q <= 1'h0;
+      M_counts_q <= 1'h0;
       M_count_store_q <= 1'h0;
       M_poll_flag_q <= 1'h0;
     end else begin
       M_pins_q <= M_pins_d;
+      M_counts_q <= M_counts_d;
       M_count_store_q <= M_count_store_d;
       M_poll_flag_q <= M_poll_flag_d;
     end

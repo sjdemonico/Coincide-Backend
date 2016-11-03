@@ -4,26 +4,14 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-/*
-   Parameters:
-     CLK_FREQ = CLKSPEED
-     PULSE_LEN = PULSE_LEN
-*/
 module comparator_9 (
     input clk,
     input rst,
     input [3:0] pins,
-    input ctr_rst,
-    output reg [26:0] ctrval
+    output reg incr
   );
   
-  localparam CLK_FREQ = 28'hbebc200;
-  localparam PULSE_LEN = 2'h2;
   
-  
-  reg [26:0] M_event_counts_d, M_event_counts_q = 1'h0;
-  
-  reg [1:0] M_ctr_d, M_ctr_q = 1'h0;
   
   
   localparam COMPARE_state = 1'd0;
@@ -33,58 +21,27 @@ module comparator_9 (
   
   always @* begin
     M_state_d = M_state_q;
-    M_event_counts_d = M_event_counts_q;
-    M_ctr_d = M_ctr_q;
     
-    ctrval = M_event_counts_q;
+    incr = 1'h0;
     
     case (M_state_q)
       COMPARE_state: begin
-        if (ctr_rst) begin
-          M_event_counts_d = 1'h0;
-        end
         if ((&pins)) begin
-          M_event_counts_d = M_event_counts_q + 1'h1;
+          incr = 1'h1;
           M_state_d = SLEEP_state;
         end
       end
       SLEEP_state: begin
-        if (ctr_rst) begin
-          M_event_counts_d = 1'h0;
-        end
-        if (M_ctr_q == 2'h2) begin
-          M_ctr_d = 1'h0;
-          M_state_d = COMPARE_state;
-        end else begin
-          M_ctr_d = M_ctr_q + 1'h1;
-        end
+        M_state_d = COMPARE_state;
       end
     endcase
   end
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_ctr_q <= 1'h0;
-    end else begin
-      M_ctr_q <= M_ctr_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
       M_state_q <= 1'h0;
     end else begin
       M_state_q <= M_state_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_event_counts_q <= 1'h0;
-    end else begin
-      M_event_counts_q <= M_event_counts_d;
     end
   end
   

@@ -4,10 +4,6 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-/*
-   Parameters:
-     PULSE_LEN = PULSE_LEN
-*/
 module duplicator_5 (
     input clk,
     input rst,
@@ -15,7 +11,6 @@ module duplicator_5 (
     output reg out
   );
   
-  localparam PULSE_LEN = 2'h2;
   
   
   wire [1-1:0] M_edge_out;
@@ -25,8 +20,6 @@ module duplicator_5 (
     .in(M_edge_in),
     .out(M_edge_out)
   );
-  
-  reg [1:0] M_ctr_d, M_ctr_q = 1'h0;
   
   wire [(1'h1+0)-1:0] M_sync_out;
   reg [(1'h1+0)-1:0] M_sync_in;
@@ -43,14 +36,14 @@ module duplicator_5 (
   endgenerate
   
   
-  localparam LISTEN_state = 1'd0;
-  localparam PULSE_state = 1'd1;
+  localparam LISTEN_state = 2'd0;
+  localparam PULSE_START_state = 2'd1;
+  localparam PULSE_END_state = 2'd2;
   
-  reg M_state_d, M_state_q = LISTEN_state;
+  reg [1:0] M_state_d, M_state_q = LISTEN_state;
   
   always @* begin
     M_state_d = M_state_q;
-    M_ctr_d = M_ctr_q;
     
     out = 1'h0;
     M_sync_in = pulse;
@@ -58,31 +51,21 @@ module duplicator_5 (
     
     case (M_state_q)
       LISTEN_state: begin
+        out = 1'h0;
         if (M_edge_out) begin
-          M_state_d = PULSE_state;
+          M_state_d = PULSE_START_state;
         end
       end
-      PULSE_state: begin
-        if (M_ctr_q == 2'h2) begin
-          M_ctr_d = 1'h0;
-          out = 1'h0;
-          M_state_d = LISTEN_state;
-        end else begin
-          out = 1'h1;
-          M_ctr_d = M_ctr_q + 1'h1;
-        end
+      PULSE_START_state: begin
+        out = 1'h1;
+        M_state_d = PULSE_END_state;
+      end
+      PULSE_END_state: begin
+        out = 1'h1;
+        M_state_d = LISTEN_state;
       end
     endcase
   end
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_ctr_q <= 1'h0;
-    end else begin
-      M_ctr_q <= M_ctr_d;
-    end
-  end
-  
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin

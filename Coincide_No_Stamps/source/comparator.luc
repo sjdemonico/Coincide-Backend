@@ -1,27 +1,22 @@
-module comparator #(
-    CLK_FREQ = 50000000 : CLK_FREQ > 0
-  )(
+module comparator (
     input clk,  // clock
     input rst,  // reset
     input pins[4],
-    input ctr_rst,
-    output ctrval[$clog2(CLK_FREQ/2)]
+    output incr
   ) {
-  dff event_counts[$clog2(CLK_FREQ/2)](.clk(clk),.rst(rst));
+  
   fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
   
   always {
-    ctrval = event_counts.q;
+    incr = 0;
     case (state.q) {
       state.COMPARE:
-        if(ctr_rst) event_counts.d = 0;
         if(&pins) {
-          event_counts.d = event_counts.q + 1;
+          incr = 1;
           state.d = state.SLEEP;
         }
       
       state.SLEEP:       
-        if(ctr_rst) event_counts.d = 0;
         state.d = state.COMPARE;
     }
   }

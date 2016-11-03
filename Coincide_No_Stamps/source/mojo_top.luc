@@ -19,7 +19,7 @@ module mojo_top (
   
   sig rst;                  // reset signal
   const CLKSPEED = 200000000;
-  const PULSE_LEN = 2;
+  var i;
   
   fastclk fast(.CLK_IN1(clk));
   .clk(fast.CLK_OUT2) {
@@ -30,31 +30,32 @@ module mojo_top (
       reg_interface reg(#CLK_FREQ(CLKSPEED));
       timer tmr(#SIZE($clog2(CLKSPEED)),#TOP(CLKSPEED - 1));
       dff pins[4];
+      dff counts[15][$clog2(CLKSPEED/2)];
       dff count_store[15][$clog2(CLKSPEED/2)];
       dff poll_flag;
       
       //pulse duplicators
-      duplicator dupA(#PULSE_LEN(PULSE_LEN));
-      duplicator dupB(#PULSE_LEN(PULSE_LEN));
-      duplicator dupC(#PULSE_LEN(PULSE_LEN));
-      duplicator dupD(#PULSE_LEN(PULSE_LEN));
+      duplicator dupA;
+      duplicator dupB;
+      duplicator dupC;
+      duplicator dupD;
       
       //channel comparators
-      comparator compA(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compB(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAB(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compAD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABC(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compACD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compBCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
-      comparator compABCD(#CLK_FREQ(CLKSPEED),.ctr_rst(tmr.maxval));
+      comparator compA;
+      comparator compB;
+      comparator compC;
+      comparator compD;
+      comparator compAB;
+      comparator compAC;
+      comparator compAD;
+      comparator compBC;
+      comparator compBD;
+      comparator compCD;
+      comparator compABC;
+      comparator compABD;
+      comparator compACD;
+      comparator compBCD;
+      comparator compABCD;
 
     }
   }
@@ -115,23 +116,29 @@ module mojo_top (
     reg.regIn.drdy = 0;                   // default to not ready
     reg.regIn.data = 32bx;                // don't care
     
+    //counter behavior
+    if(compA.incr) counts.d[0] = counts.q[0] + 1;
+    if(compB.incr) counts.d[1] = counts.q[1] + 1;
+    if(compC.incr) counts.d[2] = counts.q[2] + 1;
+    if(compD.incr) counts.d[3] = counts.q[3] + 1;
+    if(compAB.incr) counts.d[4] = counts.q[4] + 1;
+    if(compAC.incr) counts.d[5] = counts.q[5] + 1;
+    if(compAD.incr) counts.d[6] = counts.q[6] + 1;
+    if(compBC.incr) counts.d[7] = counts.q[7] + 1;
+    if(compBD.incr) counts.d[8] = counts.q[8] + 1;
+    if(compCD.incr) counts.d[9] = counts.q[9] + 1;
+    if(compABC.incr) counts.d[10] = counts.q[10] + 1;
+    if(compABD.incr) counts.d[11] = counts.q[11] + 1;
+    if(compACD.incr) counts.d[12] = counts.q[12] + 1;
+    if(compBCD.incr) counts.d[13] = counts.q[13] + 1;
+    if(compABCD.incr) counts.d[14] = counts.q[14] + 1;
+    
     //timer behavior
     if(tmr.maxval) {
-      count_store.d[0] = compA.ctrval;
-      count_store.d[1] = compB.ctrval;
-      count_store.d[2] = compC.ctrval;
-      count_store.d[3] = compD.ctrval;
-      count_store.d[4] = compAB.ctrval;
-      count_store.d[5] = compAC.ctrval;
-      count_store.d[6] = compAD.ctrval;
-      count_store.d[7] = compBC.ctrval;
-      count_store.d[8] = compBD.ctrval;
-      count_store.d[9] = compCD.ctrval;
-      count_store.d[10] = compABC.ctrval;
-      count_store.d[11] = compABD.ctrval;
-      count_store.d[12] = compACD.ctrval;
-      count_store.d[13] = compBCD.ctrval;
-      count_store.d[14] = compABCD.ctrval;
+      for (i = 0; i < 15; i++) {
+        count_store.d[i] = counts.q[i];
+        counts.d[i] = 0;
+      }
       poll_flag.d = 1;
     }
     
@@ -164,6 +171,6 @@ module mojo_top (
       }
     }
     
-    led = compA.ctrval[7:0];
+    led = counts.q[0][7:0];
   }
 }
