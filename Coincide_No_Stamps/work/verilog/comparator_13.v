@@ -4,10 +4,11 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module comparator_9 (
+module comparator_13 (
     input clk,
     input rst,
     input [3:0] pins,
+    input [3:0] length,
     output reg incr
   );
   
@@ -19,8 +20,11 @@ module comparator_9 (
   
   reg M_state_d, M_state_q = COMPARE_state;
   
+  reg [3:0] M_ctr_d, M_ctr_q = 1'h0;
+  
   always @* begin
     M_state_d = M_state_q;
+    M_ctr_d = M_ctr_q;
     
     incr = 1'h0;
     
@@ -32,7 +36,11 @@ module comparator_9 (
         end
       end
       SLEEP_state: begin
-        M_state_d = COMPARE_state;
+        if (M_ctr_q == length - 1'h1) begin
+          M_ctr_d = 1'h0;
+          M_state_d = COMPARE_state;
+        end
+        M_ctr_d = M_ctr_q + 1'h1;
       end
     endcase
   end
@@ -42,6 +50,15 @@ module comparator_9 (
       M_state_q <= 1'h0;
     end else begin
       M_state_q <= M_state_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_ctr_q <= 1'h0;
+    end else begin
+      M_ctr_q <= M_ctr_d;
     end
   end
   

@@ -9,7 +9,7 @@
      CLK_FREQ = CLK_FREQ
      BAUD = BAUD
 */
-module uart_tx_27 (
+module uart_tx_46 (
     input clk,
     input rst,
     output reg tx,

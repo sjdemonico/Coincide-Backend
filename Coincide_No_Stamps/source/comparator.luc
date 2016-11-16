@@ -2,10 +2,12 @@ module comparator (
     input clk,  // clock
     input rst,  // reset
     input pins[4],
+    input length[4],
     output incr
   ) {
   
   fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
+  dff ctr[4](.clk(clk),.rst(rst));
   
   always {
     incr = 0;
@@ -17,7 +19,11 @@ module comparator (
         }
       
       state.SLEEP:       
-        state.d = state.COMPARE;
+        if(ctr.q == length - 1) {
+          ctr.d = 0;
+          state.d = state.COMPARE;
+        }
+        ctr.d = ctr.q + 1;
     }
   }
 }

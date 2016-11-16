@@ -8,7 +8,7 @@
    Parameters:
      DEPTH = 1
 */
-module pipeline_29 (
+module pipeline_48 (
     input clk,
     input in,
     output reg out

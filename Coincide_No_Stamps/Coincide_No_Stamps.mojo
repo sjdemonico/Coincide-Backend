@@ -12,9 +12,9 @@
     <component>uart_rx.luc</component>
     <component>cclk_detector.luc</component>
     <component>reset_conditioner.luc</component>
-    <component>pipeline.luc</component>
-    <component>uart_tx.luc</component>
     <component>avr_interface.luc</component>
+    <component>uart_tx.luc</component>
+    <component>pipeline.luc</component>
     <component>counter.luc</component>
     <component>edge_detector.luc</component>
     <core name="fastclk">

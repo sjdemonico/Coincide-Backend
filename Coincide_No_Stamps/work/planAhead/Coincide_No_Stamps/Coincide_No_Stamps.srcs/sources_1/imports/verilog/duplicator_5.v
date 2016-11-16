@@ -16,7 +16,7 @@ module duplicator_5 (
   
   wire [1-1:0] M_edge_out;
   reg [1-1:0] M_edge_in;
-  edge_detector_28 L_edge (
+  edge_detector_47 L_edge (
     .clk(clk),
     .in(M_edge_in),
     .out(M_edge_out)
@@ -28,7 +28,7 @@ module duplicator_5 (
   genvar GEN_sync0;
   generate
   for (GEN_sync0=0;GEN_sync0<1'h1;GEN_sync0=GEN_sync0+1) begin: sync_gen_0
-    pipeline_29 sync (
+    pipeline_48 sync (
       .clk(clk),
       .in(M_sync_in[GEN_sync0*(1)+(1)-1-:(1)]),
       .out(M_sync_out[GEN_sync0*(1)+(1)-1-:(1)])
@@ -60,7 +60,7 @@ module duplicator_5 (
         end
       end
       PULSE_state: begin
-        if (M_ctr_q == length - 1'h1) begin
+        if (M_ctr_q == length) begin
           M_ctr_d = 1'h0;
           M_state_d = LISTEN_state;
         end

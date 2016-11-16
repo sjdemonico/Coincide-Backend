@@ -8,7 +8,7 @@
    Parameters:
      CLK_FREQ = CLK_FREQ
 */
-module cclk_detector_24 (
+module cclk_detector_43 (
     input clk,
     input rst,
     input cclk,

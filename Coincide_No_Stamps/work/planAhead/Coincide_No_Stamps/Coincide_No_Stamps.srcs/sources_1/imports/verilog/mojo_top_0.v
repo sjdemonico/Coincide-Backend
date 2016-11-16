@@ -114,166 +114,352 @@ module mojo_top_0 (
     .maxval(M_tmr_maxval),
     .value(M_tmr_value)
   );
-  reg [3:0] M_pins_d, M_pins_q = 1'h0;
-  reg [3:0] M_pulse_length_d, M_pulse_length_q = 1'h0;
-  reg [359:0] M_counts_d, M_counts_q = 1'h0;
-  reg [359:0] M_count_store_d, M_count_store_q = 1'h0;
+  reg [7:0] M_pins_d, M_pins_q = 1'h0;
+  reg [7:0] M_pulse_length_d, M_pulse_length_q = 1'h0;
+  reg [719:0] M_counts_d, M_counts_q = 1'h0;
+  reg [719:0] M_count_store_d, M_count_store_q = 1'h0;
   reg M_poll_flag_d, M_poll_flag_q = 1'h0;
-  wire [1-1:0] M_dupA_out;
-  reg [1-1:0] M_dupA_pulse;
-  duplicator_5 dupA (
+  wire [1-1:0] M_xdupA_out;
+  reg [1-1:0] M_xdupA_pulse;
+  duplicator_5 xdupA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .length(M_pulse_length_q),
-    .pulse(M_dupA_pulse),
-    .out(M_dupA_out)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pulse(M_xdupA_pulse),
+    .out(M_xdupA_out)
   );
-  wire [1-1:0] M_dupB_out;
-  reg [1-1:0] M_dupB_pulse;
-  duplicator_5 dupB (
+  wire [1-1:0] M_xdupB_out;
+  reg [1-1:0] M_xdupB_pulse;
+  duplicator_5 xdupB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .length(M_pulse_length_q),
-    .pulse(M_dupB_pulse),
-    .out(M_dupB_out)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pulse(M_xdupB_pulse),
+    .out(M_xdupB_out)
   );
-  wire [1-1:0] M_dupC_out;
-  reg [1-1:0] M_dupC_pulse;
-  duplicator_5 dupC (
+  wire [1-1:0] M_xdupC_out;
+  reg [1-1:0] M_xdupC_pulse;
+  duplicator_5 xdupC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .length(M_pulse_length_q),
-    .pulse(M_dupC_pulse),
-    .out(M_dupC_out)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pulse(M_xdupC_pulse),
+    .out(M_xdupC_out)
   );
-  wire [1-1:0] M_dupD_out;
-  reg [1-1:0] M_dupD_pulse;
-  duplicator_5 dupD (
+  wire [1-1:0] M_xdupD_out;
+  reg [1-1:0] M_xdupD_pulse;
+  duplicator_5 xdupD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .length(M_pulse_length_q),
-    .pulse(M_dupD_pulse),
-    .out(M_dupD_out)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pulse(M_xdupD_pulse),
+    .out(M_xdupD_out)
   );
-  wire [1-1:0] M_compA_incr;
-  reg [4-1:0] M_compA_pins;
-  comparator_9 compA (
+  wire [1-1:0] M_ydupA_out;
+  reg [1-1:0] M_ydupA_pulse;
+  duplicator_5 ydupA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compA_pins),
-    .incr(M_compA_incr)
+    .length(M_pulse_length_q[4+3-:4]),
+    .pulse(M_ydupA_pulse),
+    .out(M_ydupA_out)
   );
-  wire [1-1:0] M_compB_incr;
-  reg [4-1:0] M_compB_pins;
-  comparator_9 compB (
+  wire [1-1:0] M_ydupB_out;
+  reg [1-1:0] M_ydupB_pulse;
+  duplicator_5 ydupB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compB_pins),
-    .incr(M_compB_incr)
+    .length(M_pulse_length_q[4+3-:4]),
+    .pulse(M_ydupB_pulse),
+    .out(M_ydupB_out)
   );
-  wire [1-1:0] M_compC_incr;
-  reg [4-1:0] M_compC_pins;
-  comparator_9 compC (
+  wire [1-1:0] M_ydupC_out;
+  reg [1-1:0] M_ydupC_pulse;
+  duplicator_5 ydupC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compC_pins),
-    .incr(M_compC_incr)
+    .length(M_pulse_length_q[4+3-:4]),
+    .pulse(M_ydupC_pulse),
+    .out(M_ydupC_out)
   );
-  wire [1-1:0] M_compD_incr;
-  reg [4-1:0] M_compD_pins;
-  comparator_9 compD (
+  wire [1-1:0] M_ydupD_out;
+  reg [1-1:0] M_ydupD_pulse;
+  duplicator_5 ydupD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compD_pins),
-    .incr(M_compD_incr)
+    .length(M_pulse_length_q[4+3-:4]),
+    .pulse(M_ydupD_pulse),
+    .out(M_ydupD_out)
   );
-  wire [1-1:0] M_compAB_incr;
-  reg [4-1:0] M_compAB_pins;
-  comparator_9 compAB (
+  wire [1-1:0] M_xcompA_incr;
+  reg [4-1:0] M_xcompA_pins;
+  comparator_13 xcompA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compAB_pins),
-    .incr(M_compAB_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompA_pins),
+    .incr(M_xcompA_incr)
   );
-  wire [1-1:0] M_compAC_incr;
-  reg [4-1:0] M_compAC_pins;
-  comparator_9 compAC (
+  wire [1-1:0] M_xcompB_incr;
+  reg [4-1:0] M_xcompB_pins;
+  comparator_13 xcompB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compAC_pins),
-    .incr(M_compAC_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompB_pins),
+    .incr(M_xcompB_incr)
   );
-  wire [1-1:0] M_compAD_incr;
-  reg [4-1:0] M_compAD_pins;
-  comparator_9 compAD (
+  wire [1-1:0] M_xcompC_incr;
+  reg [4-1:0] M_xcompC_pins;
+  comparator_13 xcompC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compAD_pins),
-    .incr(M_compAD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompC_pins),
+    .incr(M_xcompC_incr)
   );
-  wire [1-1:0] M_compBC_incr;
-  reg [4-1:0] M_compBC_pins;
-  comparator_9 compBC (
+  wire [1-1:0] M_xcompD_incr;
+  reg [4-1:0] M_xcompD_pins;
+  comparator_13 xcompD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compBC_pins),
-    .incr(M_compBC_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompD_pins),
+    .incr(M_xcompD_incr)
   );
-  wire [1-1:0] M_compBD_incr;
-  reg [4-1:0] M_compBD_pins;
-  comparator_9 compBD (
+  wire [1-1:0] M_xcompAB_incr;
+  reg [4-1:0] M_xcompAB_pins;
+  comparator_13 xcompAB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compBD_pins),
-    .incr(M_compBD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompAB_pins),
+    .incr(M_xcompAB_incr)
   );
-  wire [1-1:0] M_compCD_incr;
-  reg [4-1:0] M_compCD_pins;
-  comparator_9 compCD (
+  wire [1-1:0] M_xcompAC_incr;
+  reg [4-1:0] M_xcompAC_pins;
+  comparator_13 xcompAC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compCD_pins),
-    .incr(M_compCD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompAC_pins),
+    .incr(M_xcompAC_incr)
   );
-  wire [1-1:0] M_compABC_incr;
-  reg [4-1:0] M_compABC_pins;
-  comparator_9 compABC (
+  wire [1-1:0] M_xcompAD_incr;
+  reg [4-1:0] M_xcompAD_pins;
+  comparator_13 xcompAD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compABC_pins),
-    .incr(M_compABC_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompAD_pins),
+    .incr(M_xcompAD_incr)
   );
-  wire [1-1:0] M_compABD_incr;
-  reg [4-1:0] M_compABD_pins;
-  comparator_9 compABD (
+  wire [1-1:0] M_xcompBC_incr;
+  reg [4-1:0] M_xcompBC_pins;
+  comparator_13 xcompBC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compABD_pins),
-    .incr(M_compABD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompBC_pins),
+    .incr(M_xcompBC_incr)
   );
-  wire [1-1:0] M_compACD_incr;
-  reg [4-1:0] M_compACD_pins;
-  comparator_9 compACD (
+  wire [1-1:0] M_xcompBD_incr;
+  reg [4-1:0] M_xcompBD_pins;
+  comparator_13 xcompBD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compACD_pins),
-    .incr(M_compACD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompBD_pins),
+    .incr(M_xcompBD_incr)
   );
-  wire [1-1:0] M_compBCD_incr;
-  reg [4-1:0] M_compBCD_pins;
-  comparator_9 compBCD (
+  wire [1-1:0] M_xcompCD_incr;
+  reg [4-1:0] M_xcompCD_pins;
+  comparator_13 xcompCD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compBCD_pins),
-    .incr(M_compBCD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompCD_pins),
+    .incr(M_xcompCD_incr)
   );
-  wire [1-1:0] M_compABCD_incr;
-  reg [4-1:0] M_compABCD_pins;
-  comparator_9 compABCD (
+  wire [1-1:0] M_xcompABC_incr;
+  reg [4-1:0] M_xcompABC_pins;
+  comparator_13 xcompABC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
-    .pins(M_compABCD_pins),
-    .incr(M_compABCD_incr)
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompABC_pins),
+    .incr(M_xcompABC_incr)
+  );
+  wire [1-1:0] M_xcompABD_incr;
+  reg [4-1:0] M_xcompABD_pins;
+  comparator_13 xcompABD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompABD_pins),
+    .incr(M_xcompABD_incr)
+  );
+  wire [1-1:0] M_xcompACD_incr;
+  reg [4-1:0] M_xcompACD_pins;
+  comparator_13 xcompACD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompACD_pins),
+    .incr(M_xcompACD_incr)
+  );
+  wire [1-1:0] M_xcompBCD_incr;
+  reg [4-1:0] M_xcompBCD_pins;
+  comparator_13 xcompBCD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompBCD_pins),
+    .incr(M_xcompBCD_incr)
+  );
+  wire [1-1:0] M_xcompABCD_incr;
+  reg [4-1:0] M_xcompABCD_pins;
+  comparator_13 xcompABCD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[0+3-:4]),
+    .pins(M_xcompABCD_pins),
+    .incr(M_xcompABCD_incr)
+  );
+  wire [1-1:0] M_ycompA_incr;
+  reg [4-1:0] M_ycompA_pins;
+  comparator_13 ycompA (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompA_pins),
+    .incr(M_ycompA_incr)
+  );
+  wire [1-1:0] M_ycompB_incr;
+  reg [4-1:0] M_ycompB_pins;
+  comparator_13 ycompB (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompB_pins),
+    .incr(M_ycompB_incr)
+  );
+  wire [1-1:0] M_ycompC_incr;
+  reg [4-1:0] M_ycompC_pins;
+  comparator_13 ycompC (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompC_pins),
+    .incr(M_ycompC_incr)
+  );
+  wire [1-1:0] M_ycompD_incr;
+  reg [4-1:0] M_ycompD_pins;
+  comparator_13 ycompD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompD_pins),
+    .incr(M_ycompD_incr)
+  );
+  wire [1-1:0] M_ycompAB_incr;
+  reg [4-1:0] M_ycompAB_pins;
+  comparator_13 ycompAB (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompAB_pins),
+    .incr(M_ycompAB_incr)
+  );
+  wire [1-1:0] M_ycompAC_incr;
+  reg [4-1:0] M_ycompAC_pins;
+  comparator_13 ycompAC (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompAC_pins),
+    .incr(M_ycompAC_incr)
+  );
+  wire [1-1:0] M_ycompAD_incr;
+  reg [4-1:0] M_ycompAD_pins;
+  comparator_13 ycompAD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompAD_pins),
+    .incr(M_ycompAD_incr)
+  );
+  wire [1-1:0] M_ycompBC_incr;
+  reg [4-1:0] M_ycompBC_pins;
+  comparator_13 ycompBC (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompBC_pins),
+    .incr(M_ycompBC_incr)
+  );
+  wire [1-1:0] M_ycompBD_incr;
+  reg [4-1:0] M_ycompBD_pins;
+  comparator_13 ycompBD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompBD_pins),
+    .incr(M_ycompBD_incr)
+  );
+  wire [1-1:0] M_ycompCD_incr;
+  reg [4-1:0] M_ycompCD_pins;
+  comparator_13 ycompCD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompCD_pins),
+    .incr(M_ycompCD_incr)
+  );
+  wire [1-1:0] M_ycompABC_incr;
+  reg [4-1:0] M_ycompABC_pins;
+  comparator_13 ycompABC (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompABC_pins),
+    .incr(M_ycompABC_incr)
+  );
+  wire [1-1:0] M_ycompABD_incr;
+  reg [4-1:0] M_ycompABD_pins;
+  comparator_13 ycompABD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompABD_pins),
+    .incr(M_ycompABD_incr)
+  );
+  wire [1-1:0] M_ycompACD_incr;
+  reg [4-1:0] M_ycompACD_pins;
+  comparator_13 ycompACD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompACD_pins),
+    .incr(M_ycompACD_incr)
+  );
+  wire [1-1:0] M_ycompBCD_incr;
+  reg [4-1:0] M_ycompBCD_pins;
+  comparator_13 ycompBCD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompBCD_pins),
+    .incr(M_ycompBCD_incr)
+  );
+  wire [1-1:0] M_ycompABCD_incr;
+  reg [4-1:0] M_ycompABCD_pins;
+  comparator_13 ycompABCD (
+    .clk(M_fast_CLK_OUT2),
+    .rst(rst),
+    .length(M_pulse_length_q[4+3-:4]),
+    .pins(M_ycompABCD_pins),
+    .incr(M_ycompABCD_incr)
   );
   
   always @* begin
@@ -285,29 +471,52 @@ module mojo_top_0 (
     
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
-    M_dupA_pulse = pulseA;
-    M_dupB_pulse = pulseB;
-    M_dupC_pulse = pulseC;
-    M_dupD_pulse = pulseD;
-    M_pins_d[0+0-:1] = M_dupA_out;
-    M_pins_d[1+0-:1] = M_dupB_out;
-    M_pins_d[2+0-:1] = M_dupC_out;
-    M_pins_d[3+0-:1] = M_dupD_out;
-    M_compA_pins = (M_pins_q | 4'he);
-    M_compB_pins = (M_pins_q | 4'hd);
-    M_compC_pins = (M_pins_q | 4'hb);
-    M_compD_pins = (M_pins_q | 4'h7);
-    M_compAB_pins = (M_pins_q | 4'hc);
-    M_compAC_pins = (M_pins_q | 4'ha);
-    M_compAD_pins = (M_pins_q | 4'h6);
-    M_compBC_pins = (M_pins_q | 4'h9);
-    M_compBD_pins = (M_pins_q | 4'h5);
-    M_compCD_pins = (M_pins_q | 4'h3);
-    M_compABC_pins = (M_pins_q | 4'h8);
-    M_compABD_pins = (M_pins_q | 4'h4);
-    M_compACD_pins = (M_pins_q | 4'h2);
-    M_compBCD_pins = (M_pins_q | 4'h1);
-    M_compABCD_pins = (M_pins_q | 4'h0);
+    M_xdupA_pulse = pulseA;
+    M_xdupB_pulse = pulseB;
+    M_xdupC_pulse = pulseC;
+    M_xdupD_pulse = pulseD;
+    M_ydupA_pulse = pulseA;
+    M_ydupB_pulse = pulseB;
+    M_ydupC_pulse = pulseC;
+    M_ydupD_pulse = pulseD;
+    M_pins_d[0+0+0-:1] = M_xdupA_out;
+    M_pins_d[0+1+0-:1] = M_xdupB_out;
+    M_pins_d[0+2+0-:1] = M_xdupC_out;
+    M_pins_d[0+3+0-:1] = M_xdupD_out;
+    M_pins_d[4+0+0-:1] = M_ydupA_out;
+    M_pins_d[4+1+0-:1] = M_ydupB_out;
+    M_pins_d[4+2+0-:1] = M_ydupC_out;
+    M_pins_d[4+3+0-:1] = M_ydupD_out;
+    M_xcompA_pins = (M_pins_q[0+3-:4] | 4'he);
+    M_xcompB_pins = (M_pins_q[0+3-:4] | 4'hd);
+    M_xcompC_pins = (M_pins_q[0+3-:4] | 4'hb);
+    M_xcompD_pins = (M_pins_q[0+3-:4] | 4'h7);
+    M_xcompAB_pins = (M_pins_q[0+3-:4] | 4'hc);
+    M_xcompAC_pins = (M_pins_q[0+3-:4] | 4'ha);
+    M_xcompAD_pins = (M_pins_q[0+3-:4] | 4'h6);
+    M_xcompBC_pins = (M_pins_q[0+3-:4] | 4'h9);
+    M_xcompBD_pins = (M_pins_q[0+3-:4] | 4'h5);
+    M_xcompCD_pins = (M_pins_q[0+3-:4] | 4'h3);
+    M_xcompABC_pins = (M_pins_q[0+3-:4] | 4'h8);
+    M_xcompABD_pins = (M_pins_q[0+3-:4] | 4'h4);
+    M_xcompACD_pins = (M_pins_q[0+3-:4] | 4'h2);
+    M_xcompBCD_pins = (M_pins_q[0+3-:4] | 4'h1);
+    M_xcompABCD_pins = (M_pins_q[0+3-:4] | 4'h0);
+    M_ycompA_pins = (M_pins_q[4+3-:4] | 4'he);
+    M_ycompB_pins = (M_pins_q[4+3-:4] | 4'hd);
+    M_ycompC_pins = (M_pins_q[4+3-:4] | 4'hb);
+    M_ycompD_pins = (M_pins_q[4+3-:4] | 4'h7);
+    M_ycompAB_pins = (M_pins_q[4+3-:4] | 4'hc);
+    M_ycompAC_pins = (M_pins_q[4+3-:4] | 4'ha);
+    M_ycompAD_pins = (M_pins_q[4+3-:4] | 4'h6);
+    M_ycompBC_pins = (M_pins_q[4+3-:4] | 4'h9);
+    M_ycompBD_pins = (M_pins_q[4+3-:4] | 4'h5);
+    M_ycompCD_pins = (M_pins_q[4+3-:4] | 4'h3);
+    M_ycompABC_pins = (M_pins_q[4+3-:4] | 4'h8);
+    M_ycompABD_pins = (M_pins_q[4+3-:4] | 4'h4);
+    M_ycompACD_pins = (M_pins_q[4+3-:4] | 4'h2);
+    M_ycompBCD_pins = (M_pins_q[4+3-:4] | 4'h1);
+    M_ycompABCD_pins = (M_pins_q[4+3-:4] | 4'h0);
     M_avr_cclk = cclk;
     M_avr_spi_ss = spi_ss;
     M_avr_spi_mosi = spi_mosi;
@@ -325,53 +534,98 @@ module mojo_top_0 (
     M_reg_tx_busy = M_avr_tx_busy;
     M_reg_regIn[32+0-:1] = 1'h0;
     M_reg_regIn[0+31-:32] = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
-    if (M_compA_incr) begin
+    if (M_xcompA_incr) begin
       M_counts_d[0+23-:24] = M_counts_q[0+23-:24] + 1'h1;
     end
-    if (M_compB_incr) begin
+    if (M_xcompB_incr) begin
       M_counts_d[24+23-:24] = M_counts_q[24+23-:24] + 1'h1;
     end
-    if (M_compC_incr) begin
+    if (M_xcompC_incr) begin
       M_counts_d[48+23-:24] = M_counts_q[48+23-:24] + 1'h1;
     end
-    if (M_compD_incr) begin
+    if (M_xcompD_incr) begin
       M_counts_d[72+23-:24] = M_counts_q[72+23-:24] + 1'h1;
     end
-    if (M_compAB_incr) begin
+    if (M_xcompAB_incr) begin
       M_counts_d[96+23-:24] = M_counts_q[96+23-:24] + 1'h1;
     end
-    if (M_compAC_incr) begin
+    if (M_xcompAC_incr) begin
       M_counts_d[120+23-:24] = M_counts_q[120+23-:24] + 1'h1;
     end
-    if (M_compAD_incr) begin
+    if (M_xcompAD_incr) begin
       M_counts_d[144+23-:24] = M_counts_q[144+23-:24] + 1'h1;
     end
-    if (M_compBC_incr) begin
+    if (M_xcompBC_incr) begin
       M_counts_d[168+23-:24] = M_counts_q[168+23-:24] + 1'h1;
     end
-    if (M_compBD_incr) begin
+    if (M_xcompBD_incr) begin
       M_counts_d[192+23-:24] = M_counts_q[192+23-:24] + 1'h1;
     end
-    if (M_compCD_incr) begin
+    if (M_xcompCD_incr) begin
       M_counts_d[216+23-:24] = M_counts_q[216+23-:24] + 1'h1;
     end
-    if (M_compABC_incr) begin
+    if (M_xcompABC_incr) begin
       M_counts_d[240+23-:24] = M_counts_q[240+23-:24] + 1'h1;
     end
-    if (M_compABD_incr) begin
+    if (M_xcompABD_incr) begin
       M_counts_d[264+23-:24] = M_counts_q[264+23-:24] + 1'h1;
     end
-    if (M_compACD_incr) begin
+    if (M_xcompACD_incr) begin
       M_counts_d[288+23-:24] = M_counts_q[288+23-:24] + 1'h1;
     end
-    if (M_compBCD_incr) begin
+    if (M_xcompBCD_incr) begin
       M_counts_d[312+23-:24] = M_counts_q[312+23-:24] + 1'h1;
     end
-    if (M_compABCD_incr) begin
+    if (M_xcompABCD_incr) begin
       M_counts_d[336+23-:24] = M_counts_q[336+23-:24] + 1'h1;
     end
+    if (M_ycompA_incr) begin
+      M_counts_d[360+23-:24] = M_counts_q[360+23-:24] + 1'h1;
+    end
+    if (M_ycompB_incr) begin
+      M_counts_d[384+23-:24] = M_counts_q[384+23-:24] + 1'h1;
+    end
+    if (M_ycompC_incr) begin
+      M_counts_d[408+23-:24] = M_counts_q[408+23-:24] + 1'h1;
+    end
+    if (M_ycompD_incr) begin
+      M_counts_d[432+23-:24] = M_counts_q[432+23-:24] + 1'h1;
+    end
+    if (M_ycompAB_incr) begin
+      M_counts_d[456+23-:24] = M_counts_q[456+23-:24] + 1'h1;
+    end
+    if (M_ycompAC_incr) begin
+      M_counts_d[480+23-:24] = M_counts_q[480+23-:24] + 1'h1;
+    end
+    if (M_ycompAD_incr) begin
+      M_counts_d[504+23-:24] = M_counts_q[504+23-:24] + 1'h1;
+    end
+    if (M_ycompBC_incr) begin
+      M_counts_d[528+23-:24] = M_counts_q[528+23-:24] + 1'h1;
+    end
+    if (M_ycompBD_incr) begin
+      M_counts_d[552+23-:24] = M_counts_q[552+23-:24] + 1'h1;
+    end
+    if (M_ycompCD_incr) begin
+      M_counts_d[576+23-:24] = M_counts_q[576+23-:24] + 1'h1;
+    end
+    if (M_ycompABC_incr) begin
+      M_counts_d[600+23-:24] = M_counts_q[600+23-:24] + 1'h1;
+    end
+    if (M_ycompABD_incr) begin
+      M_counts_d[624+23-:24] = M_counts_q[624+23-:24] + 1'h1;
+    end
+    if (M_ycompACD_incr) begin
+      M_counts_d[648+23-:24] = M_counts_q[648+23-:24] + 1'h1;
+    end
+    if (M_ycompBCD_incr) begin
+      M_counts_d[672+23-:24] = M_counts_q[672+23-:24] + 1'h1;
+    end
+    if (M_ycompABCD_incr) begin
+      M_counts_d[696+23-:24] = M_counts_q[696+23-:24] + 1'h1;
+    end
     if (M_tmr_maxval) begin
-      for (i = 1'h0; i < 4'hf; i = i + 1) begin
+      for (i = 1'h0; i < 5'h1e; i = i + 1) begin
         M_count_store_d[(i)*24+23-:24] = M_counts_q[(i)*24+23-:24];
         M_counts_d[(i)*24+23-:24] = 1'h0;
       end
@@ -382,7 +636,10 @@ module mojo_top_0 (
         
         case (M_reg_regOut[2+31-:32])
           7'h63: begin
-            M_pulse_length_d = M_reg_regOut[34+0+3-:4];
+            M_pulse_length_d[0+3-:4] = M_reg_regOut[34+0+3-:4];
+          end
+          7'h64: begin
+            M_pulse_length_d[4+3-:4] = M_reg_regOut[34+0+3-:4];
           end
           default: begin
             M_poll_flag_d = M_reg_regOut[34+0+0-:1];
@@ -435,6 +692,51 @@ module mojo_top_0 (
           end
           4'he: begin
             M_reg_regIn[0+31-:32] = M_count_store_q[336+23-:24];
+          end
+          4'hf: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[360+23-:24];
+          end
+          5'h10: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[384+23-:24];
+          end
+          5'h11: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[408+23-:24];
+          end
+          5'h12: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[432+23-:24];
+          end
+          5'h13: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[456+23-:24];
+          end
+          5'h14: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[480+23-:24];
+          end
+          5'h15: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[504+23-:24];
+          end
+          5'h16: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[528+23-:24];
+          end
+          5'h17: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[552+23-:24];
+          end
+          5'h18: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[576+23-:24];
+          end
+          5'h19: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[600+23-:24];
+          end
+          5'h1a: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[624+23-:24];
+          end
+          5'h1b: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[648+23-:24];
+          end
+          5'h1c: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[672+23-:24];
+          end
+          5'h1d: begin
+            M_reg_regIn[0+31-:32] = M_count_store_q[696+23-:24];
           end
           default: begin
             M_reg_regIn[0+31-:32] = M_poll_flag_q;

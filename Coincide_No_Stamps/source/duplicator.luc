@@ -19,7 +19,7 @@ module duplicator (
         if(edge.out) state.d = state.PULSE;
         
       state.PULSE:
-        if(ctr.q == length - 1) {
+        if(ctr.q == length) {
           ctr.d = 0;
           state.d = state.LISTEN;
         }
