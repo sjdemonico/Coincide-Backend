@@ -107,7 +107,7 @@ module mojo_top_0 (
     .regOut(M_reg_regOut)
   );
   wire [1-1:0] M_tmr_maxval;
-  wire [28-1:0] M_tmr_value;
+  wire [25-1:0] M_tmr_value;
   timer_4 tmr (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
@@ -115,14 +115,16 @@ module mojo_top_0 (
     .value(M_tmr_value)
   );
   reg [3:0] M_pins_d, M_pins_q = 1'h0;
-  reg [404:0] M_counts_d, M_counts_q = 1'h0;
-  reg [404:0] M_count_store_d, M_count_store_q = 1'h0;
+  reg [3:0] M_pulse_length_d, M_pulse_length_q = 1'h0;
+  reg [359:0] M_counts_d, M_counts_q = 1'h0;
+  reg [359:0] M_count_store_d, M_count_store_q = 1'h0;
   reg M_poll_flag_d, M_poll_flag_q = 1'h0;
   wire [1-1:0] M_dupA_out;
   reg [1-1:0] M_dupA_pulse;
   duplicator_5 dupA (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .length(M_pulse_length_q),
     .pulse(M_dupA_pulse),
     .out(M_dupA_out)
   );
@@ -131,6 +133,7 @@ module mojo_top_0 (
   duplicator_5 dupB (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .length(M_pulse_length_q),
     .pulse(M_dupB_pulse),
     .out(M_dupB_out)
   );
@@ -139,6 +142,7 @@ module mojo_top_0 (
   duplicator_5 dupC (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .length(M_pulse_length_q),
     .pulse(M_dupC_pulse),
     .out(M_dupC_out)
   );
@@ -147,6 +151,7 @@ module mojo_top_0 (
   duplicator_5 dupD (
     .clk(M_fast_CLK_OUT2),
     .rst(rst),
+    .length(M_pulse_length_q),
     .pulse(M_dupD_pulse),
     .out(M_dupD_out)
   );
@@ -276,6 +281,7 @@ module mojo_top_0 (
     M_poll_flag_d = M_poll_flag_q;
     M_count_store_d = M_count_store_q;
     M_counts_d = M_counts_q;
+    M_pulse_length_d = M_pulse_length_q;
     
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
@@ -320,109 +326,115 @@ module mojo_top_0 (
     M_reg_regIn[32+0-:1] = 1'h0;
     M_reg_regIn[0+31-:32] = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
     if (M_compA_incr) begin
-      M_counts_d[0+26-:27] = M_counts_q[0+26-:27] + 1'h1;
+      M_counts_d[0+23-:24] = M_counts_q[0+23-:24] + 1'h1;
     end
     if (M_compB_incr) begin
-      M_counts_d[27+26-:27] = M_counts_q[27+26-:27] + 1'h1;
+      M_counts_d[24+23-:24] = M_counts_q[24+23-:24] + 1'h1;
     end
     if (M_compC_incr) begin
-      M_counts_d[54+26-:27] = M_counts_q[54+26-:27] + 1'h1;
+      M_counts_d[48+23-:24] = M_counts_q[48+23-:24] + 1'h1;
     end
     if (M_compD_incr) begin
-      M_counts_d[81+26-:27] = M_counts_q[81+26-:27] + 1'h1;
+      M_counts_d[72+23-:24] = M_counts_q[72+23-:24] + 1'h1;
     end
     if (M_compAB_incr) begin
-      M_counts_d[108+26-:27] = M_counts_q[108+26-:27] + 1'h1;
+      M_counts_d[96+23-:24] = M_counts_q[96+23-:24] + 1'h1;
     end
     if (M_compAC_incr) begin
-      M_counts_d[135+26-:27] = M_counts_q[135+26-:27] + 1'h1;
+      M_counts_d[120+23-:24] = M_counts_q[120+23-:24] + 1'h1;
     end
     if (M_compAD_incr) begin
-      M_counts_d[162+26-:27] = M_counts_q[162+26-:27] + 1'h1;
+      M_counts_d[144+23-:24] = M_counts_q[144+23-:24] + 1'h1;
     end
     if (M_compBC_incr) begin
-      M_counts_d[189+26-:27] = M_counts_q[189+26-:27] + 1'h1;
+      M_counts_d[168+23-:24] = M_counts_q[168+23-:24] + 1'h1;
     end
     if (M_compBD_incr) begin
-      M_counts_d[216+26-:27] = M_counts_q[216+26-:27] + 1'h1;
+      M_counts_d[192+23-:24] = M_counts_q[192+23-:24] + 1'h1;
     end
     if (M_compCD_incr) begin
-      M_counts_d[243+26-:27] = M_counts_q[243+26-:27] + 1'h1;
+      M_counts_d[216+23-:24] = M_counts_q[216+23-:24] + 1'h1;
     end
     if (M_compABC_incr) begin
-      M_counts_d[270+26-:27] = M_counts_q[270+26-:27] + 1'h1;
+      M_counts_d[240+23-:24] = M_counts_q[240+23-:24] + 1'h1;
     end
     if (M_compABD_incr) begin
-      M_counts_d[297+26-:27] = M_counts_q[297+26-:27] + 1'h1;
+      M_counts_d[264+23-:24] = M_counts_q[264+23-:24] + 1'h1;
     end
     if (M_compACD_incr) begin
-      M_counts_d[324+26-:27] = M_counts_q[324+26-:27] + 1'h1;
+      M_counts_d[288+23-:24] = M_counts_q[288+23-:24] + 1'h1;
     end
     if (M_compBCD_incr) begin
-      M_counts_d[351+26-:27] = M_counts_q[351+26-:27] + 1'h1;
+      M_counts_d[312+23-:24] = M_counts_q[312+23-:24] + 1'h1;
     end
     if (M_compABCD_incr) begin
-      M_counts_d[378+26-:27] = M_counts_q[378+26-:27] + 1'h1;
+      M_counts_d[336+23-:24] = M_counts_q[336+23-:24] + 1'h1;
     end
     if (M_tmr_maxval) begin
       for (i = 1'h0; i < 4'hf; i = i + 1) begin
-        M_count_store_d[(i)*27+26-:27] = M_counts_q[(i)*27+26-:27];
-        M_counts_d[(i)*27+26-:27] = 1'h0;
+        M_count_store_d[(i)*24+23-:24] = M_counts_q[(i)*24+23-:24];
+        M_counts_d[(i)*24+23-:24] = 1'h0;
       end
       M_poll_flag_d = 1'h1;
     end
     if (M_reg_regOut[0+0-:1]) begin
       if (M_reg_regOut[1+0-:1]) begin
-        if (M_reg_regOut[2+31-:32] == 7'h62) begin
-          M_poll_flag_d = M_reg_regOut[34+0+0-:1];
-        end
+        
+        case (M_reg_regOut[2+31-:32])
+          7'h63: begin
+            M_pulse_length_d = M_reg_regOut[34+0+3-:4];
+          end
+          default: begin
+            M_poll_flag_d = M_reg_regOut[34+0+0-:1];
+          end
+        endcase
       end else begin
         
         case (M_reg_regOut[2+31-:32])
           1'h0: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[0+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[0+23-:24];
           end
           1'h1: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[27+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[24+23-:24];
           end
           2'h2: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[54+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[48+23-:24];
           end
           2'h3: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[81+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[72+23-:24];
           end
           3'h4: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[108+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[96+23-:24];
           end
           3'h5: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[135+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[120+23-:24];
           end
           3'h6: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[162+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[144+23-:24];
           end
           3'h7: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[189+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[168+23-:24];
           end
           4'h8: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[216+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[192+23-:24];
           end
           4'h9: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[243+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[216+23-:24];
           end
           4'ha: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[270+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[240+23-:24];
           end
           4'hb: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[297+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[264+23-:24];
           end
           4'hc: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[324+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[288+23-:24];
           end
           4'hd: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[351+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[312+23-:24];
           end
           4'he: begin
-            M_reg_regIn[0+31-:32] = M_count_store_q[378+26-:27];
+            M_reg_regIn[0+31-:32] = M_count_store_q[336+23-:24];
           end
           default: begin
             M_reg_regIn[0+31-:32] = M_poll_flag_q;
@@ -437,11 +449,13 @@ module mojo_top_0 (
   always @(posedge M_fast_CLK_OUT2) begin
     if (rst == 1'b1) begin
       M_pins_q <= 1'h0;
+      M_pulse_length_q <= 1'h0;
       M_counts_q <= 1'h0;
       M_count_store_q <= 1'h0;
       M_poll_flag_q <= 1'h0;
     end else begin
       M_pins_q <= M_pins_d;
+      M_pulse_length_q <= M_pulse_length_d;
       M_counts_q <= M_counts_d;
       M_count_store_q <= M_count_store_d;
       M_poll_flag_q <= M_poll_flag_d;

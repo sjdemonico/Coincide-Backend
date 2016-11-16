@@ -8,6 +8,7 @@ module duplicator_5 (
     input clk,
     input rst,
     input pulse,
+    input [3:0] length,
     output reg out
   );
   
@@ -35,15 +36,17 @@ module duplicator_5 (
   end
   endgenerate
   
+  reg [3:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam LISTEN_state = 2'd0;
-  localparam PULSE_START_state = 2'd1;
-  localparam PULSE_END_state = 2'd2;
   
-  reg [1:0] M_state_d, M_state_q = LISTEN_state;
+  localparam LISTEN_state = 1'd0;
+  localparam PULSE_state = 1'd1;
+  
+  reg M_state_d, M_state_q = LISTEN_state;
   
   always @* begin
     M_state_d = M_state_q;
+    M_ctr_d = M_ctr_q;
     
     out = 1'h0;
     M_sync_in = pulse;
@@ -53,16 +56,16 @@ module duplicator_5 (
       LISTEN_state: begin
         out = 1'h0;
         if (M_edge_out) begin
-          M_state_d = PULSE_START_state;
+          M_state_d = PULSE_state;
         end
       end
-      PULSE_START_state: begin
+      PULSE_state: begin
+        if (M_ctr_q == length - 1'h1) begin
+          M_ctr_d = 1'h0;
+          M_state_d = LISTEN_state;
+        end
         out = 1'h1;
-        M_state_d = PULSE_END_state;
-      end
-      PULSE_END_state: begin
-        out = 1'h1;
-        M_state_d = LISTEN_state;
+        M_ctr_d = M_ctr_q + 1'h1;
       end
     endcase
   end
@@ -72,6 +75,15 @@ module duplicator_5 (
       M_state_q <= 1'h0;
     end else begin
       M_state_q <= M_state_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_ctr_q <= 1'h0;
+    end else begin
+      M_ctr_q <= M_ctr_d;
     end
   end
   

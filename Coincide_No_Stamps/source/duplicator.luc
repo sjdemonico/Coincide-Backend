@@ -2,11 +2,13 @@ module duplicator (
     input clk,  // clock
     input rst,  // reset
     input pulse,
+    input length[4],
     output out
   ) {
   edge_detector edge(#RISE(1),#FALL(0),.clk(clk));
   pipeline sync[1](.clk(clk));
-  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE_START,PULSE_END};
+  dff ctr[4](.clk(clk),.rst(rst));
+  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE};
   always {
     out = 0;
     sync.in = pulse;
@@ -14,15 +16,15 @@ module duplicator (
     case (state.q) {
       state.LISTEN:
         out = 0;
-        if(edge.out) state.d = state.PULSE_START;
+        if(edge.out) state.d = state.PULSE;
         
-      state.PULSE_START:
+      state.PULSE:
+        if(ctr.q == length - 1) {
+          ctr.d = 0;
+          state.d = state.LISTEN;
+        }
         out = 1;
-        state.d = state.PULSE_END;
-        
-      state.PULSE_END:
-        out = 1;
-        state.d = state.LISTEN;
+        ctr.d = ctr.q + 1;
     }
   }
 }

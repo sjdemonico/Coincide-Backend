@@ -28,17 +28,18 @@ module mojo_top (
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
       avr_interface avr(#CLK_FREQ(CLKSPEED));
       reg_interface reg(#CLK_FREQ(CLKSPEED));
-      timer tmr(#SIZE($clog2(CLKSPEED)),#TOP(CLKSPEED - 1));
+      timer tmr(#SIZE($clog2(CLKSPEED/10)),#TOP((CLKSPEED/10) - 1));
       dff pins[4];
-      dff counts[15][$clog2(CLKSPEED/2)];
-      dff count_store[15][$clog2(CLKSPEED/2)];
+      dff pulse_length[4];
+      dff counts[15][$clog2(CLKSPEED/20)];
+      dff count_store[15][$clog2(CLKSPEED/20)];
       dff poll_flag;
       
       //pulse duplicators
-      duplicator dupA;
-      duplicator dupB;
-      duplicator dupC;
-      duplicator dupD;
+      duplicator dupA(.length(pulse_length.q));
+      duplicator dupB(.length(pulse_length.q));
+      duplicator dupC(.length(pulse_length.q));
+      duplicator dupD(.length(pulse_length.q));
       
       //channel comparators
       comparator compA;
@@ -145,9 +146,13 @@ module mojo_top (
     //register interface addressing behavior
     if (reg.regOut.new_cmd) {             // new command
       if (reg.regOut.write) {             // if write
-        if (reg.regOut.address == 98) {    // if address is 98
-          poll_flag.d = reg.regOut.data[0];  // write the poll flag
+        case(reg.regOut.address) {
+          99:  pulse_length.d = reg.regOut.data[3:0];
+          default: poll_flag.d = reg.regOut.data[0];
         }
+//        if (reg.regOut.address == 98) {    // if address is 98
+//          poll_flag.d = reg.regOut.data[0];  // write the poll flag
+//        }
       } else {                            // if read
         case(reg.regOut.address) {
           0:  reg.regIn.data = count_store.q[0];

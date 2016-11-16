@@ -6,43 +6,43 @@
 
 /*
    Parameters:
-     SIZE = $clog2(CLKSPEED)
+     SIZE = $clog2(CLKSPEED/10)
      DIV = 0
-     TOP = CLKSPEED-1
+     TOP = (CLKSPEED/10)-1
      UP = 1
 */
 module timer_4 (
     input clk,
     input rst,
     output reg maxval,
-    output reg [27:0] value
+    output reg [24:0] value
   );
   
-  localparam SIZE = 5'h1c;
+  localparam SIZE = 5'h19;
   localparam DIV = 1'h0;
-  localparam TOP = 29'h0bebc1ff;
+  localparam TOP = 29'h01312cff;
   localparam UP = 1'h1;
   
   
-  reg [27:0] M_ctr_d, M_ctr_q = 1'h0;
+  reg [24:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam MAX_VALUE = 29'h0bebc1ff;
+  localparam MAX_VALUE = 29'h01312cff;
   
   always @* begin
     M_ctr_d = M_ctr_q;
     
-    value = M_ctr_q[0+27-:28];
+    value = M_ctr_q[0+24-:25];
     maxval = 1'h0;
     if (1'h1) begin
       M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h1 && M_ctr_q == 29'h0bebc1ff) begin
+      if (1'h1 && M_ctr_q == 29'h01312cff) begin
         M_ctr_d = 1'h0;
         maxval = 1'h1;
       end
     end else begin
       M_ctr_d = M_ctr_q - 1'h1;
       if (1'h1 && M_ctr_q == 1'h0) begin
-        M_ctr_d = 29'h0bebc1ff;
+        M_ctr_d = 29'h01312cff;
       end
     end
   end
