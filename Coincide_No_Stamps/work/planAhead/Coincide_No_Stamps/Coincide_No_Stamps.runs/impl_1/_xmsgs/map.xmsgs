@@ -29,5 +29,8 @@
 <msg type="info" file="Pack" num="1650" delta="new" >Map created a placed design.
 </msg>
 
+<msg type="info" file="PhysDesignRules" num="1861" delta="new" >To achieve optimal frequency synthesis performance with the CLKFX and CLKFX180 outputs of the DCM comp <arg fmt="%s" index="1">fast/dcm_sp_inst</arg>, consult the device Data Sheet.
+</msg>
+
 </messages>
 

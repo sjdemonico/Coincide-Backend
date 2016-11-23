@@ -32,7 +32,7 @@ module avr_interface_2 (
     output reg new_rx_data
   );
   
-  localparam CLK_FREQ = 28'hbebc200;
+  localparam CLK_FREQ = 28'h80befc0;
   localparam BAUD = 19'h7a120;
   
   

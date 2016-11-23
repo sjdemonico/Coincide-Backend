@@ -1,9 +1,12 @@
+// a four-way AND gate that sleeps for PULSE_LENGTH - 1 cycles so that events are not double counted.
+// the output bit incr is set HIGH for one cycle when compare is successful.
+
 module comparator (
     input clk,  // clock
     input rst,  // reset
-    input pins[4],
-    input length[4],
-    output incr
+    input pins[4], // duplicated pulses input here
+    input length[4], // user specified pulse length input here
+    output incr // successful compare
   ) {
   
   fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};

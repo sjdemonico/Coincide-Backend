@@ -1,0 +1,48 @@
+// 3 byte shifter that turns the thirty 3-byte counter values into a 90 byte stream and places it in the FIFO
+
+module serialbuffer (
+    input clk,  // clock
+    input rst,  // reset
+    input drdy, // new data in the storage registers
+    output new_tx_out,     // new TX flag
+    output tx_data_out[8], // TX data
+    input tx_busy_out,      // TX is busy flag
+    input count_store[30][24] // connected to storage register outputs
+  ) {
+  dff index[5](.clk(clk),.rst(rst));
+  fsm state(.clk(clk),.rst(rst)) = {IDLE,BYTE0,BYTE1,BYTE2};
+  async_fifo fifo (.wclk(clk), .wrst(rst), .rclk(clk), .rrst(rst),#SIZE(8), #DEPTH(32768));
+  always {
+    fifo.wput = 0;
+    fifo.din = 8bx;
+    tx_data_out = fifo.dout;
+    new_tx_out = !fifo.empty && !tx_busy_out;
+    fifo.rget = !fifo.empty && !tx_busy_out;
+    case(state.q) {
+      state.IDLE:
+        if(drdy) state.d = state.BYTE0;
+        
+      state.BYTE0:
+        fifo.din = count_store[index.q][7:0];
+        fifo.wput = 1;
+        state.d = state.BYTE1;
+        
+      state.BYTE1:
+        fifo.din = count_store[index.q][15:8];
+        fifo.wput = 1;
+        state.d = state.BYTE2;
+        
+      state.BYTE2:
+        fifo.din = count_store[index.q][23:16];
+        fifo.wput = 1;
+        if(index.q == 29) {
+          index.d = 0;
+          state.d = state.IDLE;
+        }
+        else {
+          index.d = index.q + 1;
+          state.d = state.BYTE0;
+        }      
+    }
+  }
+}

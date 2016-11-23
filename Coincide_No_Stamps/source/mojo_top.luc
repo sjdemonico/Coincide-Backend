@@ -18,24 +18,25 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  const CLKSPEED = 200000000;
-  var i;
+  sig ctr_rst;
+  const CLKSPEED = 135000000;
   
-  fastclk fast(.CLK_IN1(clk));
-  .clk(fast.CLK_OUT2) {
+  medclk fast(.CLK_IN1(clk));
+  .clk(fast.CLK_OUT1) {
     reset_conditioner reset_cond;
+    dff counts[30][24](.rst(ctr_rst)); //accumulators, every 1/10sec copied to count_store, then zeroed
     .rst(rst){
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
       avr_interface avr(#CLK_FREQ(CLKSPEED));
-      reg_interface reg(#CLK_FREQ(CLKSPEED));
+      //reg_interface reg(#CLK_FREQ(CLKSPEED));
       timer tmr(#SIZE($clog2(CLKSPEED/10)),#TOP((CLKSPEED/10) - 1));
-      dff pins[2][4];
-      dff pulse_length[2][4];
-      dff counts[30][$clog2(CLKSPEED/20)];
-      dff count_store[30][$clog2(CLKSPEED/20)];
-      dff poll_flag;
+      dff pins[2][4]; //duplicated pulses live here; low 4 bits for window X, high 4 for window Y
+      dff pulse_length[2][4]; //number of cycles duplicated pulses live for; low 4 bits for window X, high 4 for window Y
+      dff count_store[30][24]; //storage registers for counts, outputs go to shift register
+      fsm state = {COUNT,BLIND};
+      serialbuffer buff(.count_store(count_store.q));
       
-      //pulse duplicators
+      //pulse duplicators instantiated; 4 channels, 2 for each channel, one per window (X and Y)
       duplicator xdupA(.length(pulse_length.q[0]));
       duplicator xdupB(.length(pulse_length.q[0]));
       duplicator xdupC(.length(pulse_length.q[0]));
@@ -45,7 +46,7 @@ module mojo_top (
       duplicator ydupC(.length(pulse_length.q[1]));
       duplicator ydupD(.length(pulse_length.q[1]));
       
-      //channel comparators
+      //channel comparators instantiated; 30 comparators, 2 for each comparison, one per window (X and Y)
       comparator xcompA(.length(pulse_length.q[0]));
       comparator xcompB(.length(pulse_length.q[0]));
       comparator xcompC(.length(pulse_length.q[0]));
@@ -80,9 +81,13 @@ module mojo_top (
     }
   }
   
+  
   always {
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
+    buff.drdy = 0; //shifter defaults to 0 (IDLE)
+    led = counts.q[0][7:0]; //debug
+    ctr_rst = 0;
     
     //pulse duplicator connections in
     xdupA.pulse = pulseA;
@@ -103,7 +108,7 @@ module mojo_top (
     pins.d[1][2] = ydupC.out;
     pins.d[1][3] = ydupD.out;
     
-    //comparator connections in
+    //comparator connections in; 4-way AND gates with channels not being considered held HIGH by OR mask
     xcompA.pins = (pins.q[0] | b1110);
     xcompB.pins = (pins.q[0] | b1101);
     xcompC.pins = (pins.q[0] | b1011);
@@ -134,8 +139,7 @@ module mojo_top (
     ycompACD.pins = (pins.q[1] | b0010);
     ycompBCD.pins = (pins.q[1] | b0001);
     ycompABCD.pins = (pins.q[1] | b0000);
-    
-        
+            
     // connect inputs of avr
     avr.cclk = cclk;
     avr.spi_ss = spi_ss;
@@ -150,102 +154,61 @@ module mojo_top (
     spi_channel = avr.spi_channel;
     avr_rx = avr.tx;
     
-    // connect reg interface to avr interface
-    reg.rx_data = avr.rx_data;
-    reg.new_rx_data = avr.new_rx_data;
-    avr.tx_data = reg.tx_data;
-    avr.new_tx_data = reg.new_tx_data;
-    reg.tx_busy = avr.tx_busy;   
-    reg.regIn.drdy = 0;                   // default to not ready
-    reg.regIn.data = 32bx;                // don't care
-    
-    //counter behavior
-    if(xcompA.incr) counts.d[0] = counts.q[0] + 1;
-    if(xcompB.incr) counts.d[1] = counts.q[1] + 1;
-    if(xcompC.incr) counts.d[2] = counts.q[2] + 1;
-    if(xcompD.incr) counts.d[3] = counts.q[3] + 1;
-    if(xcompAB.incr) counts.d[4] = counts.q[4] + 1;
-    if(xcompAC.incr) counts.d[5] = counts.q[5] + 1;
-    if(xcompAD.incr) counts.d[6] = counts.q[6] + 1;
-    if(xcompBC.incr) counts.d[7] = counts.q[7] + 1;
-    if(xcompBD.incr) counts.d[8] = counts.q[8] + 1;
-    if(xcompCD.incr) counts.d[9] = counts.q[9] + 1;
-    if(xcompABC.incr) counts.d[10] = counts.q[10] + 1;
-    if(xcompABD.incr) counts.d[11] = counts.q[11] + 1;
-    if(xcompACD.incr) counts.d[12] = counts.q[12] + 1;
-    if(xcompBCD.incr) counts.d[13] = counts.q[13] + 1;
-    if(xcompABCD.incr) counts.d[14] = counts.q[14] + 1;
-    if(ycompA.incr) counts.d[15] = counts.q[15] + 1;
-    if(ycompB.incr) counts.d[16] = counts.q[16] + 1;
-    if(ycompC.incr) counts.d[17] = counts.q[17] + 1;
-    if(ycompD.incr) counts.d[18] = counts.q[18] + 1;
-    if(ycompAB.incr) counts.d[19] = counts.q[19] + 1;
-    if(ycompAC.incr) counts.d[20] = counts.q[20] + 1;
-    if(ycompAD.incr) counts.d[21] = counts.q[21] + 1;
-    if(ycompBC.incr) counts.d[22] = counts.q[22] + 1;
-    if(ycompBD.incr) counts.d[23] = counts.q[23] + 1;
-    if(ycompCD.incr) counts.d[24] = counts.q[24] + 1;
-    if(ycompABC.incr) counts.d[25] = counts.q[25] + 1;
-    if(ycompABD.incr) counts.d[26] = counts.q[26] + 1;
-    if(ycompACD.incr) counts.d[27] = counts.q[27] + 1;
-    if(ycompBCD.incr) counts.d[28] = counts.q[28] + 1;
-    if(ycompABCD.incr) counts.d[29] = counts.q[29] + 1;
-    
-    //timer behavior
-    if(tmr.maxval) {
-      for (i = 0; i < 30; i++) {
-        count_store.d[i] = counts.q[i];
-        counts.d[i] = 0;
-      }
-      poll_flag.d = 1;
+    // connect serial buffer to avr interface
+    avr.tx_data = buff.tx_data_out;
+    avr.new_tx_data = buff.new_tx_out;
+    buff.tx_busy_out = avr.tx_busy;
+    buff.drdy = 0; 
+   
+    // updating pulse length; by default, any incoming byte encodes desired pulse lengths for X(lower 4) and Y(upper 4)
+    if(avr.new_rx_data) {
+      pulse_length.d[0] = avr.rx_data[3:0];
+      pulse_length.d[1] = avr.rx_data[7:4];
+    }  
+        
+    case(state.q) {
+      state.COUNT:
+         
+        //counter behavior; must be top level! counters reset inconsistently when embedded in comparator module
+        if(xcompA.incr) counts.d[0] = counts.q[0] + 1;
+        if(xcompB.incr) counts.d[1] = counts.q[1] + 1;
+        if(xcompC.incr) counts.d[2] = counts.q[2] + 1;
+        if(xcompD.incr) counts.d[3] = counts.q[3] + 1;
+        if(xcompAB.incr) counts.d[4] = counts.q[4] + 1;
+        if(xcompAC.incr) counts.d[5] = counts.q[5] + 1;
+        if(xcompAD.incr) counts.d[6] = counts.q[6] + 1;
+        if(xcompBC.incr) counts.d[7] = counts.q[7] + 1;
+        if(xcompBD.incr) counts.d[8] = counts.q[8] + 1;
+        if(xcompCD.incr) counts.d[9] = counts.q[9] + 1;
+        if(xcompABC.incr) counts.d[10] = counts.q[10] + 1;
+        if(xcompABD.incr) counts.d[11] = counts.q[11] + 1;
+        if(xcompACD.incr) counts.d[12] = counts.q[12] + 1;
+        if(xcompBCD.incr) counts.d[13] = counts.q[13] + 1;
+        if(xcompABCD.incr) counts.d[14] = counts.q[14] + 1;
+        if(ycompA.incr) counts.d[15] = counts.q[15] + 1;
+        if(ycompB.incr) counts.d[16] = counts.q[16] + 1;
+        if(ycompC.incr) counts.d[17] = counts.q[17] + 1;
+        if(ycompD.incr) counts.d[18] = counts.q[18] + 1;
+        if(ycompAB.incr) counts.d[19] = counts.q[19] + 1;
+        if(ycompAC.incr) counts.d[20] = counts.q[20] + 1;
+        if(ycompAD.incr) counts.d[21] = counts.q[21] + 1;
+        if(ycompBC.incr) counts.d[22] = counts.q[22] + 1;
+        if(ycompBD.incr) counts.d[23] = counts.q[23] + 1;
+        if(ycompCD.incr) counts.d[24] = counts.q[24] + 1;
+        if(ycompABC.incr) counts.d[25] = counts.q[25] + 1;
+        if(ycompABD.incr) counts.d[26] = counts.q[26] + 1;
+        if(ycompACD.incr) counts.d[27] = counts.q[27] + 1;
+        if(ycompBCD.incr) counts.d[28] = counts.q[28] + 1;
+        if(ycompABCD.incr) counts.d[29] = counts.q[29] + 1;
+            
+        //timer behavior; copy and zero counters
+        if(tmr.maxval) state.d = state.BLIND;
+        
+      state.BLIND:  
+        count_store.d = counts.q;
+        ctr_rst = 1;
+        buff.drdy = 1;
+        state.d = state.COUNT;    
     }
-    
-    //register interface addressing behavior
-    if (reg.regOut.new_cmd) {             // new command
-      if (reg.regOut.write) {             // if write
-        case(reg.regOut.address) {
-          99:  pulse_length.d[0] = reg.regOut.data[3:0];
-          100: pulse_length.d[1] = reg.regOut.data[3:0];
-          default: poll_flag.d = reg.regOut.data[0];
-        }
-      } else {                            // if read
-        case(reg.regOut.address) {
-          0:  reg.regIn.data = count_store.q[0];
-          1:  reg.regIn.data = count_store.q[1];
-          2:  reg.regIn.data = count_store.q[2];
-          3:  reg.regIn.data = count_store.q[3];
-          4:  reg.regIn.data = count_store.q[4];
-          5:  reg.regIn.data = count_store.q[5];
-          6:  reg.regIn.data = count_store.q[6];
-          7:  reg.regIn.data = count_store.q[7];
-          8:  reg.regIn.data = count_store.q[8];
-          9:  reg.regIn.data = count_store.q[9];
-          10: reg.regIn.data = count_store.q[10];
-          11: reg.regIn.data = count_store.q[11];
-          12: reg.regIn.data = count_store.q[12];
-          13: reg.regIn.data = count_store.q[13];
-          14: reg.regIn.data = count_store.q[14];
-          15: reg.regIn.data = count_store.q[15];
-          16: reg.regIn.data = count_store.q[16];
-          17: reg.regIn.data = count_store.q[17];
-          18: reg.regIn.data = count_store.q[18];
-          19: reg.regIn.data = count_store.q[19];
-          20: reg.regIn.data = count_store.q[20];
-          21: reg.regIn.data = count_store.q[21];
-          22: reg.regIn.data = count_store.q[22];
-          23: reg.regIn.data = count_store.q[23];
-          24: reg.regIn.data = count_store.q[24];
-          25: reg.regIn.data = count_store.q[25];
-          26: reg.regIn.data = count_store.q[26];
-          27: reg.regIn.data = count_store.q[27];
-          28: reg.regIn.data = count_store.q[28];
-          29: reg.regIn.data = count_store.q[29];
-          default: reg.regIn.data = poll_flag.q;
-        }
-        reg.regIn.drdy = 1;                    
-      }
-    }
-    
-    led = counts.q[0][7:0];
   }
 }
