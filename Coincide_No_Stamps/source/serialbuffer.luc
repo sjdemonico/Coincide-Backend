@@ -1,4 +1,5 @@
 // 3 byte shifter that turns the thirty 3-byte counter values into a 90 byte stream and places it in the FIFO
+// called every 1/10 sec by top level timer
 
 module serialbuffer (
     input clk,  // clock
@@ -9,39 +10,40 @@ module serialbuffer (
     input tx_busy_out,      // TX is busy flag
     input count_store[30][24] // connected to storage register outputs
   ) {
-  dff index[5](.clk(clk),.rst(rst));
-  fsm state(.clk(clk),.rst(rst)) = {IDLE,BYTE0,BYTE1,BYTE2};
-  async_fifo fifo (.wclk(clk), .wrst(rst), .rclk(clk), .rrst(rst),#SIZE(8), #DEPTH(32768));
+  const LAST_ENTRY = 29; // index of last 3-byte value
+  dff index[5](.clk(clk),.rst(rst));  // counter for indexing
+  fsm state(.clk(clk),.rst(rst)) = {IDLE,BYTE0,BYTE1,BYTE2}; // state machine
+  async_fifo fifo (.wclk(clk), .wrst(rst), .rclk(clk), .rrst(rst),#SIZE(8), #DEPTH(32768)); // FIFO buffer 1 byte wide 32Kbytes deep
   always {
-    fifo.wput = 0;
-    fifo.din = 8bx;
-    tx_data_out = fifo.dout;
-    new_tx_out = !fifo.empty && !tx_busy_out;
-    fifo.rget = !fifo.empty && !tx_busy_out;
+    fifo.wput = 0; // default to write disabled
+    fifo.din = 8bx; // doesn't matter
+    tx_data_out = fifo.dout; // connect output of fifo to AVR tx_data
+    new_tx_out = !fifo.empty && !tx_busy_out; // signal there is new data if fifo is not empty and tx is not busy
+    fifo.rget = !fifo.empty && !tx_busy_out;  // fifo output readable when fifo is not empty and tx is not busy
     case(state.q) {
-      state.IDLE:
-        if(drdy) state.d = state.BYTE0;
+      state.IDLE: // waiting for data
+        if(drdy) state.d = state.BYTE0; // change states
         
-      state.BYTE0:
-        fifo.din = count_store[index.q][7:0];
-        fifo.wput = 1;
-        state.d = state.BYTE1;
+      state.BYTE0: // state for 0th byte
+        fifo.din = count_store[index.q][7:0]; // put lowest byte in fifo
+        fifo.wput = 1; // fifo write enable
+        state.d = state.BYTE1; // change states
         
-      state.BYTE1:
-        fifo.din = count_store[index.q][15:8];
-        fifo.wput = 1;
-        state.d = state.BYTE2;
+      state.BYTE1: // state for 1st byte
+        fifo.din = count_store[index.q][15:8];  // put middle byte in fifo
+        fifo.wput = 1; // fifo write enable
+        state.d = state.BYTE2; // change states
         
-      state.BYTE2:
-        fifo.din = count_store[index.q][23:16];
-        fifo.wput = 1;
-        if(index.q == 29) {
-          index.d = 0;
-          state.d = state.IDLE;
+      state.BYTE2: // state for 2nd byte
+        fifo.din = count_store[index.q][23:16]; // put highest byte in fifo
+        fifo.wput = 1; // fifo write enable
+        if(index.q == LAST_ENTRY) { // if this is the last 3-byte value
+          index.d = 0; // reset index counter
+          state.d = state.IDLE; // change to IDLE
         }
-        else {
-          index.d = index.q + 1;
-          state.d = state.BYTE0;
+        else { // this is not the last 3-byte value
+          index.d = index.q + 1; // increment index counter
+          state.d = state.BYTE0; // change to BYTE0
         }      
     }
   }

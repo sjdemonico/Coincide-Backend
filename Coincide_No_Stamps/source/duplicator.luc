@@ -1,30 +1,36 @@
+// a module to replicate pulses from external input
+// detects an edge on an I/O pin, then sets one bit of a 4-bit pin register high for
+// the number of cycles specified by the length input
+
 module duplicator (
     input clk,  // clock
     input rst,  // reset
-    input pulse,
-    input length[4],
-    output out
+    input pulse, // connects to I/O pin at top level
+    input length[4], // user-specified pulse length
+    output out // connects to pin register
   ) {
-  edge_detector edge(#RISE(1),#FALL(0),.clk(clk));
-  pipeline sync[1](.clk(clk));
-  dff ctr[4](.clk(clk),.rst(rst));
-  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE};
+  edge_detector edge(#RISE(1),#FALL(0),.clk(clk)); // rising edge detector
+  pipeline sync[1](.clk(clk)); // 1 bit pipeline syncs external input to FPGA clock
+  dff ctr[4](.clk(clk),.rst(rst)); // internal counter for pulse length
+  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE}; // state machine
   always {
-    out = 0;
-    sync.in = pulse;
-    edge.in = sync.out;
+    out = 0; // default output to LOW (this line may be redundant)
+    sync.in = pulse; // external input connects to sync pipeline
+    edge.in = sync.out; // pipeline output connects to edge detector input
     case (state.q) {
-      state.LISTEN:
-        out = 0;
-        if(edge.out) state.d = state.PULSE;
+      state.LISTEN: // state for detecting pulses
+        out = 0; // sets output LOW when we are returning from state.PULSE
+        if(edge.out) state.d = state.PULSE; // change states
         
-      state.PULSE:
-        if(ctr.q == length) {
-          ctr.d = 0;
-          state.d = state.LISTEN;
+      state.PULSE: // state for duplicating pulses
+        if(ctr.q == length) { // if we have been in this state for the desired length
+          ctr.d = 0; // reset counter
+          state.d = state.LISTEN; // change states
         }
-        out = 1;
-        ctr.d = ctr.q + 1;
+        else { // otherwise
+          out = 1; // output bit set HIGH 
+          ctr.d = ctr.q + 1; // increment counter
+        }
     }
   }
 }

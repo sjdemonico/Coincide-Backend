@@ -18,23 +18,24 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  sig ctr_rst;
-  const CLKSPEED = 135000000;
+  sig ctr_rst;              // internal reset signal for event counters
+  const CLKSPEED = 135000000; // constant for clock speed
   
-  medclk fast(.CLK_IN1(clk));
+  // instance of clock, const CLKSPEED is changed to match the instantiated clock's CLKSPEED
+  // faster clocks available in module fastclk, see medclk.v and fastclk.v for available speeds
+  medclk fast(.CLK_IN1(clk)); 
   .clk(fast.CLK_OUT1) {
     reset_conditioner reset_cond;
     dff counts[30][24](.rst(ctr_rst)); //accumulators, every 1/10sec copied to count_store, then zeroed
     .rst(rst){
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
       avr_interface avr(#CLK_FREQ(CLKSPEED));
-      //reg_interface reg(#CLK_FREQ(CLKSPEED));
-      timer tmr(#SIZE($clog2(CLKSPEED/10)),#TOP((CLKSPEED/10) - 1));
+      timer tmr(#SIZE($clog2(CLKSPEED/10)),#TOP((CLKSPEED/10) - 1)); // this timer rolls over every 1/10sec
       dff pins[2][4]; //duplicated pulses live here; low 4 bits for window X, high 4 for window Y
       dff pulse_length[2][4]; //number of cycles duplicated pulses live for; low 4 bits for window X, high 4 for window Y
       dff count_store[30][24]; //storage registers for counts, outputs go to shift register
-      fsm state = {COUNT,BLIND};
-      serialbuffer buff(.count_store(count_store.q));
+      fsm state = {COUNT,BLIND}; // state machine
+      serialbuffer buff(.count_store(count_store.q)); // serial buffer instance, connected to storage register outputs
       
       //pulse duplicators instantiated; 4 channels, 2 for each channel, one per window (X and Y)
       duplicator xdupA(.length(pulse_length.q[0]));
@@ -85,9 +86,9 @@ module mojo_top (
   always {
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
-    buff.drdy = 0; //shifter defaults to 0 (IDLE)
+    buff.drdy = 0; //serial buffer defaults to 0 (IDLE)
     led = counts.q[0][7:0]; //debug
-    ctr_rst = 0;
+    ctr_rst = 0; // defaults to 0
     
     //pulse duplicator connections in
     xdupA.pulse = pulseA;
@@ -160,14 +161,14 @@ module mojo_top (
     buff.tx_busy_out = avr.tx_busy;
     buff.drdy = 0; 
    
-    // updating pulse length; by default, any incoming byte encodes desired pulse lengths for X(lower 4) and Y(upper 4)
+    // updating pulse length; by design, any incoming byte encodes desired pulse lengths for X(lower 4) and Y(upper 4)
     if(avr.new_rx_data) {
       pulse_length.d[0] = avr.rx_data[3:0];
       pulse_length.d[1] = avr.rx_data[7:4];
     }  
         
     case(state.q) {
-      state.COUNT:
+      state.COUNT: // a state for counting
          
         //counter behavior; must be top level! counters reset inconsistently when embedded in comparator module
         if(xcompA.incr) counts.d[0] = counts.q[0] + 1;
@@ -204,7 +205,7 @@ module mojo_top (
         //timer behavior; copy and zero counters
         if(tmr.maxval) state.d = state.BLIND;
         
-      state.BLIND:  
+      state.BLIND: // a state to copy and zero counters
         count_store.d = counts.q;
         ctr_rst = 1;
         buff.drdy = 1;

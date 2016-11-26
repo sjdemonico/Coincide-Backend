@@ -9,24 +9,24 @@ module comparator (
     output incr // successful compare
   ) {
   
-  fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP};
-  dff ctr[4](.clk(clk),.rst(rst));
+  fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP}; // state machine
+  dff ctr[4](.clk(clk),.rst(rst)); // counter for sleeping
   
   always {
-    incr = 0;
+    incr = 0; // default output to LOW
     case (state.q) {
-      state.COMPARE:
-        if(&pins) {
-          incr = 1;
-          state.d = state.SLEEP;
+      state.COMPARE: // a state for comparing inputs
+        if(&pins) {  // if a compare is successful
+          incr = 1;  // set the increment bit high
+          state.d = state.SLEEP; // change states
         }
       
-      state.SLEEP:       
-        if(ctr.q == length - 1) {
-          ctr.d = 0;
-          state.d = state.COMPARE;
+      state.SLEEP:  // a state for sleeping through the rest of a pulse
+        if(ctr.q == length - 1) { // if we've slept long enough
+          ctr.d = 0; // clear the counter
+          state.d = state.COMPARE; // change states
         }
-        ctr.d = ctr.q + 1;
+        else ctr.d = ctr.q + 1; // sleep longer
     }
   }
 }

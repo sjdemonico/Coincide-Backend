@@ -52,7 +52,7 @@ module timer #(
       ctr.d = ctr.q + 1; // increase
       if (TOP != 0 && ctr.q == MAX_VALUE) { // reached the top?
         ctr.d = 0; // reset
-        maxval = 1;
+        maxval = 1; // added to provide single bit notification of counter reset
       }
     } else { // down counter
       ctr.d = ctr.q - 1; // decrease
