@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Nov 23 16:48:22 2016
+// Written by: Map P.20131013 on Sat Nov 26 19:04:34 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -636,16 +636,17 @@ TIMEGRP fast_clkfx = BEL "ycompA/M_ctr_q_3" BEL "ycompA/M_ctr_q_2" BEL
         BEL "xcompBCD/M_ctr_q_3" BEL "xcompBCD/M_ctr_q_2" BEL
         "xcompBCD/M_ctr_q_1" BEL "xcompBCD/M_ctr_q_0" BEL "xcompBCD/M_state_q"
         BEL "ydupA/M_ctr_q_3" BEL "ydupA/M_ctr_q_2" BEL "ydupA/M_ctr_q_1" BEL
-        "ydupA/M_ctr_q_0" BEL "ydupA/M_state_q" BEL "ydupA/L_edge/M_last_q"
-        BEL "ydupA/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupB/M_ctr_q_3" BEL
-        "ydupB/M_ctr_q_2" BEL "ydupB/M_ctr_q_1" BEL "ydupB/M_ctr_q_0" BEL
-        "ydupB/M_state_q" BEL "ydupB/sync_gen_0[0].sync/M_pipe_q_0" BEL
-        "ydupB/L_edge/M_last_q" BEL "ydupC/M_ctr_q_3" BEL "ydupC/M_ctr_q_2"
-        BEL "ydupC/M_ctr_q_1" BEL "ydupC/M_ctr_q_0" BEL "ydupC/M_state_q" BEL
-        "ydupC/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupC/L_edge/M_last_q" BEL
-        "ydupD/M_ctr_q_3" BEL "ydupD/M_ctr_q_2" BEL "ydupD/M_ctr_q_1" BEL
-        "ydupD/M_ctr_q_0" BEL "ydupD/M_state_q" BEL "ydupD/L_edge/M_last_q"
-        BEL "ydupD/sync_gen_0[0].sync/M_pipe_q_0" BEL "M_count_store_q_10" BEL
+        "ydupA/M_ctr_q_0" BEL "ydupA/M_state_q" BEL
+        "ydupA/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupA/L_edge/M_last_q" BEL
+        "ydupB/M_ctr_q_3" BEL "ydupB/M_ctr_q_2" BEL "ydupB/M_ctr_q_1" BEL
+        "ydupB/M_ctr_q_0" BEL "ydupB/M_state_q" BEL "ydupB/L_edge/M_last_q"
+        BEL "ydupB/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupC/M_ctr_q_3" BEL
+        "ydupC/M_ctr_q_2" BEL "ydupC/M_ctr_q_1" BEL "ydupC/M_ctr_q_0" BEL
+        "ydupC/M_state_q" BEL "ydupC/L_edge/M_last_q" BEL
+        "ydupC/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupD/M_ctr_q_3" BEL
+        "ydupD/M_ctr_q_2" BEL "ydupD/M_ctr_q_1" BEL "ydupD/M_ctr_q_0" BEL
+        "ydupD/M_state_q" BEL "ydupD/sync_gen_0[0].sync/M_pipe_q_0" BEL
+        "ydupD/L_edge/M_last_q" BEL "M_count_store_q_10" BEL
         "M_count_store_q_11" BEL "M_count_store_q_12" BEL "M_count_store_q_13"
         BEL "M_count_store_q_14" BEL "M_count_store_q_15" BEL
         "M_count_store_q_20" BEL "M_count_store_q_21" BEL "M_count_store_q_16"

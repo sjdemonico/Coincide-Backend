@@ -639,6 +639,12 @@ module mojo_top_0 (
   end
   
   always @(posedge M_fast_CLK_OUT1) begin
+    if (ctr_rst == 1'b1) begin
+      M_counts_q <= 1'h0;
+    end else begin
+      M_counts_q <= M_counts_d;
+    end
+    
     if (rst == 1'b1) begin
       M_pins_q <= 1'h0;
       M_pulse_length_q <= 1'h0;
@@ -649,12 +655,6 @@ module mojo_top_0 (
       M_pulse_length_q <= M_pulse_length_d;
       M_count_store_q <= M_count_store_d;
       M_state_q <= M_state_d;
-    end
-    
-    if (ctr_rst == 1'b1) begin
-      M_counts_q <= 1'h0;
-    end else begin
-      M_counts_q <= M_counts_d;
     end
   end
   

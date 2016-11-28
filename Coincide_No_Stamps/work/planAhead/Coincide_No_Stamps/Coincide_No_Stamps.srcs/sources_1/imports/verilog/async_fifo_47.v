@@ -92,17 +92,6 @@ module async_fifo_47 (
     dout = M_ram_read_data;
   end
   
-  always @(posedge wclk) begin
-    if (wrst == 1'b1) begin
-      M_waddr_q <= 1'h0;
-      M_wsync_q <= 1'h0;
-    end else begin
-      M_waddr_q <= M_waddr_d;
-      M_wsync_q <= M_wsync_d;
-    end
-  end
-  
-  
   always @(posedge rclk) begin
     if (rrst == 1'b1) begin
       M_raddr_q <= 1'h0;
@@ -110,6 +99,17 @@ module async_fifo_47 (
     end else begin
       M_raddr_q <= M_raddr_d;
       M_rsync_q <= M_rsync_d;
+    end
+  end
+  
+  
+  always @(posedge wclk) begin
+    if (wrst == 1'b1) begin
+      M_waddr_q <= 1'h0;
+      M_wsync_q <= 1'h0;
+    end else begin
+      M_waddr_q <= M_waddr_d;
+      M_wsync_q <= M_wsync_d;
     end
   end
   

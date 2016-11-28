@@ -63,27 +63,28 @@ module duplicator_5 (
         if (M_ctr_q == length) begin
           M_ctr_d = 1'h0;
           M_state_d = LISTEN_state;
+        end else begin
+          out = 1'h1;
+          M_ctr_d = M_ctr_q + 1'h1;
         end
-        out = 1'h1;
-        M_ctr_d = M_ctr_q + 1'h1;
       end
     endcase
   end
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_ctr_q <= 1'h0;
+      M_state_q <= 1'h0;
     end else begin
-      M_ctr_q <= M_ctr_d;
+      M_state_q <= M_state_d;
     end
   end
   
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_state_q <= 1'h0;
+      M_ctr_q <= 1'h0;
     end else begin
-      M_state_q <= M_state_d;
+      M_ctr_q <= M_ctr_d;
     end
   end
   

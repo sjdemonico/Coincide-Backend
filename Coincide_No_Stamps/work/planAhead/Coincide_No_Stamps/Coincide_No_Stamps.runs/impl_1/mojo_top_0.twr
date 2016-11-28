@@ -107,16 +107,16 @@ Timing constraint: TS_fast_clkfx = PERIOD TIMEGRP "fast_clkfx" TS_clk * 2.7
 HIGH 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 49517 paths analyzed, 9335 endpoints analyzed, 0 failing endpoints
+ 51719 paths analyzed, 9583 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   7.272ns.
+ Minimum period is   7.388ns.
 --------------------------------------------------------------------------------
-Slack:                  0.135ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.019ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      7.080ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      7.168ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.011ns (0.332 - 0.343)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -127,43 +127,39 @@ Slack:                  0.135ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      7.080ns (2.532ns logic, 4.548ns route)
-                                                       (35.8% logic, 64.2% route)
+    Total                                      7.168ns (2.234ns logic, 4.934ns route)
+                                                       (31.2% logic, 68.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.144ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.046ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_1 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      7.071ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      7.142ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.010ns (0.332 - 0.342)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -174,43 +170,39 @@ Slack:                  0.144ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_1 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA0    net (fanout=32)       1.560   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_1
+    SLICE_X11Y30.B4      net (fanout=4)        0.768   buff/fifo/M_raddr_q[1]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      7.071ns (2.532ns logic, 4.539ns route)
-                                                       (35.8% logic, 64.2% route)
+    Total                                      7.142ns (2.225ns logic, 4.917ns route)
+                                                       (31.2% logic, 68.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.160ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.052ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      7.050ns (Levels of Logic = 5)
-  Clock Path Skew:      0.012ns (0.731 - 0.719)
+  Data Path Delay:      7.149ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -221,43 +213,39 @@ Slack:                  0.160ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA0    net (fanout=32)       1.539   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      7.050ns (2.532ns logic, 4.518ns route)
-                                                       (35.9% logic, 64.1% route)
+    Total                                      7.149ns (2.234ns logic, 4.915ns route)
+                                                       (31.2% logic, 68.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.261ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.079ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_1 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.932ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.005ns (0.338 - 0.343)
+  Data Path Delay:      7.123ns (Levels of Logic = 4)
+  Clock Path Skew:      0.004ns (0.751 - 0.747)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -268,46 +256,39 @@ Slack:                  0.261ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_1 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.COUT    Topcyb                0.483   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_1
+    SLICE_X11Y30.B4      net (fanout=4)        0.768   buff/fifo/M_raddr_q[1]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.932ns (2.598ns logic, 4.334ns route)
-                                                       (37.5% logic, 62.5% route)
+    Total                                      7.123ns (2.225ns logic, 4.898ns route)
+                                                       (31.2% logic, 68.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.270ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.089ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.923ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.005ns (0.338 - 0.343)
+  Data Path Delay:      7.098ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.011ns (0.332 - 0.343)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -318,46 +299,39 @@ Slack:                  0.270ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.COUT    Topcyb                0.483   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA0    net (fanout=32)       1.560   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X11Y30.D5      net (fanout=5)        0.473   buff/fifo/M_raddr_q[5]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.923ns (2.598ns logic, 4.325ns route)
-                                                       (37.5% logic, 62.5% route)
+    Total                                      7.098ns (2.156ns logic, 4.942ns route)
+                                                       (30.4% logic, 69.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.278ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_0 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.097ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.916ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.004ns (0.338 - 0.342)
+  Data Path Delay:      7.040ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.061ns (0.594 - 0.655)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -368,46 +342,39 @@ Slack:                  0.278ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_0 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X10Y33.AQ      Tcko                  0.476   buff/fifo/M_waddr_q[3]
-                                                       buff/fifo/M_waddr_q_0
-    SLICE_X12Y33.A5      net (fanout=20)       0.704   buff/fifo/M_waddr_q[0]
-    SLICE_X12Y33.COUT    Topcya                0.474   M_count_store_q[210]
-                                                       buff/fifo/Madd_n0074[14:0]_lut<0>_INV_0
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.916ns (2.635ns logic, 4.281ns route)
-                                                       (38.1% logic, 61.9% route)
+    Total                                      7.040ns (2.234ns logic, 4.806ns route)
+                                                       (31.7% logic, 68.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.279ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.122ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.902ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.017ns (0.731 - 0.748)
+  Data Path Delay:      7.079ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -418,46 +385,39 @@ Slack:                  0.279ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.COUT    Topcyb                0.483   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA0    net (fanout=32)       1.539   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X11Y30.D5      net (fanout=5)        0.473   buff/fifo/M_raddr_q[5]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.902ns (2.598ns logic, 4.304ns route)
-                                                       (37.6% logic, 62.4% route)
+    Total                                      7.079ns (2.156ns logic, 4.923ns route)
+                                                       (30.5% logic, 69.5% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.287ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_0 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.122ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.907ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.004ns (0.338 - 0.342)
+  Data Path Delay:      7.015ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.061ns (0.594 - 0.655)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -468,46 +428,39 @@ Slack:                  0.287ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_0 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X10Y33.AQ      Tcko                  0.476   buff/fifo/M_waddr_q[3]
-                                                       buff/fifo/M_waddr_q_0
-    SLICE_X12Y33.A5      net (fanout=20)       0.704   buff/fifo/M_waddr_q[0]
-    SLICE_X12Y33.COUT    Topcya                0.474   M_count_store_q[210]
-                                                       buff/fifo/Madd_n0074[14:0]_lut<0>_INV_0
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA0    net (fanout=32)       1.560   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y10.ADDRB7  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.907ns (2.635ns logic, 4.272ns route)
-                                                       (38.1% logic, 61.9% route)
+    Total                                      7.015ns (2.234ns logic, 4.781ns route)
+                                                       (31.8% logic, 68.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.296ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_0 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.124ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_1 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.886ns (Levels of Logic = 6)
-  Clock Path Skew:      -0.016ns (0.731 - 0.747)
+  Data Path Delay:      7.014ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.060ns (0.594 - 0.654)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -518,46 +471,39 @@ Slack:                  0.296ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_0 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_1 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X10Y33.AQ      Tcko                  0.476   buff/fifo/M_waddr_q[3]
-                                                       buff/fifo/M_waddr_q_0
-    SLICE_X12Y33.A5      net (fanout=20)       0.704   buff/fifo/M_waddr_q[0]
-    SLICE_X12Y33.COUT    Topcya                0.474   M_count_store_q[210]
-                                                       buff/fifo/Madd_n0074[14:0]_lut<0>_INV_0
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.CMUX    Tcinc                 0.279   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA0    net (fanout=32)       1.539   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y29.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_1
+    SLICE_X11Y30.B4      net (fanout=4)        0.768   buff/fifo/M_raddr_q[1]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.886ns (2.635ns logic, 4.251ns route)
-                                                       (38.3% logic, 61.7% route)
+    Total                                      7.014ns (2.225ns logic, 4.789ns route)
+                                                       (31.7% logic, 68.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.310ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.136ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem16 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.905ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      7.108ns (Levels of Logic = 4)
+  Clock Path Skew:      0.046ns (0.794 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -568,43 +514,39 @@ Slack:                  0.310ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem16
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA3    net (fanout=32)       1.394   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y34.A5      net (fanout=17)       1.035   M_fifo_empty
+    SLICE_X11Y34.A       Tilo                  0.259   buff/fifo/M_wsync_q[18]
+                                                       buff/fifo/Mmux_M_ram_raddr51
+    RAMB16_X0Y24.ADDRB13 net (fanout=16)       2.122   buff/fifo/M_ram_raddr[13]
+    RAMB16_X0Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem16
+                                                       buff/fifo/ram/Mram_mem16
     -------------------------------------------------  ---------------------------
-    Total                                      6.905ns (2.532ns logic, 4.373ns route)
-                                                       (36.7% logic, 63.3% route)
+    Total                                      7.108ns (2.234ns logic, 4.874ns route)
+                                                       (31.4% logic, 68.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.331ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.149ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_1 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.884ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      6.989ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.060ns (0.594 - 0.654)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -615,43 +557,39 @@ Slack:                  0.331ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_1 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA1    net (fanout=32)       1.373   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_1
+    SLICE_X11Y30.B4      net (fanout=4)        0.768   buff/fifo/M_raddr_q[1]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y10.ADDRB7  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.884ns (2.532ns logic, 4.352ns route)
-                                                       (36.8% logic, 63.2% route)
+    Total                                      6.989ns (2.225ns logic, 4.764ns route)
+                                                       (31.8% logic, 68.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.333ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem11 (RAM)
+Slack:                  0.151ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.837ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.028ns (0.286 - 0.314)
+  Data Path Delay:      7.036ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.011ns (0.332 - 0.343)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -662,43 +600,39 @@ Slack:                  0.333ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem11
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X1Y20.WEA1    net (fanout=32)       1.326   write_ctrl
-    RAMB16_X1Y20.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem11
-                                                       buff/fifo/ram/Mram_mem11
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X9Y30.B3       net (fanout=5)        0.589   buff/fifo/M_raddr_q[5]
+    SLICE_X9Y30.B        Tilo                  0.259   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_4_xo<0>1
+    SLICE_X12Y31.B5      net (fanout=1)        0.939   buff/fifo/M_wsync_d[4]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.837ns (2.532ns logic, 4.305ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.036ns (2.156ns logic, 4.880ns route)
+                                                       (30.6% logic, 69.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.333ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem11 (RAM)
+Slack:                  0.156ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_3 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.837ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.028ns (0.286 - 0.314)
+  Data Path Delay:      7.032ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.010ns (0.332 - 0.342)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -709,43 +643,39 @@ Slack:                  0.333ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem11
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_3 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X1Y20.WEA0    net (fanout=32)       1.326   write_ctrl
-    RAMB16_X1Y20.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem11
-                                                       buff/fifo/ram/Mram_mem11
+    SLICE_X8Y29.DQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_3
+    SLICE_X9Y30.B5       net (fanout=5)        0.440   buff/fifo/M_raddr_q[3]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.837ns (2.532ns logic, 4.305ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.032ns (2.234ns logic, 4.798ns route)
+                                                       (31.8% logic, 68.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.333ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem11 (RAM)
+Slack:                  0.161ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_0 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.837ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.028ns (0.286 - 0.314)
+  Data Path Delay:      7.027ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.010ns (0.332 - 0.342)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -756,43 +686,39 @@ Slack:                  0.333ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem11
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_0 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X1Y20.WEA2    net (fanout=32)       1.326   write_ctrl
-    RAMB16_X1Y20.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem11
-                                                       buff/fifo/ram/Mram_mem11
+    SLICE_X8Y29.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_0
+    SLICE_X11Y30.B5      net (fanout=4)        0.653   buff/fifo/M_raddr_q[0]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.837ns (2.532ns logic, 4.305ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.027ns (2.225ns logic, 4.802ns route)
+                                                       (31.7% logic, 68.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.337ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem9 (RAM)
+Slack:                  0.163ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_1 (FF)
+  Destination:          buff/fifo/ram/Mram_mem16 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.843ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.018ns (0.296 - 0.314)
+  Data Path Delay:      7.082ns (Levels of Logic = 4)
+  Clock Path Skew:      0.047ns (0.794 - 0.747)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -803,43 +729,39 @@ Slack:                  0.337ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem9
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_1 to buff/fifo/ram/Mram_mem16
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X1Y16.WEA0    net (fanout=32)       1.332   write_ctrl
-    RAMB16_X1Y16.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem9
-                                                       buff/fifo/ram/Mram_mem9
+    SLICE_X8Y29.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_1
+    SLICE_X11Y30.B4      net (fanout=4)        0.768   buff/fifo/M_raddr_q[1]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y34.A5      net (fanout=17)       1.035   M_fifo_empty
+    SLICE_X11Y34.A       Tilo                  0.259   buff/fifo/M_wsync_q[18]
+                                                       buff/fifo/Mmux_M_ram_raddr51
+    RAMB16_X0Y24.ADDRB13 net (fanout=16)       2.122   buff/fifo/M_ram_raddr[13]
+    RAMB16_X0Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem16
+                                                       buff/fifo/ram/Mram_mem16
     -------------------------------------------------  ---------------------------
-    Total                                      6.843ns (2.532ns logic, 4.311ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.082ns (2.225ns logic, 4.857ns route)
+                                                       (31.4% logic, 68.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.337ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem9 (RAM)
+Slack:                  0.164ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.843ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.018ns (0.296 - 0.314)
+  Data Path Delay:      7.023ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.011ns (0.332 - 0.343)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -850,43 +772,39 @@ Slack:                  0.337ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem9
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X1Y16.WEA1    net (fanout=32)       1.332   write_ctrl
-    RAMB16_X1Y16.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem9
-                                                       buff/fifo/ram/Mram_mem9
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.B        Tilo                  0.259   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_4_xo<0>1
+    SLICE_X12Y31.B5      net (fanout=1)        0.939   buff/fifo/M_wsync_d[4]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.843ns (2.532ns logic, 4.311ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.023ns (2.156ns logic, 4.867ns route)
+                                                       (30.7% logic, 69.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.358ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem7 (RAM)
+Slack:                  0.167ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.858ns (Levels of Logic = 5)
-  Clock Path Skew:      0.018ns (0.644 - 0.626)
+  Data Path Delay:      6.970ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.061ns (0.594 - 0.655)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -897,43 +815,39 @@ Slack:                  0.358ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem7
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y16.WEA0    net (fanout=32)       1.347   write_ctrl
-    RAMB16_X0Y16.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem7
-                                                       buff/fifo/ram/Mram_mem7
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X11Y30.D5      net (fanout=5)        0.473   buff/fifo/M_raddr_q[5]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.858ns (2.532ns logic, 4.326ns route)
-                                                       (36.9% logic, 63.1% route)
+    Total                                      6.970ns (2.156ns logic, 4.814ns route)
+                                                       (30.9% logic, 69.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.365ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.184ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.845ns (Levels of Logic = 5)
-  Clock Path Skew:      0.012ns (0.731 - 0.719)
+  Data Path Delay:      7.017ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -944,43 +858,39 @@ Slack:                  0.365ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA3    net (fanout=32)       1.334   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X9Y30.B3       net (fanout=5)        0.589   buff/fifo/M_raddr_q[5]
+    SLICE_X9Y30.B        Tilo                  0.259   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_4_xo<0>1
+    SLICE_X12Y31.B5      net (fanout=1)        0.939   buff/fifo/M_wsync_d[4]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.845ns (2.532ns logic, 4.313ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.017ns (2.156ns logic, 4.861ns route)
+                                                       (30.7% logic, 69.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.365ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.187ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_6 (FF)
+  Destination:          buff/fifo/ram/Mram_mem4 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.845ns (Levels of Logic = 5)
-  Clock Path Skew:      0.012ns (0.731 - 0.719)
+  Data Path Delay:      7.000ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.011ns (0.332 - 0.343)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -991,43 +901,39 @@ Slack:                  0.365ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_6 to buff/fifo/ram/Mram_mem4
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA1    net (fanout=32)       1.334   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.CQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_6
+    SLICE_X11Y30.D6      net (fanout=5)        0.375   buff/fifo/M_raddr_q[6]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y36.B6      net (fanout=17)       1.038   M_fifo_empty
+    SLICE_X11Y36.B       Tilo                  0.259   M_count_store_q[699]
+                                                       buff/fifo/Mmux_M_ram_raddr111
+    RAMB16_X0Y10.ADDRB5  net (fanout=16)       2.179   buff/fifo/M_ram_raddr[5]
+    RAMB16_X0Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem4
+                                                       buff/fifo/ram/Mram_mem4
     -------------------------------------------------  ---------------------------
-    Total                                      6.845ns (2.532ns logic, 4.313ns route)
-                                                       (37.0% logic, 63.0% route)
+    Total                                      7.000ns (2.156ns logic, 4.844ns route)
+                                                       (30.8% logic, 69.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.378ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.189ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_3 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.815ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.005ns (0.338 - 0.343)
+  Data Path Delay:      7.013ns (Levels of Logic = 4)
+  Clock Path Skew:      0.004ns (0.751 - 0.747)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1038,43 +944,39 @@ Slack:                  0.378ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_3 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.DMUX    Topbd                 0.695   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X13Y35.B6      net (fanout=2)        0.391   buff/fifo/n0074[14:0][3]
-    SLICE_X13Y35.B       Tilo                  0.259   buff/M_fifo_din<1>3
-                                                       buff/fifo/Mcompar_full_lut<1>_SW0
-    SLICE_X12Y38.B5      net (fanout=1)        0.609   buff/fifo/N40
-    SLICE_X12Y38.COUT    Topcyb                0.483   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<1>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.DQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_3
+    SLICE_X9Y30.B5       net (fanout=5)        0.440   buff/fifo/M_raddr_q[3]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.815ns (2.686ns logic, 4.129ns route)
-                                                       (39.4% logic, 60.6% route)
+    Total                                      7.013ns (2.234ns logic, 4.779ns route)
+                                                       (31.9% logic, 68.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.387ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_4 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.192ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.828ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      6.945ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.061ns (0.594 - 0.655)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1085,43 +987,39 @@ Slack:                  0.387ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_4 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X16Y34.AQ      Tcko                  0.525   buff/fifo/M_waddr_q[7]
-                                                       buff/fifo/M_waddr_q_4
-    SLICE_X12Y34.A5      net (fanout=21)       0.690   buff/fifo/M_waddr_q[4]
-    SLICE_X12Y34.CMUX    Topac                 0.633   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[4]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X11Y30.D5      net (fanout=5)        0.473   buff/fifo/M_raddr_q[5]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y10.ADDRB7  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.828ns (2.564ns logic, 4.264ns route)
-                                                       (37.6% logic, 62.4% route)
+    Total                                      6.945ns (2.156ns logic, 4.789ns route)
+                                                       (31.0% logic, 69.0% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.387ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.194ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_0 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.806ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.005ns (0.338 - 0.343)
+  Data Path Delay:      7.008ns (Levels of Logic = 4)
+  Clock Path Skew:      0.004ns (0.751 - 0.747)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1132,43 +1030,39 @@ Slack:                  0.387ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_0 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.DMUX    Topbd                 0.695   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X13Y35.B6      net (fanout=2)        0.391   buff/fifo/n0074[14:0][3]
-    SLICE_X13Y35.B       Tilo                  0.259   buff/M_fifo_din<1>3
-                                                       buff/fifo/Mcompar_full_lut<1>_SW0
-    SLICE_X12Y38.B5      net (fanout=1)        0.609   buff/fifo/N40
-    SLICE_X12Y38.COUT    Topcyb                0.483   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<1>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA0    net (fanout=32)       1.560   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_0
+    SLICE_X11Y30.B5      net (fanout=4)        0.653   buff/fifo/M_raddr_q[0]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.806ns (2.686ns logic, 4.120ns route)
-                                                       (39.5% logic, 60.5% route)
+    Total                                      7.008ns (2.225ns logic, 4.783ns route)
+                                                       (31.7% logic, 68.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.395ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.197ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.815ns (Levels of Logic = 5)
-  Clock Path Skew:      0.012ns (0.731 - 0.719)
+  Data Path Delay:      7.004ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1179,43 +1073,39 @@ Slack:                  0.395ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA2    net (fanout=32)       1.304   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.B        Tilo                  0.259   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_4_xo<0>1
+    SLICE_X12Y31.B5      net (fanout=1)        0.939   buff/fifo/M_wsync_d[4]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.815ns (2.532ns logic, 4.283ns route)
-                                                       (37.2% logic, 62.8% route)
+    Total                                      7.004ns (2.156ns logic, 4.848ns route)
+                                                       (30.8% logic, 69.2% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.396ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem7 (RAM)
+Slack:                  0.206ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem16 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.820ns (Levels of Logic = 5)
-  Clock Path Skew:      0.018ns (0.644 - 0.626)
+  Data Path Delay:      7.038ns (Levels of Logic = 4)
+  Clock Path Skew:      0.046ns (0.794 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1226,43 +1116,39 @@ Slack:                  0.396ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem7
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem16
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y16.WEA3    net (fanout=32)       1.309   write_ctrl
-    RAMB16_X0Y16.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem7
-                                                       buff/fifo/ram/Mram_mem7
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X11Y30.D5      net (fanout=5)        0.473   buff/fifo/M_raddr_q[5]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X11Y34.A5      net (fanout=17)       1.035   M_fifo_empty
+    SLICE_X11Y34.A       Tilo                  0.259   buff/fifo/M_wsync_q[18]
+                                                       buff/fifo/Mmux_M_ram_raddr51
+    RAMB16_X0Y24.ADDRB13 net (fanout=16)       2.122   buff/fifo/M_ram_raddr[13]
+    RAMB16_X0Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem16
+                                                       buff/fifo/ram/Mram_mem16
     -------------------------------------------------  ---------------------------
-    Total                                      6.820ns (2.532ns logic, 4.288ns route)
-                                                       (37.1% logic, 62.9% route)
+    Total                                      7.038ns (2.156ns logic, 4.882ns route)
+                                                       (30.6% logic, 69.4% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.396ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem7 (RAM)
+Slack:                  0.220ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_6 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.820ns (Levels of Logic = 5)
-  Clock Path Skew:      0.018ns (0.644 - 0.626)
+  Data Path Delay:      6.981ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1273,43 +1159,39 @@ Slack:                  0.396ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem7
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_6 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y16.WEA1    net (fanout=32)       1.309   write_ctrl
-    RAMB16_X0Y16.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem7
-                                                       buff/fifo/ram/Mram_mem7
+    SLICE_X8Y30.CQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_6
+    SLICE_X11Y30.D6      net (fanout=5)        0.375   buff/fifo/M_raddr_q[6]
+    SLICE_X11Y30.D       Tilo                  0.259   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_5_xo<0>1
+    SLICE_X12Y31.B4      net (fanout=1)        1.117   buff/fifo/M_wsync_d[5]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y24.ADDRB7  net (fanout=16)       2.234   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.820ns (2.532ns logic, 4.288ns route)
-                                                       (37.1% logic, 62.9% route)
+    Total                                      6.981ns (2.156ns logic, 4.825ns route)
+                                                       (30.9% logic, 69.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.396ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem5 (RAM)
+Slack:                  0.227ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem2 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.785ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.017ns (0.731 - 0.748)
+  Data Path Delay:      6.911ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.060ns (0.688 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1320,43 +1202,39 @@ Slack:                  0.396ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem5
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem2
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.DMUX    Topbd                 0.695   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X13Y35.B6      net (fanout=2)        0.391   buff/fifo/n0074[14:0][3]
-    SLICE_X13Y35.B       Tilo                  0.259   buff/M_fifo_din<1>3
-                                                       buff/fifo/Mcompar_full_lut<1>_SW0
-    SLICE_X12Y38.B5      net (fanout=1)        0.609   buff/fifo/N40
-    SLICE_X12Y38.COUT    Topcyb                0.483   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<1>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y14.WEA0    net (fanout=32)       1.539   write_ctrl
-    RAMB16_X0Y14.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem5
-                                                       buff/fifo/ram/Mram_mem5
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y33.A6       net (fanout=17)       0.964   M_fifo_empty
+    SLICE_X9Y33.A        Tilo                  0.259   buff/fifo/M_wsync_q[14]
+                                                       buff/fifo/Mmux_M_ram_raddr131
+    RAMB16_X1Y22.ADDRB7  net (fanout=16)       1.996   buff/fifo/M_ram_raddr[7]
+    RAMB16_X1Y22.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem2
+                                                       buff/fifo/ram/Mram_mem2
     -------------------------------------------------  ---------------------------
-    Total                                      6.785ns (2.686ns logic, 4.099ns route)
-                                                       (39.6% logic, 60.4% route)
+    Total                                      6.911ns (2.234ns logic, 4.677ns route)
+                                                       (32.3% logic, 67.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.396ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_4 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.229ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_5 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.819ns (Levels of Logic = 5)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      6.908ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.061ns (0.594 - 0.655)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1367,43 +1245,39 @@ Slack:                  0.396ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_4 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_5 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X16Y34.AQ      Tcko                  0.525   buff/fifo/M_waddr_q[7]
-                                                       buff/fifo/M_waddr_q_4
-    SLICE_X12Y34.A5      net (fanout=21)       0.690   buff/fifo/M_waddr_q[4]
-    SLICE_X12Y34.CMUX    Topac                 0.633   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[4]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA0    net (fanout=32)       1.560   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y30.BQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_5
+    SLICE_X9Y30.B3       net (fanout=5)        0.589   buff/fifo/M_raddr_q[5]
+    SLICE_X9Y30.B        Tilo                  0.259   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_4_xo<0>1
+    SLICE_X12Y31.B5      net (fanout=1)        0.939   buff/fifo/M_wsync_d[4]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.819ns (2.564ns logic, 4.255ns route)
-                                                       (37.6% logic, 62.4% route)
+    Total                                      6.908ns (2.156ns logic, 4.752ns route)
+                                                       (31.2% logic, 68.8% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.400ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.234ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_3 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.815ns (Levels of Logic = 6)
-  Clock Path Skew:      0.017ns (0.643 - 0.626)
+  Data Path Delay:      6.904ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.060ns (0.594 - 0.654)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1414,46 +1288,39 @@ Slack:                  0.400ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_3 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.COUT    Topcyb                0.483   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X12Y35.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[7]
-    SLICE_X12Y35.BMUX    Tcinb                 0.310   M_count_store_q[200]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<11>
-    SLICE_X12Y37.C6      net (fanout=2)        0.388   buff/fifo/n0074[14:0][9]
-    SLICE_X12Y37.C       Tilo                  0.255   buff/fifo/N36
-                                                       buff/fifo/Mcompar_full_lut<3>_SW0
-    SLICE_X12Y38.D5      net (fanout=1)        0.423   buff/fifo/N36
-    SLICE_X12Y38.COUT    Topcyd                0.312   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<3>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.DQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_3
+    SLICE_X9Y30.B5       net (fanout=5)        0.440   buff/fifo/M_raddr_q[3]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.815ns (2.655ns logic, 4.160ns route)
-                                                       (39.0% logic, 61.0% route)
+    Total                                      6.904ns (2.234ns logic, 4.670ns route)
+                                                       (32.4% logic, 67.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.407ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_1 (FF)
-  Destination:          buff/fifo/ram/Mram_mem13 (RAM)
+Slack:                  0.239ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_0 (FF)
+  Destination:          buff/fifo/ram/Mram_mem14 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.786ns (Levels of Logic = 5)
-  Clock Path Skew:      -0.005ns (0.338 - 0.343)
+  Data Path Delay:      6.899ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.060ns (0.594 - 0.654)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1464,43 +1331,39 @@ Slack:                  0.407ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_1 to buff/fifo/ram/Mram_mem13
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_0 to buff/fifo/ram/Mram_mem14
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X9Y33.BQ       Tcko                  0.430   buff/fifo/M_waddr_q[1]
-                                                       buff/fifo/M_waddr_q_1
-    SLICE_X12Y33.B5      net (fanout=20)       0.757   buff/fifo/M_waddr_q[1]
-    SLICE_X12Y33.COUT    Topcyb                0.483   M_count_store_q[210]
-                                                       buff/fifo/M_waddr_q[1]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<3>
-    SLICE_X12Y34.CIN     net (fanout=1)        0.003   buff/fifo/Madd_n0074[14:0]_cy[3]
-    SLICE_X12Y34.BMUX    Tcinb                 0.310   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X12Y38.B2      net (fanout=1)        1.129   buff/fifo/n0074[14:0][5]
-    SLICE_X12Y38.COUT    Topcyb                0.483   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<1>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y22.WEA2    net (fanout=32)       1.569   write_ctrl
-    RAMB16_X0Y22.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem13
-                                                       buff/fifo/ram/Mram_mem13
+    SLICE_X8Y29.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[3]
+                                                       buff/fifo/M_raddr_q_0
+    SLICE_X11Y30.B5      net (fanout=4)        0.653   buff/fifo/M_raddr_q[0]
+    SLICE_X11Y30.BMUX    Tilo                  0.337   buff/fifo/M_wsync_q[5]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_0_xo<0>1
+    SLICE_X12Y31.A4      net (fanout=2)        0.797   buff/fifo/M_wsync_d[0]
+    SLICE_X12Y31.COUT    Topcya                0.474   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<0>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X9Y36.A4       net (fanout=17)       0.989   M_fifo_empty
+    SLICE_X9Y36.A        Tilo                  0.259   M_count_store_q[115]
+                                                       buff/fifo/Mmux_M_ram_raddr121
+    RAMB16_X1Y10.ADDRB6  net (fanout=16)       2.100   buff/fifo/M_ram_raddr[6]
+    RAMB16_X1Y10.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem14
+                                                       buff/fifo/ram/Mram_mem14
     -------------------------------------------------  ---------------------------
-    Total                                      6.786ns (2.525ns logic, 4.261ns route)
-                                                       (37.2% logic, 62.8% route)
+    Total                                      6.899ns (2.225ns logic, 4.674ns route)
+                                                       (32.3% logic, 67.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.407ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               buff/fifo/M_waddr_q_5 (FF)
-  Destination:          buff/fifo/ram/Mram_mem15 (RAM)
+Slack:                  0.241ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               buff/fifo/M_raddr_q_4 (FF)
+  Destination:          buff/fifo/ram/Mram_mem6 (RAM)
   Requirement:          7.407ns
-  Data Path Delay:      6.799ns (Levels of Logic = 5)
-  Clock Path Skew:      0.008ns (0.634 - 0.626)
+  Data Path Delay:      6.960ns (Levels of Logic = 4)
+  Clock Path Skew:      0.003ns (0.751 - 0.748)
   Source Clock:         M_fast_CLK_OUT1 rising at 0.000ns
   Destination Clock:    M_fast_CLK_OUT1 rising at 7.407ns
   Clock Uncertainty:    0.209ns
@@ -1511,35 +1374,31 @@ Slack:                  0.407ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.348ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: buff/fifo/M_waddr_q_5 to buff/fifo/ram/Mram_mem15
+  Maximum Data Path at Slow Process Corner: buff/fifo/M_raddr_q_4 to buff/fifo/ram/Mram_mem6
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X18Y34.BQ      Tcko                  0.476   buff/fifo/M_waddr_q[5]
-                                                       buff/fifo/M_waddr_q_5
-    SLICE_X12Y34.B3      net (fanout=20)       0.974   buff/fifo/M_waddr_q[5]
-    SLICE_X12Y34.CMUX    Topbc                 0.650   buff/fifo/M_wsync_q[15]
-                                                       buff/fifo/M_waddr_q[5]_rt
-                                                       buff/fifo/Madd_n0074[14:0]_cy<7>
-    SLICE_X13Y34.D6      net (fanout=2)        0.630   buff/fifo/n0074[14:0][6]
-    SLICE_X13Y34.D       Tilo                  0.259   buff/fifo/M_wsync_q[22]
-                                                       buff/fifo/Mcompar_full_lut<2>_SW0
-    SLICE_X12Y38.C6      net (fanout=1)        0.572   buff/fifo/N38
-    SLICE_X12Y38.COUT    Topcyc                0.328   buff/fifo/Mcompar_full_cy[3]
-                                                       buff/fifo/Mcompar_full_lut<2>
-                                                       buff/fifo/Mcompar_full_cy<3>
-    SLICE_X12Y39.CIN     net (fanout=1)        0.003   buff/fifo/Mcompar_full_cy[3]
-    SLICE_X12Y39.AMUX    Tcina                 0.230   M_count_store_q[120]
-                                                       write_ctrl1_cy
-    SLICE_X9Y39.B6       net (fanout=16)       0.800   full
-    SLICE_X9Y39.B        Tilo                  0.259   M_count_store_q[363]
-                                                       write_ctrl
-    RAMB16_X0Y20.WEA0    net (fanout=32)       1.288   write_ctrl
-    RAMB16_X0Y20.CLKA    Trcck_WEA             0.330   buff/fifo/ram/Mram_mem15
-                                                       buff/fifo/ram/Mram_mem15
+    SLICE_X8Y30.AQ       Tcko                  0.525   buff/fifo/M_raddr_q[7]
+                                                       buff/fifo/M_raddr_q_4
+    SLICE_X9Y30.B4       net (fanout=4)        0.576   buff/fifo/M_raddr_q[4]
+    SLICE_X9Y30.BMUX     Tilo                  0.337   buff/fifo/M_wsync_q[4]
+                                                       buff/fifo/Mxor_M_wsync_d<14:0>_3_xo<0>1
+    SLICE_X12Y31.B6      net (fanout=2)        1.006   buff/fifo/M_wsync_d[3]
+    SLICE_X12Y31.COUT    Topcyb                0.483   buff/fifo/Mcompar_empty_cy[3]
+                                                       buff/fifo/Mcompar_empty_lut<1>
+                                                       buff/fifo/Mcompar_empty_cy<3>
+    SLICE_X12Y32.CIN     net (fanout=1)        0.135   buff/fifo/Mcompar_empty_cy[3]
+    SLICE_X12Y32.AMUX    Tcina                 0.230   M_count_store_q[90]
+                                                       avr/uart_tx/_n0095_inv11_cy
+    SLICE_X10Y33.A5      net (fanout=17)       0.784   M_fifo_empty
+    SLICE_X10Y33.A       Tilo                  0.235   M_count_store_q[131]
+                                                       buff/fifo/Mmux_M_ram_raddr31
+    RAMB16_X1Y24.ADDRB11 net (fanout=16)       2.249   buff/fifo/M_ram_raddr[11]
+    RAMB16_X1Y24.CLKB    Trcck_ADDRB           0.400   buff/fifo/ram/Mram_mem6
+                                                       buff/fifo/ram/Mram_mem6
     -------------------------------------------------  ---------------------------
-    Total                                      6.799ns (2.532ns logic, 4.267ns route)
-                                                       (37.2% logic, 62.8% route)
+    Total                                      6.960ns (2.210ns logic, 4.750ns route)
+                                                       (31.8% logic, 68.2% route)
 
 --------------------------------------------------------------------------------
 
@@ -1550,7 +1409,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem10/CLKA
   Logical resource: buff/fifo/ram/Mram_mem10/CLKA
-  Location pin: RAMB16_X1Y14.CLKA
+  Location pin: RAMB16_X0Y20.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1558,7 +1417,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem10/CLKB
   Logical resource: buff/fifo/ram/Mram_mem10/CLKB
-  Location pin: RAMB16_X1Y14.CLKB
+  Location pin: RAMB16_X0Y20.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1566,7 +1425,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem11/CLKA
   Logical resource: buff/fifo/ram/Mram_mem11/CLKA
-  Location pin: RAMB16_X1Y20.CLKA
+  Location pin: RAMB16_X0Y18.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1574,7 +1433,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem11/CLKB
   Logical resource: buff/fifo/ram/Mram_mem11/CLKB
-  Location pin: RAMB16_X1Y20.CLKB
+  Location pin: RAMB16_X0Y18.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1582,7 +1441,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem12/CLKA
   Logical resource: buff/fifo/ram/Mram_mem12/CLKA
-  Location pin: RAMB16_X1Y22.CLKA
+  Location pin: RAMB16_X0Y22.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1590,7 +1449,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem12/CLKB
   Logical resource: buff/fifo/ram/Mram_mem12/CLKB
-  Location pin: RAMB16_X1Y22.CLKB
+  Location pin: RAMB16_X0Y22.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1598,7 +1457,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem13/CLKA
   Logical resource: buff/fifo/ram/Mram_mem13/CLKA
-  Location pin: RAMB16_X0Y22.CLKA
+  Location pin: RAMB16_X1Y12.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1606,7 +1465,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem13/CLKB
   Logical resource: buff/fifo/ram/Mram_mem13/CLKB
-  Location pin: RAMB16_X0Y22.CLKB
+  Location pin: RAMB16_X1Y12.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1614,7 +1473,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem14/CLKA
   Logical resource: buff/fifo/ram/Mram_mem14/CLKA
-  Location pin: RAMB16_X1Y26.CLKA
+  Location pin: RAMB16_X1Y10.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1622,7 +1481,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem14/CLKB
   Logical resource: buff/fifo/ram/Mram_mem14/CLKB
-  Location pin: RAMB16_X1Y26.CLKB
+  Location pin: RAMB16_X1Y10.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1630,7 +1489,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem15/CLKA
   Logical resource: buff/fifo/ram/Mram_mem15/CLKA
-  Location pin: RAMB16_X0Y20.CLKA
+  Location pin: RAMB16_X0Y16.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1638,7 +1497,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem15/CLKB
   Logical resource: buff/fifo/ram/Mram_mem15/CLKB
-  Location pin: RAMB16_X0Y20.CLKB
+  Location pin: RAMB16_X0Y16.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1678,7 +1537,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem2/CLKA
   Logical resource: buff/fifo/ram/Mram_mem2/CLKA
-  Location pin: RAMB16_X1Y24.CLKA
+  Location pin: RAMB16_X1Y22.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1686,7 +1545,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem2/CLKB
   Logical resource: buff/fifo/ram/Mram_mem2/CLKB
-  Location pin: RAMB16_X1Y24.CLKB
+  Location pin: RAMB16_X1Y22.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1694,7 +1553,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem3/CLKA
   Logical resource: buff/fifo/ram/Mram_mem3/CLKA
-  Location pin: RAMB16_X0Y18.CLKA
+  Location pin: RAMB16_X0Y12.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1702,7 +1561,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem3/CLKB
   Logical resource: buff/fifo/ram/Mram_mem3/CLKB
-  Location pin: RAMB16_X0Y18.CLKB
+  Location pin: RAMB16_X0Y12.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1710,7 +1569,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem4/CLKA
   Logical resource: buff/fifo/ram/Mram_mem4/CLKA
-  Location pin: RAMB16_X0Y26.CLKA
+  Location pin: RAMB16_X0Y10.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1718,7 +1577,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem4/CLKB
   Logical resource: buff/fifo/ram/Mram_mem4/CLKB
-  Location pin: RAMB16_X0Y26.CLKB
+  Location pin: RAMB16_X0Y10.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1726,7 +1585,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem5/CLKA
   Logical resource: buff/fifo/ram/Mram_mem5/CLKA
-  Location pin: RAMB16_X0Y14.CLKA
+  Location pin: RAMB16_X1Y16.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1734,7 +1593,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem5/CLKB
   Logical resource: buff/fifo/ram/Mram_mem5/CLKB
-  Location pin: RAMB16_X0Y14.CLKB
+  Location pin: RAMB16_X1Y16.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1742,7 +1601,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem6/CLKA
   Logical resource: buff/fifo/ram/Mram_mem6/CLKA
-  Location pin: RAMB16_X0Y12.CLKA
+  Location pin: RAMB16_X1Y24.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1750,7 +1609,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem6/CLKB
   Logical resource: buff/fifo/ram/Mram_mem6/CLKB
-  Location pin: RAMB16_X0Y12.CLKB
+  Location pin: RAMB16_X1Y24.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1758,7 +1617,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem7/CLKA
   Logical resource: buff/fifo/ram/Mram_mem7/CLKA
-  Location pin: RAMB16_X0Y16.CLKA
+  Location pin: RAMB16_X1Y14.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1766,7 +1625,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem7/CLKB
   Logical resource: buff/fifo/ram/Mram_mem7/CLKB
-  Location pin: RAMB16_X0Y16.CLKB
+  Location pin: RAMB16_X1Y14.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1774,7 +1633,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKA(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem8/CLKA
   Logical resource: buff/fifo/ram/Mram_mem8/CLKA
-  Location pin: RAMB16_X1Y12.CLKA
+  Location pin: RAMB16_X1Y20.CLKA
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 Slack: 3.837ns (period - min period limit)
@@ -1782,7 +1641,7 @@ Slack: 3.837ns (period - min period limit)
   Min period limit: 3.570ns (280.112MHz) (Trper_CLKB(Fmax))
   Physical resource: buff/fifo/ram/Mram_mem8/CLKB
   Logical resource: buff/fifo/ram/Mram_mem8/CLKB
-  Location pin: RAMB16_X1Y12.CLKB
+  Location pin: RAMB16_X1Y20.CLKB
   Clock network: M_fast_CLK_OUT1
 --------------------------------------------------------------------------------
 
@@ -1794,8 +1653,8 @@ Derived Constraints for TS_clk
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_clk                         |     20.000ns|      8.000ns|     19.634ns|            0|            0|            0|        49517|
-| TS_fast_clkfx                 |      7.407ns|      7.272ns|          N/A|            0|            0|        49517|            0|
+|TS_clk                         |     20.000ns|      8.000ns|     19.948ns|            0|            0|            0|        51719|
+| TS_fast_clkfx                 |      7.407ns|      7.388ns|          N/A|            0|            0|        51719|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -1810,7 +1669,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |    7.272|         |         |         |
+clk            |    7.388|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -1819,7 +1678,7 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 49517 paths, 0 nets, and 10633 connections
+Constraints cover 51719 paths, 0 nets, and 10836 connections
 
 Design statistics:
    Minimum period:   8.000ns{1}   (Maximum frequency: 125.000MHz)
@@ -1828,14 +1687,14 @@ Design statistics:
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Wed Nov 23 16:48:56 2016 
+Analysis completed Sat Nov 26 19:05:15 2016 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 258 MB
+Peak Memory Usage: 259 MB
 
 
 

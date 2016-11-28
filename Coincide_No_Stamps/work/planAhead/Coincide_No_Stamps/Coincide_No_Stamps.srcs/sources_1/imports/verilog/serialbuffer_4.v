@@ -16,6 +16,8 @@ module serialbuffer_4 (
   
   
   
+  localparam LAST_ENTRY = 5'h1d;
+  
   reg [4:0] M_index_d, M_index_q = 1'h0;
   
   
