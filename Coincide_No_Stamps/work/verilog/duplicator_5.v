@@ -72,18 +72,18 @@ module duplicator_5 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_state_q <= 1'h0;
+      M_ctr_q <= 1'h0;
     end else begin
-      M_state_q <= M_state_d;
+      M_ctr_q <= M_ctr_d;
     end
   end
   
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_ctr_q <= 1'h0;
+      M_state_q <= 1'h0;
     end else begin
-      M_ctr_q <= M_ctr_d;
+      M_state_q <= M_state_d;
     end
   end
   

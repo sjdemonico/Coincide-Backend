@@ -20,7 +20,7 @@ module reg_interface_3 (
     input [32:0] regIn
   );
   
-  localparam CLK_FREQ = 28'hbebc200;
+  localparam CLK_FREQ = 28'h8f0d180;
   
   
   localparam IDLE_state = 3'd0;
@@ -150,6 +150,12 @@ module reg_interface_3 (
   end
   
   always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_state_q <= 1'h0;
+    end else begin
+      M_state_q <= M_state_d;
+    end
+    
     M_addr_ct_q <= M_addr_ct_d;
     M_byte_ct_q <= M_byte_ct_d;
     M_inc_q <= M_inc_d;
@@ -157,12 +163,6 @@ module reg_interface_3 (
     M_timeout_q <= M_timeout_d;
     M_addr_q <= M_addr_d;
     M_data_q <= M_data_d;
-    
-    if (rst == 1'b1) begin
-      M_state_q <= 1'h0;
-    end else begin
-      M_state_q <= M_state_d;
-    end
   end
   
 endmodule

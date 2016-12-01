@@ -18,11 +18,11 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  const CLKSPEED = 200000000;
+  const CLKSPEED = 150000000;
   var i;
   
   fastclk fast(.CLK_IN1(clk));
-  .clk(fast.CLK_OUT2) {
+  .clk(fast.CLK_OUT1) {
     reset_conditioner reset_cond;
     .rst(rst){
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
@@ -193,8 +193,8 @@ module mojo_top (
     
     //timer behavior
     if(tmr.maxval) {
+      count_store.d = counts.q;
       for (i = 0; i < 30; i++) {
-        count_store.d[i] = counts.q[i];
         counts.d[i] = 0;
       }
       poll_flag.d = 1;

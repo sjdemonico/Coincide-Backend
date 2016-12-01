@@ -15,34 +15,34 @@ module timer_4 (
     input clk,
     input rst,
     output reg maxval,
-    output reg [24:0] value
+    output reg [23:0] value
   );
   
-  localparam SIZE = 5'h19;
+  localparam SIZE = 5'h18;
   localparam DIV = 1'h0;
-  localparam TOP = 29'h01312cff;
+  localparam TOP = 29'h00e4e1bf;
   localparam UP = 1'h1;
   
   
-  reg [24:0] M_ctr_d, M_ctr_q = 1'h0;
+  reg [23:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam MAX_VALUE = 29'h01312cff;
+  localparam MAX_VALUE = 29'h00e4e1bf;
   
   always @* begin
     M_ctr_d = M_ctr_q;
     
-    value = M_ctr_q[0+24-:25];
+    value = M_ctr_q[0+23-:24];
     maxval = 1'h0;
     if (1'h1) begin
       M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h1 && M_ctr_q == 29'h01312cff) begin
+      if (1'h1 && M_ctr_q == 29'h00e4e1bf) begin
         M_ctr_d = 1'h0;
         maxval = 1'h1;
       end
     end else begin
       M_ctr_d = M_ctr_q - 1'h1;
       if (1'h1 && M_ctr_q == 1'h0) begin
-        M_ctr_d = 29'h01312cff;
+        M_ctr_d = 29'h00e4e1bf;
       end
     end
   end

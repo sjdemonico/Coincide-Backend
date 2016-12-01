@@ -64,17 +64,16 @@ module fastclk_exdes
   input         CLK_IN1,
   // Reset that only drives logic in example design
   input         COUNTER_RESET,
-  output [3:1]  CLK_OUT,
+  output [2:1]  CLK_OUT,
   // High bits of counters driven by clocks
-  output [3:1]  COUNT
+  output [2:1]  COUNT
  );
 
   // Parameters for the counters
   //-------------------------------
   // Counter width
   localparam    C_W       = 16;
-  // Number of counters
-  localparam    NUM_C     = 3;
+  localparam    NUM_C     = 2;
   genvar        count_gen;
   // Create reset for the counters
   wire          reset_int = COUNTER_RESET;
@@ -98,8 +97,7 @@ module fastclk_exdes
     .CLK_IN1            (CLK_IN1),
     // Clock out ports
     .CLK_OUT1           (clk_int[1]),
-    .CLK_OUT2           (clk_int[2]),
-    .CLK_OUT3           (clk_int[3]));
+    .CLK_OUT2           (clk_int[2]));
 
 genvar clk_out_pins;
 
@@ -124,7 +122,6 @@ endgenerate
   //-----------------------------------------
   assign clk[1] = clk_int[1];
   assign clk[2] = clk_int[2];
-  assign clk[3] = clk_int[3];
 
 
   // Reset synchronizer

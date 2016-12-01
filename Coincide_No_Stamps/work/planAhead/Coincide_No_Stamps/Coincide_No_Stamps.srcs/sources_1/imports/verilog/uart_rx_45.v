@@ -17,11 +17,11 @@ module uart_rx_45 (
     output reg new_data
   );
   
-  localparam CLK_FREQ = 28'hbebc200;
+  localparam CLK_FREQ = 28'h8f0d180;
   localparam BAUD = 19'h7a120;
   
   
-  localparam CLK_PER_BIT = 30'h00000190;
+  localparam CLK_PER_BIT = 30'h0000012c;
   
   localparam CTR_SIZE = 4'h9;
   
@@ -60,14 +60,14 @@ module uart_rx_45 (
       end
       WAIT_HALF_state: begin
         M_ctr_d = M_ctr_q + 1'h1;
-        if (M_ctr_q == 30'h000000c8) begin
+        if (M_ctr_q == 30'h00000096) begin
           M_ctr_d = 1'h0;
           M_state_d = WAIT_FULL_state;
         end
       end
       WAIT_FULL_state: begin
         M_ctr_d = M_ctr_q + 1'h1;
-        if (M_ctr_q == 31'h0000018f) begin
+        if (M_ctr_q == 31'h0000012b) begin
           M_savedData_d = {M_rxd_q, M_savedData_q[1+6-:7]};
           M_bitCtr_d = M_bitCtr_q + 1'h1;
           M_ctr_d = 1'h0;

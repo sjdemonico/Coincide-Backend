@@ -19,11 +19,11 @@ module uart_tx_46 (
     input new_data
   );
   
-  localparam CLK_FREQ = 28'hbebc200;
+  localparam CLK_FREQ = 28'h8f0d180;
   localparam BAUD = 19'h7a120;
   
   
-  localparam CLK_PER_BIT = 30'h00000190;
+  localparam CLK_PER_BIT = 30'h0000012c;
   
   localparam CTR_SIZE = 4'h9;
   
@@ -67,7 +67,7 @@ module uart_tx_46 (
       START_BIT_state: begin
         M_ctr_d = M_ctr_q + 1'h1;
         M_txReg_d = 1'h0;
-        if (M_ctr_q == 31'h0000018f) begin
+        if (M_ctr_q == 31'h0000012b) begin
           M_ctr_d = 1'h0;
           M_state_d = DATA_state;
         end
@@ -75,7 +75,7 @@ module uart_tx_46 (
       DATA_state: begin
         M_txReg_d = M_savedData_q[(M_bitCtr_q)*1+0-:1];
         M_ctr_d = M_ctr_q + 1'h1;
-        if (M_ctr_q == 31'h0000018f) begin
+        if (M_ctr_q == 31'h0000012b) begin
           M_ctr_d = 1'h0;
           M_bitCtr_d = M_bitCtr_q + 1'h1;
           if (M_bitCtr_q == 3'h7) begin
@@ -86,7 +86,7 @@ module uart_tx_46 (
       STOP_BIT_state: begin
         M_txReg_d = 1'h1;
         M_ctr_d = M_ctr_q + 1'h1;
-        if (M_ctr_q == 31'h0000018f) begin
+        if (M_ctr_q == 31'h0000012b) begin
           M_state_d = IDLE_state;
         end
       end

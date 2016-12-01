@@ -8,7 +8,7 @@
 	<DefaultLaunch Dir="$PRUNDIR"/>
 	<DefaultPromote Dir="$PROMOTEDIR"/>
 	<Config>
-		<Option Name="Id" Val="5a14dfc50db847d9a6190322567e3eca"/>
+		<Option Name="Id" Val="70bfb64977194c77af1effabfc79a40e"/>
 		<Option Name="Part" Val="xc6slx9tqg144-2"/>
 		<Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
 		<Option Name="TargetLanguage" Val="Verilog"/>
