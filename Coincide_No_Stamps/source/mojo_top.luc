@@ -19,6 +19,8 @@ module mojo_top (
   
   sig rst;                  // reset signal
   const CLKSPEED = 150000000;
+  const X_PULSE_LEN = 2;
+  const Y_PULSE_LEN = 15;
   var i;
   
   fastclk fast(.CLK_IN1(clk));
@@ -34,48 +36,49 @@ module mojo_top (
       dff counts[30][$clog2(CLKSPEED/20)];
       dff count_store[30][$clog2(CLKSPEED/20)];
       dff poll_flag;
+      dff noop; //debug
       
       //pulse duplicators
-      duplicator xdupA(.length(pulse_length.q[0]));
-      duplicator xdupB(.length(pulse_length.q[0]));
-      duplicator xdupC(.length(pulse_length.q[0]));
-      duplicator xdupD(.length(pulse_length.q[0]));
-      duplicator ydupA(.length(pulse_length.q[1]));
-      duplicator ydupB(.length(pulse_length.q[1]));
-      duplicator ydupC(.length(pulse_length.q[1]));
-      duplicator ydupD(.length(pulse_length.q[1]));
+      duplicator xdupA(#LENGTH(X_PULSE_LEN));
+      duplicator xdupB(#LENGTH(X_PULSE_LEN));
+      duplicator xdupC(#LENGTH(X_PULSE_LEN));
+      duplicator xdupD(#LENGTH(X_PULSE_LEN));
+      duplicator ydupA(#LENGTH(Y_PULSE_LEN));
+      duplicator ydupB(#LENGTH(Y_PULSE_LEN));
+      duplicator ydupC(#LENGTH(Y_PULSE_LEN));
+      duplicator ydupD(#LENGTH(Y_PULSE_LEN));
       
       //channel comparators
-      comparator xcompA(.length(pulse_length.q[0]));
-      comparator xcompB(.length(pulse_length.q[0]));
-      comparator xcompC(.length(pulse_length.q[0]));
-      comparator xcompD(.length(pulse_length.q[0]));
-      comparator xcompAB(.length(pulse_length.q[0]));
-      comparator xcompAC(.length(pulse_length.q[0]));
-      comparator xcompAD(.length(pulse_length.q[0]));
-      comparator xcompBC(.length(pulse_length.q[0]));
-      comparator xcompBD(.length(pulse_length.q[0]));
-      comparator xcompCD(.length(pulse_length.q[0]));
-      comparator xcompABC(.length(pulse_length.q[0]));
-      comparator xcompABD(.length(pulse_length.q[0]));
-      comparator xcompACD(.length(pulse_length.q[0]));
-      comparator xcompBCD(.length(pulse_length.q[0]));
-      comparator xcompABCD(.length(pulse_length.q[0]));
-      comparator ycompA(.length(pulse_length.q[1]));
-      comparator ycompB(.length(pulse_length.q[1]));
-      comparator ycompC(.length(pulse_length.q[1]));
-      comparator ycompD(.length(pulse_length.q[1]));
-      comparator ycompAB(.length(pulse_length.q[1]));
-      comparator ycompAC(.length(pulse_length.q[1]));
-      comparator ycompAD(.length(pulse_length.q[1]));
-      comparator ycompBC(.length(pulse_length.q[1]));
-      comparator ycompBD(.length(pulse_length.q[1]));
-      comparator ycompCD(.length(pulse_length.q[1]));
-      comparator ycompABC(.length(pulse_length.q[1]));
-      comparator ycompABD(.length(pulse_length.q[1]));
-      comparator ycompACD(.length(pulse_length.q[1]));
-      comparator ycompBCD(.length(pulse_length.q[1]));
-      comparator ycompABCD(.length(pulse_length.q[1]));
+      comparator xcompA(#LENGTH(X_PULSE_LEN));
+      comparator xcompB(#LENGTH(X_PULSE_LEN));
+      comparator xcompC(#LENGTH(X_PULSE_LEN));
+      comparator xcompD(#LENGTH(X_PULSE_LEN));
+      comparator xcompAB(#LENGTH(X_PULSE_LEN));
+      comparator xcompAC(#LENGTH(X_PULSE_LEN));
+      comparator xcompAD(#LENGTH(X_PULSE_LEN));
+      comparator xcompBC(#LENGTH(X_PULSE_LEN));
+      comparator xcompBD(#LENGTH(X_PULSE_LEN));
+      comparator xcompCD(#LENGTH(X_PULSE_LEN));
+      comparator xcompABC(#LENGTH(X_PULSE_LEN));
+      comparator xcompABD(#LENGTH(X_PULSE_LEN));
+      comparator xcompACD(#LENGTH(X_PULSE_LEN));
+      comparator xcompBCD(#LENGTH(X_PULSE_LEN));
+      comparator xcompABCD(#LENGTH(X_PULSE_LEN));
+      comparator ycompA(#LENGTH(Y_PULSE_LEN));
+      comparator ycompB(#LENGTH(Y_PULSE_LEN));
+      comparator ycompC(#LENGTH(Y_PULSE_LEN));
+      comparator ycompD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompAB(#LENGTH(Y_PULSE_LEN));
+      comparator ycompAC(#LENGTH(Y_PULSE_LEN));
+      comparator ycompAD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompBC(#LENGTH(Y_PULSE_LEN));
+      comparator ycompBD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompCD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompABC(#LENGTH(Y_PULSE_LEN));
+      comparator ycompABD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompACD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompBCD(#LENGTH(Y_PULSE_LEN));
+      comparator ycompABCD(#LENGTH(Y_PULSE_LEN));
 
     }
   }
@@ -83,6 +86,7 @@ module mojo_top (
   always {
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
+    noop.d = noop.q;
     
     //pulse duplicator connections in
     xdupA.pulse = pulseA;
@@ -193,8 +197,8 @@ module mojo_top (
     
     //timer behavior
     if(tmr.maxval) {
-      count_store.d = counts.q;
       for (i = 0; i < 30; i++) {
+        count_store.d[i] = counts.q[i];
         counts.d[i] = 0;
       }
       poll_flag.d = 1;
@@ -204,9 +208,10 @@ module mojo_top (
     if (reg.regOut.new_cmd) {             // new command
       if (reg.regOut.write) {             // if write
         case(reg.regOut.address) {
+          98:  poll_flag.d = reg.regOut.data[0];
           99:  pulse_length.d[0] = reg.regOut.data[3:0];
           100: pulse_length.d[1] = reg.regOut.data[3:0];
-          default: poll_flag.d = reg.regOut.data[0];
+          default: noop.d = noop.q; //debug
         }
       } else {                            // if read
         case(reg.regOut.address) {
@@ -240,12 +245,14 @@ module mojo_top (
           27: reg.regIn.data = count_store.q[27];
           28: reg.regIn.data = count_store.q[28];
           29: reg.regIn.data = count_store.q[29];
-          default: reg.regIn.data = poll_flag.q;
+          98: reg.regIn.data = poll_flag.q;
+          default: noop.d = noop.q; //debug
         }
         reg.regIn.drdy = 1;                    
       }
     }
     
-    led = counts.q[0][7:0];
+    led[3:0] = pulse_length.q[0];
+    led[7:4] = pulse_length.q[1];
   }
 }

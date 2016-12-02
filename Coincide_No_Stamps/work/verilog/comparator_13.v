@@ -4,14 +4,18 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
+/*
+   Parameters:
+     LENGTH = X_PULSE_LEN
+*/
 module comparator_13 (
     input clk,
     input rst,
     input [3:0] pins,
-    input [3:0] length,
     output reg incr
   );
   
+  localparam LENGTH = 2'h2;
   
   
   
@@ -36,11 +40,12 @@ module comparator_13 (
         end
       end
       SLEEP_state: begin
-        if (M_ctr_q == length - 1'h1) begin
+        if (M_ctr_q == 3'h1) begin
           M_ctr_d = 1'h0;
           M_state_d = COMPARE_state;
+        end else begin
+          M_ctr_d = M_ctr_q + 1'h1;
         end
-        M_ctr_d = M_ctr_q + 1'h1;
       end
     endcase
   end

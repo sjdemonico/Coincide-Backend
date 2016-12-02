@@ -1,8 +1,7 @@
-module comparator (
+module comparator #(LENGTH = 2 : LENGTH > 1 && LENGTH < 16)(
     input clk,  // clock
     input rst,  // reset
     input pins[4],
-    input length[4],
     output incr
   ) {
   
@@ -19,11 +18,11 @@ module comparator (
         }
       
       state.SLEEP:       
-        if(ctr.q == length - 1) {
+        if(ctr.q == LENGTH - 1) {
           ctr.d = 0;
           state.d = state.COMPARE;
         }
-        ctr.d = ctr.q + 1;
+        else ctr.d = ctr.q + 1;
     }
   }
 }
