@@ -1,0 +1,39 @@
+// A module that detects pulse edges from an external input, synchronizes
+// the event with the FPGA clock, and duplicates the event in a 1-bit top-level
+// register for a user specified amount of clock cycles.
+
+module duplicator (
+    input clk,  // clock
+    input rst,  // reset
+    input pulse, // raw input
+    input length[4], // user specified pulse length
+    output out // output to pins.d register
+  ) {
+  edge_detector edge(#RISE(1),#FALL(0),.clk(clk)); // edge detector instance (see edge detector module for more info)
+  pipeline sync[1](.clk(clk)); // pipeline instance (see pipeline module for more info)
+  dff ctr[4](.clk(clk),.rst(rst)); // internal counter for state changes
+  fsm state(.clk(clk),.rst(rst)) = {LISTEN,PULSE}; // state machine for switching between listening and pulse duplicating
+  always {
+    out = 0; // default output to LOW
+    sync.in = pulse; // raw input connected to pipeline in
+    edge.in = sync.out; // edge detector in connected to pipeline out
+    case (state.q) { 
+      state.LISTEN: // initial state
+        if(edge.out) { // check for edge detection
+        out = 1; // set output HIGH
+        state.d = state.PULSE; // change states to pulse duplication
+        }
+        else out = 0; // if no edge, output remains LOW
+        
+      state.PULSE:
+        if(ctr.q == length - 1) { // duration of this state is parameter dependent
+          ctr.d = 0; // reset the counter if we are done duplicating pulse
+          state.d = state.LISTEN; // return to listen state
+        }
+        else { // if we are not done duplicating
+          out = 1; // keep output HIGH
+          ctr.d = ctr.q + 1; // increment counter
+        }
+    }
+  }
+}

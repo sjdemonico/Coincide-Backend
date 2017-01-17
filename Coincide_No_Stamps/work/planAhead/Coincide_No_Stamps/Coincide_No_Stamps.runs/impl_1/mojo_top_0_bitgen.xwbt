@@ -1,8 +1,0 @@
-INTSTYLE=pa
-INFILE=C:\Users\trinlab\Documents\GitHub\Coincide-Backend\Coincide_No_Stamps\work\planAhead\Coincide_No_Stamps\Coincide_No_Stamps.runs\impl_1\mojo_top_0_routed.ncd
-OUTFILE=C:\Users\trinlab\Documents\GitHub\Coincide-Backend\Coincide_No_Stamps\work\planAhead\Coincide_No_Stamps\Coincide_No_Stamps.runs\impl_1\mojo_top_0.bit
-FAMILY=Spartan6
-PART=xc6slx9-2tqg144
-WORKINGDIR=C:\Users\trinlab\Documents\GitHub\Coincide-Backend\Coincide_No_Stamps\work\planAhead\Coincide_No_Stamps\Coincide_No_Stamps.runs\impl_1
-LICENSE=WebPack
-USER_INFO=211208558_0_0_912

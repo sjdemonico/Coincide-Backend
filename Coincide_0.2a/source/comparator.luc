@@ -1,0 +1,33 @@
+// A module that behaves like a four-way AND gate, with a sleep state that
+// prevents events from participating in more than one comparison
+// this sleep state is the length of a duplicated pulse
+
+module comparator (
+    input clk,  // clock
+    input rst,  // reset
+    input pins[4], // connects to pins.q at top level and is bitmasked for specific comparisons
+    input length[4], // user specified pulse length
+    output incr // 1-bit output that increments top-level counters
+  ) {
+  
+  fsm state(.clk(clk),.rst(rst)) = {COMPARE,SLEEP}; // state machine for switching between comparing and sleeping
+  dff ctr[4](.clk(clk),.rst(rst)); // internal counter for state changes
+  
+  always {
+    incr = 0; // default output to LOW
+    case (state.q) { 
+      state.COMPARE: // initial state
+        if(&pins) {  // if all inputs are HIGH
+          incr = 1;  // set output HIGH
+          state.d = state.SLEEP; // change to sleep state
+        }
+      
+      state.SLEEP:       
+        if(ctr.q == length - 1) { // check if we are done sleeping
+          ctr.d = 0; // reset counter if we are done
+          state.d = state.COMPARE; // return to COMPARE state
+        }
+        else ctr.d = ctr.q + 1; // otherwise, we are not done sleeping, increment sleep counter
+    }
+  }
+}
