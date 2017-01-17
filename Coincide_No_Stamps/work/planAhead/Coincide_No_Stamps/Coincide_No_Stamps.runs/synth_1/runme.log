@@ -25,12 +25,8 @@ Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coinc
 Parsing module <reset_conditioner_1>.
 Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/reg_interface_3.v" into library work
 Parsing module <reg_interface_3>.
-Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/duplicator_9.v" into library work
-Parsing module <duplicator_9>.
 Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/duplicator_5.v" into library work
 Parsing module <duplicator_5>.
-Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/comparator_28.v" into library work
-Parsing module <comparator_28>.
 Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/comparator_13.v" into library work
 Parsing module <comparator_13>.
 Analyzing Verilog file "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/avr_interface_2.v" into library work
@@ -58,7 +54,7 @@ WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/C
 WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/coreGen/fastclk.v" Line 123: Assignment to locked_unused ignored, since the identifier is never used
 
 Elaborating module <BUFG>.
-WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 43: Assignment to M_fast_CLK_OUT2 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 38: Assignment to M_fast_CLK_OUT1 ignored, since the identifier is never used
 
 Elaborating module <reset_conditioner_1>.
 
@@ -71,14 +67,14 @@ Elaborating module <spi_slave_44>.
 Elaborating module <uart_rx_45>.
 
 Elaborating module <uart_tx_46>.
-WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 86: Assignment to M_avr_new_sample ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 87: Assignment to M_avr_sample ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 88: Assignment to M_avr_sample_channel ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 82: Assignment to M_avr_new_sample ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 83: Assignment to M_avr_sample ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 84: Assignment to M_avr_sample_channel ignored, since the identifier is never used
 
 Elaborating module <reg_interface_3>.
 
 Elaborating module <timer_4>.
-WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 117: Assignment to M_tmr_value ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 113: Assignment to M_tmr_value ignored, since the identifier is never used
 
 Elaborating module <duplicator_5>.
 
@@ -86,11 +82,7 @@ Elaborating module <edge_detector_47>.
 
 Elaborating module <pipeline_48>.
 
-Elaborating module <duplicator_9>.
-
 Elaborating module <comparator_13>.
-
-Elaborating module <comparator_28>.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -98,50 +90,50 @@ Elaborating module <comparator_28>.
 
 Synthesizing Unit <mojo_top_0>.
     Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v".
-INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 40: Output port <CLK_OUT2> of the instance <fast> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 71: Output port <sample> of the instance <avr> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 71: Output port <sample_channel> of the instance <avr> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 71: Output port <new_sample> of the instance <avr> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 113: Output port <value> of the instance <tmr> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 36: Output port <CLK_OUT1> of the instance <fast> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 67: Output port <sample> of the instance <avr> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 67: Output port <sample_channel> of the instance <avr> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 67: Output port <new_sample> of the instance <avr> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/mojo_top_0.v" line 109: Output port <value> of the instance <tmr> is unconnected or connected to loadless signal.
     Found 8-bit register for signal <led>.
-    Found 690-bit register for signal <M_counts_q>.
-    Found 690-bit register for signal <M_count_store_q>.
+    Found 780-bit register for signal <M_counts_q>.
+    Found 780-bit register for signal <M_count_store_q>.
     Found 1-bit register for signal <M_poll_flag_q>.
     Found 8-bit register for signal <M_pins_q>.
-    Found 23-bit adder for signal <M_counts_q[22]_GND_1_o_add_30_OUT> created at line 505.
-    Found 23-bit adder for signal <M_counts_q[45]_GND_1_o_add_31_OUT> created at line 508.
-    Found 23-bit adder for signal <M_counts_q[68]_GND_1_o_add_32_OUT> created at line 511.
-    Found 23-bit adder for signal <M_counts_q[91]_GND_1_o_add_33_OUT> created at line 514.
-    Found 23-bit adder for signal <M_counts_q[114]_GND_1_o_add_34_OUT> created at line 517.
-    Found 23-bit adder for signal <M_counts_q[137]_GND_1_o_add_35_OUT> created at line 520.
-    Found 23-bit adder for signal <M_counts_q[160]_GND_1_o_add_36_OUT> created at line 523.
-    Found 23-bit adder for signal <M_counts_q[183]_GND_1_o_add_37_OUT> created at line 526.
-    Found 23-bit adder for signal <M_counts_q[206]_GND_1_o_add_38_OUT> created at line 529.
-    Found 23-bit adder for signal <M_counts_q[229]_GND_1_o_add_39_OUT> created at line 532.
-    Found 23-bit adder for signal <M_counts_q[252]_GND_1_o_add_40_OUT> created at line 535.
-    Found 23-bit adder for signal <M_counts_q[275]_GND_1_o_add_41_OUT> created at line 538.
-    Found 23-bit adder for signal <M_counts_q[298]_GND_1_o_add_42_OUT> created at line 541.
-    Found 23-bit adder for signal <M_counts_q[321]_GND_1_o_add_43_OUT> created at line 544.
-    Found 23-bit adder for signal <M_counts_q[344]_GND_1_o_add_44_OUT> created at line 547.
-    Found 23-bit adder for signal <M_counts_q[367]_GND_1_o_add_45_OUT> created at line 550.
-    Found 23-bit adder for signal <M_counts_q[390]_GND_1_o_add_46_OUT> created at line 553.
-    Found 23-bit adder for signal <M_counts_q[413]_GND_1_o_add_47_OUT> created at line 556.
-    Found 23-bit adder for signal <M_counts_q[436]_GND_1_o_add_48_OUT> created at line 559.
-    Found 23-bit adder for signal <M_counts_q[459]_GND_1_o_add_49_OUT> created at line 562.
-    Found 23-bit adder for signal <M_counts_q[482]_GND_1_o_add_50_OUT> created at line 565.
-    Found 23-bit adder for signal <M_counts_q[505]_GND_1_o_add_51_OUT> created at line 568.
-    Found 23-bit adder for signal <M_counts_q[528]_GND_1_o_add_52_OUT> created at line 571.
-    Found 23-bit adder for signal <M_counts_q[551]_GND_1_o_add_53_OUT> created at line 574.
-    Found 23-bit adder for signal <M_counts_q[574]_GND_1_o_add_54_OUT> created at line 577.
-    Found 23-bit adder for signal <M_counts_q[597]_GND_1_o_add_55_OUT> created at line 580.
-    Found 23-bit adder for signal <M_counts_q[620]_GND_1_o_add_56_OUT> created at line 583.
-    Found 23-bit adder for signal <M_counts_q[643]_GND_1_o_add_57_OUT> created at line 586.
-    Found 23-bit adder for signal <M_counts_q[666]_GND_1_o_add_58_OUT> created at line 589.
-    Found 23-bit adder for signal <M_counts_q[689]_GND_1_o_add_59_OUT> created at line 592.
+    Found 26-bit adder for signal <M_counts_q[25]_GND_1_o_add_30_OUT> created at line 539.
+    Found 26-bit adder for signal <M_counts_q[51]_GND_1_o_add_31_OUT> created at line 542.
+    Found 26-bit adder for signal <M_counts_q[77]_GND_1_o_add_32_OUT> created at line 545.
+    Found 26-bit adder for signal <M_counts_q[103]_GND_1_o_add_33_OUT> created at line 548.
+    Found 26-bit adder for signal <M_counts_q[129]_GND_1_o_add_34_OUT> created at line 551.
+    Found 26-bit adder for signal <M_counts_q[155]_GND_1_o_add_35_OUT> created at line 554.
+    Found 26-bit adder for signal <M_counts_q[181]_GND_1_o_add_36_OUT> created at line 557.
+    Found 26-bit adder for signal <M_counts_q[207]_GND_1_o_add_37_OUT> created at line 560.
+    Found 26-bit adder for signal <M_counts_q[233]_GND_1_o_add_38_OUT> created at line 563.
+    Found 26-bit adder for signal <M_counts_q[259]_GND_1_o_add_39_OUT> created at line 566.
+    Found 26-bit adder for signal <M_counts_q[285]_GND_1_o_add_40_OUT> created at line 569.
+    Found 26-bit adder for signal <M_counts_q[311]_GND_1_o_add_41_OUT> created at line 572.
+    Found 26-bit adder for signal <M_counts_q[337]_GND_1_o_add_42_OUT> created at line 575.
+    Found 26-bit adder for signal <M_counts_q[363]_GND_1_o_add_43_OUT> created at line 578.
+    Found 26-bit adder for signal <M_counts_q[389]_GND_1_o_add_44_OUT> created at line 581.
+    Found 26-bit adder for signal <M_counts_q[415]_GND_1_o_add_45_OUT> created at line 584.
+    Found 26-bit adder for signal <M_counts_q[441]_GND_1_o_add_46_OUT> created at line 587.
+    Found 26-bit adder for signal <M_counts_q[467]_GND_1_o_add_47_OUT> created at line 590.
+    Found 26-bit adder for signal <M_counts_q[493]_GND_1_o_add_48_OUT> created at line 593.
+    Found 26-bit adder for signal <M_counts_q[519]_GND_1_o_add_49_OUT> created at line 596.
+    Found 26-bit adder for signal <M_counts_q[545]_GND_1_o_add_50_OUT> created at line 599.
+    Found 26-bit adder for signal <M_counts_q[571]_GND_1_o_add_51_OUT> created at line 602.
+    Found 26-bit adder for signal <M_counts_q[597]_GND_1_o_add_52_OUT> created at line 605.
+    Found 26-bit adder for signal <M_counts_q[623]_GND_1_o_add_53_OUT> created at line 608.
+    Found 26-bit adder for signal <M_counts_q[649]_GND_1_o_add_54_OUT> created at line 611.
+    Found 26-bit adder for signal <M_counts_q[675]_GND_1_o_add_55_OUT> created at line 614.
+    Found 26-bit adder for signal <M_counts_q[701]_GND_1_o_add_56_OUT> created at line 617.
+    Found 26-bit adder for signal <M_counts_q[727]_GND_1_o_add_57_OUT> created at line 620.
+    Found 26-bit adder for signal <M_counts_q[753]_GND_1_o_add_58_OUT> created at line 623.
+    Found 26-bit adder for signal <M_counts_q[779]_GND_1_o_add_59_OUT> created at line 626.
     Summary:
 	inferred  30 Adder/Subtractor(s).
-	inferred 1397 D-type flip-flop(s).
-	inferred 695 Multiplexer(s).
+	inferred 1577 D-type flip-flop(s).
+	inferred 785 Multiplexer(s).
 Unit <mojo_top_0> synthesized.
 
 Synthesizing Unit <fastclk>.
@@ -194,11 +186,11 @@ Unit <avr_interface_2> synthesized.
 
 Synthesizing Unit <cclk_detector_43>.
     Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/cclk_detector_43.v".
-    Found 15-bit register for signal <M_ctr_q>.
-    Found 15-bit adder for signal <M_ctr_q[14]_GND_8_o_add_3_OUT> created at line 33.
+    Found 16-bit register for signal <M_ctr_q>.
+    Found 16-bit adder for signal <M_ctr_q[15]_GND_8_o_add_3_OUT> created at line 33.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  15 D-type flip-flop(s).
+	inferred  16 D-type flip-flop(s).
 Unit <cclk_detector_43> synthesized.
 
 Synthesizing Unit <spi_slave_44>.
@@ -322,21 +314,24 @@ Unit <reg_interface_3> synthesized.
 
 Synthesizing Unit <timer_4>.
     Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/timer_4.v".
-    Found 24-bit register for signal <M_ctr_q>.
-    Found 24-bit adder for signal <M_ctr_q[23]_GND_19_o_add_0_OUT> created at line 37.
+    Found 27-bit register for signal <M_ctr_q>.
+    Found 27-bit adder for signal <M_ctr_q[26]_GND_19_o_add_0_OUT> created at line 37.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  24 D-type flip-flop(s).
+	inferred  27 D-type flip-flop(s).
 Unit <timer_4> synthesized.
 
 Synthesizing Unit <duplicator_5>.
     Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/duplicator_5.v".
     Found 1-bit register for signal <M_state_q>.
     Found 4-bit register for signal <M_ctr_q>.
-    Found 4-bit adder for signal <M_ctr_q[3]_GND_20_o_add_1_OUT> created at line 74.
+    Found 4-bit subtractor for signal <length[3]_GND_20_o_sub_1_OUT> created at line 65.
+    Found 4-bit adder for signal <M_ctr_q[3]_GND_20_o_add_2_OUT> created at line 70.
+    Found 4-bit comparator equal for signal <M_ctr_q[3]_length[3]_equal_2_o> created at line 65
     Summary:
-	inferred   1 Adder/Subtractor(s).
+	inferred   2 Adder/Subtractor(s).
 	inferred   5 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 	inferred   1 Multiplexer(s).
 Unit <duplicator_5> synthesized.
 
@@ -354,71 +349,54 @@ Synthesizing Unit <pipeline_48>.
 	inferred   1 D-type flip-flop(s).
 Unit <pipeline_48> synthesized.
 
-Synthesizing Unit <duplicator_9>.
-    Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/duplicator_9.v".
-    Found 1-bit register for signal <M_state_q>.
-    Found 4-bit register for signal <M_ctr_q>.
-    Found 4-bit adder for signal <M_ctr_q[3]_GND_23_o_add_1_OUT> created at line 74.
-    Summary:
-	inferred   1 Adder/Subtractor(s).
-	inferred   5 D-type flip-flop(s).
-	inferred   1 Multiplexer(s).
-Unit <duplicator_9> synthesized.
-
 Synthesizing Unit <comparator_13>.
     Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/comparator_13.v".
-    Found 4-bit register for signal <M_ctr_q>.
     Found 1-bit register for signal <M_state_q>.
-    Found 4-bit adder for signal <M_ctr_q[3]_GND_24_o_add_2_OUT> created at line 47.
+    Found 4-bit register for signal <M_ctr_q>.
+    Found 4-bit subtractor for signal <length[3]_GND_23_o_sub_2_OUT> created at line 39.
+    Found 4-bit adder for signal <M_ctr_q[3]_GND_23_o_add_3_OUT> created at line 43.
+    Found 4-bit comparator equal for signal <M_ctr_q[3]_length[3]_equal_3_o> created at line 39
     Summary:
-	inferred   1 Adder/Subtractor(s).
+	inferred   2 Adder/Subtractor(s).
 	inferred   5 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 	inferred   1 Multiplexer(s).
 Unit <comparator_13> synthesized.
-
-Synthesizing Unit <comparator_28>.
-    Related source file is "C:/Users/trinlab/Documents/GitHub/Coincide-Backend/Coincide_No_Stamps/work/planAhead/Coincide_No_Stamps/Coincide_No_Stamps.srcs/sources_1/imports/verilog/comparator_28.v".
-    Found 4-bit register for signal <M_ctr_q>.
-    Found 1-bit register for signal <M_state_q>.
-    Found 4-bit adder for signal <M_ctr_q[3]_GND_25_o_add_2_OUT> created at line 47.
-    Summary:
-	inferred   1 Adder/Subtractor(s).
-	inferred   5 D-type flip-flop(s).
-	inferred   1 Multiplexer(s).
-Unit <comparator_28> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 79
- 15-bit adder                                          : 1
+# Adders/Subtractors                                   : 117
+ 16-bit adder                                          : 1
  2-bit adder                                           : 1
- 23-bit adder                                          : 30
- 24-bit adder                                          : 1
- 26-bit adder                                          : 1
+ 26-bit adder                                          : 31
+ 27-bit adder                                          : 1
  3-bit adder                                           : 2
  3-bit subtractor                                      : 1
  32-bit adder                                          : 1
  4-bit adder                                           : 38
+ 4-bit subtractor                                      : 38
  6-bit subtractor                                      : 1
  9-bit adder                                           : 2
 # Registers                                            : 130
  1-bit register                                        : 67
  10-bit register                                       : 1
- 15-bit register                                       : 1
+ 16-bit register                                       : 1
  2-bit register                                        : 2
- 24-bit register                                       : 1
  26-bit register                                       : 1
+ 27-bit register                                       : 1
  3-bit register                                        : 3
  32-bit register                                       : 2
  4-bit register                                        : 41
  6-bit register                                        : 1
- 690-bit register                                      : 2
+ 780-bit register                                      : 2
  8-bit register                                        : 6
  9-bit register                                        : 2
-# Multiplexers                                         : 768
- 1-bit 2-to-1 multiplexer                              : 744
+# Comparators                                          : 38
+ 4-bit comparator equal                                : 38
+# Multiplexers                                         : 858
+ 1-bit 2-to-1 multiplexer                              : 834
  10-bit 2-to-1 multiplexer                             : 1
  2-bit 2-to-1 multiplexer                              : 3
  26-bit 2-to-1 multiplexer                             : 1
@@ -452,17 +430,9 @@ Synthesizing (advanced) Unit <comparator_13>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <comparator_13> synthesized (advanced).
 
-Synthesizing (advanced) Unit <comparator_28>.
-The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <comparator_28> synthesized (advanced).
-
 Synthesizing (advanced) Unit <duplicator_5>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <duplicator_5> synthesized (advanced).
-
-Synthesizing (advanced) Unit <duplicator_9>.
-The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <duplicator_9> synthesized (advanced).
 
 Synthesizing (advanced) Unit <reg_interface_3>.
 The following registers are absorbed into counter <M_timeout_q>: 1 register on signal <M_timeout_q>.
@@ -488,23 +458,26 @@ Unit <uart_tx_46> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 35
+# Adders/Subtractors                                   : 73
  2-bit adder                                           : 1
- 23-bit adder                                          : 30
+ 26-bit adder                                          : 30
  32-bit adder                                          : 1
+ 4-bit subtractor                                      : 38
  6-bit subtractor                                      : 1
  9-bit adder                                           : 2
 # Counters                                             : 44
- 15-bit up counter                                     : 1
- 24-bit up counter                                     : 1
+ 16-bit up counter                                     : 1
  26-bit up counter                                     : 1
+ 27-bit up counter                                     : 1
  3-bit down counter                                    : 1
  3-bit up counter                                      : 2
  4-bit up counter                                      : 38
-# Registers                                            : 1609
- Flip-Flops                                            : 1609
-# Multiplexers                                         : 735
- 1-bit 2-to-1 multiplexer                              : 715
+# Registers                                            : 1789
+ Flip-Flops                                            : 1789
+# Comparators                                          : 38
+ 4-bit comparator equal                                : 38
+# Multiplexers                                         : 825
+ 1-bit 2-to-1 multiplexer                              : 805
  2-bit 2-to-1 multiplexer                              : 3
  32-bit 2-to-1 multiplexer                             : 4
  33-bit 2-to-1 multiplexer                             : 2
@@ -524,14 +497,6 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 INFO:Xst:2261 - The FF/Latch <M_data_q_0> in Unit <spi_slave_44> is equivalent to the following 7 FFs/Latches, which will be removed : <M_data_q_1> <M_data_q_2> <M_data_q_3> <M_data_q_4> <M_data_q_5> <M_data_q_6> <M_data_q_7> 
-INFO:Xst:2261 - The FF/Latch <xdupA/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupA/sync_gen_0[0].sync/M_pipe_q_0> 
-INFO:Xst:2261 - The FF/Latch <xdupB/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupB/sync_gen_0[0].sync/M_pipe_q_0> 
-INFO:Xst:2261 - The FF/Latch <xdupC/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupC/sync_gen_0[0].sync/M_pipe_q_0> 
-INFO:Xst:2261 - The FF/Latch <xdupD/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupD/sync_gen_0[0].sync/M_pipe_q_0> 
-INFO:Xst:2261 - The FF/Latch <xdupC/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupC/L_edge/M_last_q> 
-INFO:Xst:2261 - The FF/Latch <xdupA/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupA/L_edge/M_last_q> 
-INFO:Xst:2261 - The FF/Latch <xdupD/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupD/L_edge/M_last_q> 
-INFO:Xst:2261 - The FF/Latch <xdupB/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupB/L_edge/M_last_q> 
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <avr/FSM_0> on signal <M_byteCt_q[1:2]> with user encoding.
 -------------------
@@ -601,11 +566,11 @@ Optimizing unit <spi_slave_44> ...
 
 Optimizing unit <uart_rx_45> ...
 
+Optimizing unit <duplicator_5> ...
+
 Optimizing unit <reg_interface_3> ...
 
 Optimizing unit <comparator_13> ...
-
-Optimizing unit <comparator_28> ...
 WARNING:Xst:2677 - Node <avr/spi_slave/M_data_out_reg_q_7> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <avr/spi_slave/M_data_out_reg_q_6> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <avr/spi_slave/M_data_out_reg_q_5> of sequential type is unconnected in block <mojo_top_0>.
@@ -616,86 +581,39 @@ WARNING:Xst:2677 - Node <avr/spi_slave/M_data_out_reg_q_1> of sequential type is
 WARNING:Xst:2677 - Node <avr/spi_slave/M_data_out_reg_q_0> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <avr/spi_slave/M_done_reg_q> of sequential type is unconnected in block <mojo_top_0>.
 WARNING:Xst:2677 - Node <avr/spi_slave/M_mosi_reg_q> of sequential type is unconnected in block <mojo_top_0>.
-WARNING:Xst:1293 - FF/Latch <xcompCD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBC/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBC/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBC/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAC/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAC/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAC/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAB/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAB/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompAB/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompC/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompC/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompC/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompB/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompB/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompB/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompA/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompA/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompA/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupB/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupB/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupB/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupC/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupC/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupC/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupA/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupA/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xdupA/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABCD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABCD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABCD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBCD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBCD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompBCD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompACD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompACD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompACD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABD/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABC/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABC/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompABC/M_ctr_q_1> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompCD/M_ctr_q_3> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <xcompCD/M_ctr_q_2> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <ydupD/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupD/L_edge/M_last_q> 
+INFO:Xst:2261 - The FF/Latch <ydupA/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupA/L_edge/M_last_q> 
+INFO:Xst:2261 - The FF/Latch <ydupB/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupB/sync_gen_0[0].sync/M_pipe_q_0> 
+INFO:Xst:2261 - The FF/Latch <ydupB/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupB/L_edge/M_last_q> 
+INFO:Xst:2261 - The FF/Latch <ydupA/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupA/sync_gen_0[0].sync/M_pipe_q_0> 
+INFO:Xst:2261 - The FF/Latch <ydupC/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupC/sync_gen_0[0].sync/M_pipe_q_0> 
+INFO:Xst:2261 - The FF/Latch <ydupD/sync_gen_0[0].sync/M_pipe_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupD/sync_gen_0[0].sync/M_pipe_q_0> 
+INFO:Xst:2261 - The FF/Latch <ydupC/L_edge/M_last_q> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupC/L_edge/M_last_q> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 62.
-INFO:Xst:2260 - The FF/Latch <M_pins_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupC/M_state_q> 
-INFO:Xst:2260 - The FF/Latch <M_pins_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupB/M_state_q> 
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 71.
 INFO:Xst:2260 - The FF/Latch <M_pins_q_3> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupD/M_state_q> 
 INFO:Xst:2260 - The FF/Latch <M_pins_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupA/M_state_q> 
-INFO:Xst:2261 - The FF/Latch <M_pins_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupC/M_state_q> 
-INFO:Xst:2261 - The FF/Latch <M_pins_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupB/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_5> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <ydupB/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupC/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_7> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <ydupD/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_4> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <ydupA/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <xdupB/M_state_q> 
+INFO:Xst:2260 - The FF/Latch <M_pins_q_6> in Unit <mojo_top_0> is equivalent to the following FF/Latch : <ydupC/M_state_q> 
 INFO:Xst:2261 - The FF/Latch <M_pins_q_3> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupD/M_state_q> 
 INFO:Xst:2261 - The FF/Latch <M_pins_q_0> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupA/M_state_q> 
-FlipFlop L_reg/M_addr_q_2 has been replicated 6 time(s)
+INFO:Xst:2261 - The FF/Latch <M_pins_q_5> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupB/M_state_q> 
+INFO:Xst:2261 - The FF/Latch <M_pins_q_2> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupC/M_state_q> 
+INFO:Xst:2261 - The FF/Latch <M_pins_q_7> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupD/M_state_q> 
+INFO:Xst:2261 - The FF/Latch <M_pins_q_4> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupA/M_state_q> 
+INFO:Xst:2261 - The FF/Latch <M_pins_q_1> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <xdupB/M_state_q> 
+INFO:Xst:2261 - The FF/Latch <M_pins_q_6> in Unit <mojo_top_0> is equivalent to the following FF/Latch, which will be removed : <ydupC/M_state_q> 
+FlipFlop L_reg/M_addr_q_2 has been replicated 4 time(s)
 FlipFlop L_reg/M_addr_q_3 has been replicated 6 time(s)
-FlipFlop L_reg/M_addr_q_4 has been replicated 7 time(s)
+FlipFlop L_reg/M_addr_q_4 has been replicated 6 time(s)
 FlipFlop L_reg/M_addr_q_5 has been replicated 1 time(s)
 FlipFlop L_reg/M_state_q_FSM_FFd1 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_12 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_13 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_14 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_16 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_17 has been replicated 1 time(s)
-FlipFlop tmr/M_ctr_q_19 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -708,8 +626,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1765
- Flip-Flops                                            : 1765
+# Registers                                            : 1993
+ Flip-Flops                                            : 1993
 # Shift Registers                                      : 1
  3-bit shift register                                  : 1
 
@@ -735,7 +653,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-fast/pll_base_inst/CLKOUT0         | BUFG                   | 1767  |
+fast/pll_base_inst/CLKOUT1         | BUFG                   | 1995  |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -746,9 +664,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 6.172ns (Maximum Frequency: 162.035MHz)
-   Minimum input arrival time before clock: 3.981ns
-   Maximum output required time after clock: 7.720ns
+   Minimum period: 6.286ns (Maximum Frequency: 159.077MHz)
+   Minimum input arrival time before clock: 4.008ns
+   Maximum output required time after clock: 7.924ns
    Maximum combinational path delay: 6.005ns
 
 =========================================================================

@@ -4,18 +4,14 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-/*
-   Parameters:
-     LENGTH = X_PULSE_LEN
-*/
 module duplicator_5 (
     input clk,
     input rst,
     input pulse,
+    input [3:0] length,
     output reg out
   );
   
-  localparam LENGTH = 2'h2;
   
   
   wire [1-1:0] M_edge_out;
@@ -66,7 +62,7 @@ module duplicator_5 (
         end
       end
       PULSE_state: begin
-        if (M_ctr_q == 3'h1) begin
+        if (M_ctr_q == length - 1'h1) begin
           M_ctr_d = 1'h0;
           M_state_d = LISTEN_state;
         end else begin

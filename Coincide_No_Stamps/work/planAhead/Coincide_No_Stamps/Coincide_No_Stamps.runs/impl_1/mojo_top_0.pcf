@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 02 14:53:17 2016
+// Written by: Map P.20131013 on Wed Dec 07 13:17:49 2016
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -30,494 +30,559 @@ COMP "pulseC" LOCATE = SITE "P22" LEVEL 1;
 COMP "pulseD" LOCATE = SITE "P35" LEVEL 1;
 COMP "spi_miso" LOCATE = SITE "P45" LEVEL 1;
 COMP "spi_mosi" LOCATE = SITE "P44" LEVEL 1;
-TIMEGRP fast_clkout0 = BEL "ycompA/M_ctr_q_3" BEL "ycompA/M_ctr_q_2" BEL
-        "ycompA/M_ctr_q_0" BEL "ycompA/M_ctr_q_1" BEL "ycompA/M_state_q" BEL
-        "ycompB/M_ctr_q_3" BEL "ycompB/M_ctr_q_2" BEL "ycompB/M_ctr_q_0" BEL
-        "ycompB/M_ctr_q_1" BEL "ycompB/M_state_q" BEL "ycompC/M_ctr_q_3" BEL
-        "ycompC/M_ctr_q_2" BEL "ycompC/M_ctr_q_0" BEL "ycompC/M_ctr_q_1" BEL
-        "ycompC/M_state_q" BEL "ycompD/M_ctr_q_3" BEL "ycompD/M_ctr_q_2" BEL
-        "ycompD/M_ctr_q_0" BEL "ycompD/M_ctr_q_1" BEL "ycompD/M_state_q" BEL
-        "L_reg/M_addr_q_4_3" BEL "L_reg/M_addr_q_4_4" BEL "L_reg/M_addr_q_4_5"
-        BEL "L_reg/M_addr_q_4_6" BEL "L_reg/M_addr_q_4_7" BEL
-        "L_reg/M_addr_q_5_1" BEL "L_reg/M_addr_ct_q_0" BEL
-        "L_reg/M_addr_ct_q_1" BEL "L_reg/M_addr_ct_q_2" BEL
-        "L_reg/M_addr_ct_q_3" BEL "L_reg/M_addr_ct_q_4" BEL
-        "L_reg/M_addr_ct_q_5" BEL "L_reg/M_addr_q_0" BEL "L_reg/M_addr_q_1"
-        BEL "L_reg/M_addr_q_2" BEL "L_reg/M_addr_q_3" BEL "L_reg/M_addr_q_4"
-        BEL "L_reg/M_addr_q_5" BEL "L_reg/M_addr_q_6" BEL "L_reg/M_addr_q_7"
-        BEL "L_reg/M_addr_q_8" BEL "L_reg/M_addr_q_9" BEL "L_reg/M_data_q_0"
-        BEL "L_reg/M_data_q_1" BEL "L_reg/M_data_q_2" BEL "L_reg/M_data_q_3"
-        BEL "L_reg/M_data_q_4" BEL "L_reg/M_data_q_5" BEL "L_reg/M_data_q_6"
-        BEL "L_reg/M_data_q_7" BEL "L_reg/M_data_q_8" BEL "L_reg/M_data_q_9"
-        BEL "L_reg/M_byte_ct_q_0" BEL "L_reg/M_byte_ct_q_1" BEL
-        "L_reg/M_state_q_FSM_FFd1_1" BEL "L_reg/M_state_q_FSM_FFd1" BEL
-        "L_reg/M_state_q_FSM_FFd2" BEL "L_reg/M_state_q_FSM_FFd3" BEL
-        "L_reg/M_inc_q" BEL "L_reg/M_addr_q_10" BEL "L_reg/M_addr_q_11" BEL
-        "L_reg/M_addr_q_12" BEL "L_reg/M_addr_q_13" BEL "L_reg/M_addr_q_14"
-        BEL "L_reg/M_addr_q_20" BEL "L_reg/M_addr_q_15" BEL
-        "L_reg/M_addr_q_21" BEL "L_reg/M_addr_q_16" BEL "L_reg/M_addr_q_22"
-        BEL "L_reg/M_addr_q_17" BEL "L_reg/M_timeout_q_0" BEL
-        "L_reg/M_addr_q_23" BEL "L_reg/M_addr_q_18" BEL "L_reg/M_timeout_q_1"
-        BEL "L_reg/M_addr_q_24" BEL "L_reg/M_addr_q_19" BEL
-        "L_reg/M_timeout_q_2" BEL "L_reg/M_addr_q_30" BEL "L_reg/M_addr_q_25"
-        BEL "L_reg/M_timeout_q_3" BEL "L_reg/M_addr_q_31" BEL
-        "L_reg/M_addr_q_26" BEL "L_reg/M_timeout_q_4" BEL "L_reg/M_addr_q_27"
-        BEL "L_reg/M_timeout_q_5" BEL "L_reg/M_addr_q_28" BEL
-        "L_reg/M_timeout_q_6" BEL "L_reg/M_addr_q_29" BEL
-        "L_reg/M_timeout_q_7" BEL "L_reg/M_timeout_q_8" BEL
-        "L_reg/M_timeout_q_9" BEL "L_reg/M_timeout_q_10" BEL
-        "L_reg/M_timeout_q_11" BEL "L_reg/M_timeout_q_12" BEL
+TIMEGRP fast_clkout1 = BEL "ycompA/M_ctr_q_2" BEL "ycompA/M_ctr_q_1" BEL
+        "ycompA/M_ctr_q_3" BEL "ycompA/M_state_q" BEL "ycompA/M_ctr_q_0" BEL
+        "ycompB/M_ctr_q_2" BEL "ycompB/M_ctr_q_1" BEL "ycompB/M_ctr_q_3" BEL
+        "ycompB/M_state_q" BEL "ycompB/M_ctr_q_0" BEL "ycompC/M_ctr_q_2" BEL
+        "ycompC/M_ctr_q_1" BEL "ycompC/M_ctr_q_3" BEL "ycompC/M_state_q" BEL
+        "ycompC/M_ctr_q_0" BEL "ycompD/M_ctr_q_2" BEL "ycompD/M_ctr_q_1" BEL
+        "ycompD/M_ctr_q_3" BEL "ycompD/M_state_q" BEL "ycompD/M_ctr_q_0" BEL
+        "L_reg/M_byte_ct_q_0" BEL "L_reg/M_byte_ct_q_1" BEL "L_reg/M_wr_q" BEL
+        "L_reg/M_timeout_q_0" BEL "L_reg/M_timeout_q_1" BEL
+        "L_reg/M_timeout_q_2" BEL "L_reg/M_timeout_q_3" BEL
+        "L_reg/M_timeout_q_4" BEL "L_reg/M_timeout_q_5" BEL
+        "L_reg/M_timeout_q_6" BEL "L_reg/M_timeout_q_7" BEL
+        "L_reg/M_timeout_q_8" BEL "L_reg/M_timeout_q_9" BEL
+        "L_reg/M_addr_q_10" BEL "L_reg/M_addr_q_11" BEL "L_reg/M_addr_q_12"
+        BEL "L_reg/M_addr_q_13" BEL "L_reg/M_addr_q_14" BEL
+        "L_reg/M_addr_q_15" BEL "L_reg/M_addr_q_20" BEL "L_reg/M_addr_q_16"
+        BEL "L_reg/M_addr_q_21" BEL "L_reg/M_addr_q_17" BEL
+        "L_reg/M_addr_q_22" BEL "L_reg/M_addr_q_18" BEL "L_reg/M_addr_q_23"
+        BEL "L_reg/M_addr_q_19" BEL "L_reg/M_addr_q_24" BEL
+        "L_reg/M_addr_q_25" BEL "L_reg/M_addr_q_30" BEL "L_reg/M_addr_q_26"
+        BEL "L_reg/M_addr_q_31" BEL "L_reg/M_addr_q_27" BEL
+        "L_reg/M_addr_q_28" BEL "L_reg/M_addr_q_29" BEL
+        "L_reg/M_state_q_FSM_FFd1_1" BEL "L_reg/M_inc_q" BEL
+        "L_reg/M_addr_q_0" BEL "L_reg/M_addr_q_1" BEL "L_reg/M_addr_q_2" BEL
+        "L_reg/M_addr_q_3" BEL "L_reg/M_addr_q_4" BEL "L_reg/M_addr_q_5" BEL
+        "L_reg/M_addr_q_6" BEL "L_reg/M_addr_q_7" BEL "L_reg/M_addr_q_8" BEL
+        "L_reg/M_addr_q_9" BEL "L_reg/M_data_q_0" BEL "L_reg/M_data_q_1" BEL
+        "L_reg/M_data_q_2" BEL "L_reg/M_data_q_3" BEL "L_reg/M_data_q_4" BEL
+        "L_reg/M_data_q_5" BEL "L_reg/M_data_q_6" BEL "L_reg/M_data_q_7" BEL
+        "L_reg/M_data_q_8" BEL "L_reg/M_data_q_9" BEL "L_reg/M_timeout_q_10"
+        BEL "L_reg/M_timeout_q_11" BEL "L_reg/M_timeout_q_12" BEL
         "L_reg/M_timeout_q_13" BEL "L_reg/M_timeout_q_14" BEL
-        "L_reg/M_timeout_q_15" BEL "L_reg/M_timeout_q_20" BEL
-        "L_reg/M_timeout_q_16" BEL "L_reg/M_timeout_q_21" BEL
-        "L_reg/M_timeout_q_22" BEL "L_reg/M_timeout_q_17" BEL
-        "L_reg/M_timeout_q_18" BEL "L_reg/M_timeout_q_23" BEL
-        "L_reg/M_timeout_q_19" BEL "L_reg/M_timeout_q_24" BEL
+        "L_reg/M_timeout_q_20" BEL "L_reg/M_timeout_q_15" BEL
+        "L_reg/M_timeout_q_21" BEL "L_reg/M_timeout_q_16" BEL
+        "L_reg/M_timeout_q_17" BEL "L_reg/M_timeout_q_22" BEL
+        "L_reg/M_timeout_q_23" BEL "L_reg/M_timeout_q_18" BEL
+        "L_reg/M_timeout_q_24" BEL "L_reg/M_timeout_q_19" BEL
         "L_reg/M_timeout_q_25" BEL "L_reg/M_data_q_10" BEL "L_reg/M_data_q_11"
         BEL "L_reg/M_data_q_12" BEL "L_reg/M_data_q_13" BEL
-        "L_reg/M_data_q_14" BEL "L_reg/M_wr_q" BEL "L_reg/M_data_q_15" BEL
-        "L_reg/M_data_q_20" BEL "L_reg/M_data_q_21" BEL "L_reg/M_data_q_16"
-        BEL "L_reg/M_data_q_17" BEL "L_reg/M_data_q_22" BEL
-        "L_reg/M_data_q_18" BEL "L_reg/M_data_q_23" BEL "L_reg/M_data_q_19"
-        BEL "L_reg/M_data_q_24" BEL "L_reg/M_data_q_25" BEL
-        "L_reg/M_data_q_30" BEL "L_reg/M_data_q_26" BEL "L_reg/M_data_q_31"
-        BEL "L_reg/M_data_q_27" BEL "L_reg/M_data_q_28" BEL
-        "L_reg/M_data_q_29" BEL "L_reg/M_addr_q_2_1" BEL "L_reg/M_addr_q_2_2"
-        BEL "L_reg/M_addr_q_2_3" BEL "L_reg/M_addr_q_2_4" BEL
-        "L_reg/M_addr_q_2_5" BEL "L_reg/M_addr_q_2_6" BEL "L_reg/M_addr_q_3_1"
+        "L_reg/M_data_q_14" BEL "L_reg/M_data_q_20" BEL "L_reg/M_data_q_15"
+        BEL "L_reg/M_data_q_16" BEL "L_reg/M_data_q_21" BEL
+        "L_reg/M_data_q_22" BEL "L_reg/M_data_q_17" BEL "L_reg/M_data_q_23"
+        BEL "L_reg/M_data_q_18" BEL "L_reg/M_data_q_24" BEL
+        "L_reg/M_data_q_19" BEL "L_reg/M_data_q_30" BEL "L_reg/M_data_q_25"
+        BEL "L_reg/M_data_q_31" BEL "L_reg/M_data_q_26" BEL
+        "L_reg/M_data_q_27" BEL "L_reg/M_data_q_28" BEL "L_reg/M_data_q_29"
+        BEL "L_reg/M_addr_q_2_1" BEL "L_reg/M_addr_q_2_2" BEL
+        "L_reg/M_addr_q_2_3" BEL "L_reg/M_addr_q_2_4" BEL "L_reg/M_addr_q_3_1"
         BEL "L_reg/M_addr_q_3_2" BEL "L_reg/M_addr_q_3_3" BEL
         "L_reg/M_addr_q_3_4" BEL "L_reg/M_addr_q_3_5" BEL "L_reg/M_addr_q_3_6"
         BEL "L_reg/M_addr_q_4_1" BEL "L_reg/M_addr_q_4_2" BEL
+        "L_reg/M_addr_q_4_3" BEL "L_reg/M_addr_q_4_4" BEL "L_reg/M_addr_q_4_5"
+        BEL "L_reg/M_addr_q_4_6" BEL "L_reg/M_addr_q_5_1" BEL
+        "L_reg/M_state_q_FSM_FFd1" BEL "L_reg/M_state_q_FSM_FFd2" BEL
+        "L_reg/M_state_q_FSM_FFd3" BEL "L_reg/M_addr_ct_q_0" BEL
+        "L_reg/M_addr_ct_q_1" BEL "L_reg/M_addr_ct_q_2" BEL
+        "L_reg/M_addr_ct_q_3" BEL "L_reg/M_addr_ct_q_4" BEL
+        "L_reg/M_addr_ct_q_5" BEL "xcompABCD/M_ctr_q_2" BEL
+        "xcompABCD/M_ctr_q_1" BEL "xcompABCD/M_ctr_q_3" BEL
         "xcompABCD/M_state_q" BEL "xcompABCD/M_ctr_q_0" BEL
-        "ycompAB/M_ctr_q_3" BEL "ycompAB/M_ctr_q_2" BEL "ycompAB/M_ctr_q_0"
-        BEL "ycompAB/M_ctr_q_1" BEL "ycompAB/M_state_q" BEL
-        "ycompAC/M_ctr_q_3" BEL "ycompAC/M_ctr_q_2" BEL "ycompAC/M_ctr_q_0"
-        BEL "ycompAC/M_ctr_q_1" BEL "ycompAC/M_state_q" BEL
-        "ycompAD/M_ctr_q_3" BEL "ycompAD/M_ctr_q_2" BEL "ycompAD/M_ctr_q_0"
-        BEL "ycompAD/M_ctr_q_1" BEL "ycompAD/M_state_q" BEL
-        "ycompBC/M_ctr_q_3" BEL "ycompBC/M_ctr_q_2" BEL "ycompBC/M_ctr_q_0"
-        BEL "ycompBC/M_ctr_q_1" BEL "ycompBC/M_state_q" BEL
-        "ycompBD/M_ctr_q_3" BEL "ycompBD/M_ctr_q_2" BEL "ycompBD/M_ctr_q_0"
-        BEL "ycompBD/M_ctr_q_1" BEL "ycompBD/M_state_q" BEL
-        "ycompCD/M_ctr_q_3" BEL "ycompCD/M_ctr_q_2" BEL "ycompCD/M_ctr_q_0"
-        BEL "ycompCD/M_ctr_q_1" BEL "ycompCD/M_state_q" BEL "M_poll_flag_q"
+        "ycompAB/M_ctr_q_2" BEL "ycompAB/M_ctr_q_1" BEL "ycompAB/M_ctr_q_3"
+        BEL "ycompAB/M_state_q" BEL "ycompAB/M_ctr_q_0" BEL
+        "ycompAC/M_ctr_q_2" BEL "ycompAC/M_ctr_q_1" BEL "ycompAC/M_ctr_q_3"
+        BEL "ycompAC/M_state_q" BEL "ycompAC/M_ctr_q_0" BEL
+        "ycompAD/M_ctr_q_2" BEL "ycompAD/M_ctr_q_1" BEL "ycompAD/M_ctr_q_3"
+        BEL "ycompAD/M_state_q" BEL "ycompAD/M_ctr_q_0" BEL
+        "ycompBC/M_ctr_q_2" BEL "ycompBC/M_ctr_q_1" BEL "ycompBC/M_ctr_q_3"
+        BEL "ycompBC/M_state_q" BEL "ycompBC/M_ctr_q_0" BEL
+        "ycompBD/M_ctr_q_2" BEL "ycompBD/M_ctr_q_1" BEL "ycompBD/M_ctr_q_3"
+        BEL "ycompBD/M_state_q" BEL "ycompBD/M_ctr_q_0" BEL
+        "ycompCD/M_ctr_q_2" BEL "ycompCD/M_ctr_q_1" BEL "ycompCD/M_ctr_q_3"
+        BEL "ycompCD/M_state_q" BEL "ycompCD/M_ctr_q_0" BEL "M_poll_flag_q"
         BEL "avr/M_block_q_3" BEL "avr/M_busy_q" BEL "avr/M_block_q_2" BEL
         "avr/spi_slave/M_ss_reg_q" BEL "avr/spi_slave/M_sck_reg_q_1" BEL
         "avr/spi_slave/M_sck_reg_q_0" BEL "avr/spi_slave/M_miso_reg_q" BEL
         "avr/spi_slave/M_bit_ct_q_2" BEL "avr/spi_slave/M_bit_ct_q_1" BEL
         "avr/spi_slave/M_bit_ct_q_0" BEL "avr/spi_slave/M_data_q_0" BEL
-        "avr/cclk_detector/M_ctr_q_14" BEL "avr/cclk_detector/M_ctr_q_13" BEL
-        "avr/cclk_detector/M_ctr_q_12" BEL "avr/cclk_detector/M_ctr_q_11" BEL
-        "avr/cclk_detector/M_ctr_q_10" BEL "avr/cclk_detector/M_ctr_q_9" BEL
-        "avr/cclk_detector/M_ctr_q_8" BEL "avr/cclk_detector/M_ctr_q_7" BEL
-        "avr/cclk_detector/M_ctr_q_6" BEL "avr/cclk_detector/M_ctr_q_5" BEL
-        "avr/cclk_detector/M_ctr_q_4" BEL "avr/cclk_detector/M_ctr_q_3" BEL
-        "avr/cclk_detector/M_ctr_q_1" BEL "avr/cclk_detector/M_ctr_q_0" BEL
-        "avr/cclk_detector/M_ctr_q_2" BEL "avr/uart_rx/M_bitCtr_q_2" BEL
-        "avr/uart_rx/M_bitCtr_q_1" BEL "avr/uart_rx/M_state_q_FSM_FFd2" BEL
-        "avr/uart_rx/M_ctr_q_8" BEL "avr/uart_rx/M_ctr_q_7" BEL
-        "avr/uart_rx/M_ctr_q_6" BEL "avr/uart_rx/M_ctr_q_5" BEL
-        "avr/uart_rx/M_ctr_q_4" BEL "avr/uart_rx/M_ctr_q_3" BEL
-        "avr/uart_rx/M_ctr_q_2" BEL "avr/uart_rx/M_ctr_q_1" BEL
-        "avr/uart_rx/M_ctr_q_0" BEL "avr/uart_rx/M_savedData_q_7" BEL
-        "avr/uart_rx/M_savedData_q_6" BEL "avr/uart_rx/M_savedData_q_5" BEL
-        "avr/uart_rx/M_savedData_q_4" BEL "avr/uart_rx/M_savedData_q_3" BEL
-        "avr/uart_rx/M_savedData_q_2" BEL "avr/uart_rx/M_savedData_q_1" BEL
-        "avr/uart_rx/M_savedData_q_0" BEL "avr/uart_rx/M_rxd_q" BEL
-        "avr/uart_rx/M_newData_q" BEL "avr/uart_rx/M_bitCtr_q_0" BEL
-        "avr/uart_rx/M_state_q_FSM_FFd1" BEL "avr/uart_tx/M_state_q_FSM_FFd2"
-        BEL "avr/uart_tx/M_bitCtr_q_2" BEL "avr/uart_tx/M_bitCtr_q_1" BEL
-        "avr/uart_tx/M_bitCtr_q_0" BEL "avr/uart_tx/M_ctr_q_8" BEL
-        "avr/uart_tx/M_ctr_q_7" BEL "avr/uart_tx/M_ctr_q_6" BEL
-        "avr/uart_tx/M_ctr_q_5" BEL "avr/uart_tx/M_ctr_q_4" BEL
-        "avr/uart_tx/M_ctr_q_3" BEL "avr/uart_tx/M_ctr_q_2" BEL
-        "avr/uart_tx/M_ctr_q_1" BEL "avr/uart_tx/M_ctr_q_0" BEL
-        "avr/uart_tx/M_txReg_q" BEL "avr/uart_tx/M_savedData_q_7" BEL
-        "avr/uart_tx/M_savedData_q_6" BEL "avr/uart_tx/M_savedData_q_5" BEL
-        "avr/uart_tx/M_savedData_q_4" BEL "avr/uart_tx/M_savedData_q_3" BEL
-        "avr/uart_tx/M_savedData_q_2" BEL "avr/uart_tx/M_savedData_q_1" BEL
-        "avr/uart_tx/M_savedData_q_0" BEL "avr/uart_tx/M_blockFlag_q" BEL
-        "avr/uart_tx/M_state_q_FSM_FFd1" BEL "avr/Mshreg_M_block_q_2" BEL
-        "M_count_store_q_0" BEL "M_count_store_q_1" BEL "M_count_store_q_2"
-        BEL "M_count_store_q_3" BEL "M_count_store_q_4" BEL
-        "M_count_store_q_5" BEL "M_count_store_q_6" BEL "M_count_store_q_7"
-        BEL "M_count_store_q_8" BEL "M_count_store_q_9" BEL "tmr/M_ctr_q_2"
-        BEL "tmr/M_ctr_q_0" BEL "tmr/M_ctr_q_1" BEL "tmr/M_ctr_q_5" BEL
-        "tmr/M_ctr_q_3" BEL "tmr/M_ctr_q_4" BEL "tmr/M_ctr_q_8" BEL
-        "tmr/M_ctr_q_6" BEL "tmr/M_ctr_q_7" BEL "tmr/M_ctr_q_9" BEL
-        "tmr/M_ctr_q_10" BEL "tmr/M_ctr_q_11" BEL "tmr/M_ctr_q_12" BEL
-        "tmr/M_ctr_q_15" BEL "tmr/M_ctr_q_13" BEL "tmr/M_ctr_q_14" BEL
-        "tmr/M_ctr_q_18" BEL "tmr/M_ctr_q_16" BEL "tmr/M_ctr_q_17" BEL
-        "tmr/M_ctr_q_21" BEL "tmr/M_ctr_q_19" BEL "tmr/M_ctr_q_20" BEL
-        "tmr/M_ctr_q_22" BEL "tmr/M_ctr_q_23" BEL "tmr/M_ctr_q_14_1" BEL
-        "tmr/M_ctr_q_13_1" BEL "tmr/M_ctr_q_12_1" BEL "tmr/M_ctr_q_16_1" BEL
-        "tmr/M_ctr_q_17_1" BEL "tmr/M_ctr_q_19_1" BEL "M_pulse_length_q_0" BEL
-        "M_pulse_length_q_1" BEL "M_pulse_length_q_2" BEL "M_pulse_length_q_3"
-        BEL "M_pulse_length_q_4" BEL "M_pulse_length_q_5" BEL
-        "M_pulse_length_q_6" BEL "M_pulse_length_q_7" BEL
-        "M_count_store_q_100" BEL "M_count_store_q_101" BEL
-        "M_count_store_q_102" BEL "M_count_store_q_103" BEL
-        "M_count_store_q_104" BEL "M_count_store_q_105" BEL
-        "M_count_store_q_110" BEL "M_count_store_q_106" BEL
-        "M_count_store_q_111" BEL "M_count_store_q_107" BEL
-        "M_count_store_q_112" BEL "M_count_store_q_108" BEL
-        "M_count_store_q_113" BEL "M_count_store_q_109" BEL
-        "M_count_store_q_114" BEL "M_count_store_q_115" BEL
-        "M_count_store_q_120" BEL "M_count_store_q_116" BEL
-        "M_count_store_q_121" BEL "M_count_store_q_117" BEL
-        "M_count_store_q_122" BEL "M_count_store_q_118" BEL
-        "M_count_store_q_123" BEL "M_count_store_q_119" BEL
-        "M_count_store_q_124" BEL "M_count_store_q_125" BEL
-        "M_count_store_q_130" BEL "M_count_store_q_126" BEL
-        "M_count_store_q_131" BEL "M_count_store_q_127" BEL
-        "M_count_store_q_132" BEL "M_count_store_q_128" BEL
-        "M_count_store_q_133" BEL "M_count_store_q_129" BEL
-        "M_count_store_q_134" BEL "M_count_store_q_135" BEL
-        "M_count_store_q_140" BEL "M_count_store_q_136" BEL
-        "M_count_store_q_141" BEL "M_count_store_q_137" BEL
-        "M_count_store_q_142" BEL "M_count_store_q_138" BEL
-        "M_count_store_q_143" BEL "M_count_store_q_144" BEL
-        "M_count_store_q_139" BEL "M_count_store_q_200" BEL
-        "M_count_store_q_150" BEL "M_count_store_q_145" BEL
-        "M_count_store_q_201" BEL "M_count_store_q_151" BEL
-        "M_count_store_q_146" BEL "M_count_store_q_202" BEL
-        "M_count_store_q_152" BEL "M_count_store_q_147" BEL
-        "M_count_store_q_203" BEL "M_count_store_q_153" BEL
-        "M_count_store_q_148" BEL "M_count_store_q_204" BEL
-        "M_count_store_q_154" BEL "M_count_store_q_149" BEL
-        "M_count_store_q_210" BEL "M_count_store_q_205" BEL
-        "M_count_store_q_160" BEL "M_count_store_q_155" BEL
-        "M_count_store_q_211" BEL "M_count_store_q_206" BEL
-        "M_count_store_q_161" BEL "M_count_store_q_156" BEL
-        "M_count_store_q_157" BEL "M_count_store_q_212" BEL
-        "M_count_store_q_207" BEL "M_count_store_q_162" BEL
-        "M_count_store_q_158" BEL "M_count_store_q_213" BEL
-        "M_count_store_q_208" BEL "M_count_store_q_163" BEL
-        "M_count_store_q_159" BEL "M_count_store_q_214" BEL
-        "M_count_store_q_209" BEL "M_count_store_q_164" BEL
-        "M_count_store_q_165" BEL "M_count_store_q_220" BEL
-        "M_count_store_q_215" BEL "M_count_store_q_170" BEL
-        "M_count_store_q_166" BEL "M_count_store_q_221" BEL
-        "M_count_store_q_216" BEL "M_count_store_q_171" BEL
-        "M_count_store_q_167" BEL "M_count_store_q_222" BEL
-        "M_count_store_q_217" BEL "M_count_store_q_172" BEL
-        "M_count_store_q_168" BEL "M_count_store_q_223" BEL
-        "M_count_store_q_218" BEL "M_count_store_q_173" BEL
-        "M_count_store_q_169" BEL "M_count_store_q_224" BEL
-        "M_count_store_q_219" BEL "M_count_store_q_174" BEL
-        "M_count_store_q_175" BEL "M_count_store_q_230" BEL
-        "M_count_store_q_225" BEL "M_count_store_q_180" BEL
-        "M_count_store_q_176" BEL "M_count_store_q_231" BEL
-        "M_count_store_q_226" BEL "M_count_store_q_181" BEL
-        "M_count_store_q_177" BEL "M_count_store_q_232" BEL
-        "M_count_store_q_227" BEL "M_count_store_q_182" BEL
-        "M_count_store_q_178" BEL "M_count_store_q_233" BEL
-        "M_count_store_q_228" BEL "M_count_store_q_183" BEL
-        "M_count_store_q_179" BEL "M_count_store_q_234" BEL
-        "M_count_store_q_229" BEL "M_count_store_q_184" BEL
-        "M_count_store_q_185" BEL "M_count_store_q_240" BEL
-        "M_count_store_q_235" BEL "M_count_store_q_190" BEL
-        "M_count_store_q_186" BEL "M_count_store_q_241" BEL
-        "M_count_store_q_236" BEL "M_count_store_q_191" BEL
-        "M_count_store_q_187" BEL "M_count_store_q_242" BEL
-        "M_count_store_q_237" BEL "M_count_store_q_192" BEL
-        "M_count_store_q_188" BEL "M_count_store_q_243" BEL
-        "M_count_store_q_238" BEL "M_count_store_q_193" BEL
-        "M_count_store_q_189" BEL "M_count_store_q_244" BEL
-        "M_count_store_q_239" BEL "M_count_store_q_194" BEL
-        "M_count_store_q_195" BEL "M_count_store_q_300" BEL
-        "M_count_store_q_250" BEL "M_count_store_q_245" BEL
-        "M_count_store_q_196" BEL "M_count_store_q_301" BEL
-        "M_count_store_q_251" BEL "M_count_store_q_246" BEL
-        "M_count_store_q_197" BEL "M_count_store_q_302" BEL
-        "M_count_store_q_252" BEL "M_count_store_q_247" BEL
-        "M_count_store_q_198" BEL "M_count_store_q_303" BEL
-        "M_count_store_q_253" BEL "M_count_store_q_248" BEL
-        "M_count_store_q_199" BEL "M_count_store_q_304" BEL
-        "M_count_store_q_254" BEL "M_count_store_q_249" BEL
-        "M_count_store_q_255" BEL "M_count_store_q_310" BEL
-        "M_count_store_q_305" BEL "M_count_store_q_260" BEL
-        "M_count_store_q_256" BEL "M_count_store_q_311" BEL
-        "M_count_store_q_306" BEL "M_count_store_q_261" BEL
-        "M_count_store_q_257" BEL "M_count_store_q_312" BEL
-        "M_count_store_q_307" BEL "M_count_store_q_262" BEL
-        "M_count_store_q_258" BEL "M_count_store_q_313" BEL
-        "M_count_store_q_308" BEL "M_count_store_q_263" BEL
-        "M_count_store_q_259" BEL "M_count_store_q_314" BEL
-        "M_count_store_q_309" BEL "M_count_store_q_264" BEL
-        "M_count_store_q_265" BEL "M_count_store_q_320" BEL
-        "M_count_store_q_315" BEL "M_count_store_q_270" BEL
-        "M_count_store_q_266" BEL "M_count_store_q_321" BEL
-        "M_count_store_q_316" BEL "M_count_store_q_271" BEL
-        "M_count_store_q_267" BEL "M_count_store_q_322" BEL
-        "M_count_store_q_317" BEL "M_count_store_q_272" BEL
-        "M_count_store_q_268" BEL "M_count_store_q_323" BEL
-        "M_count_store_q_318" BEL "M_count_store_q_273" BEL
-        "M_count_store_q_269" BEL "M_count_store_q_324" BEL
-        "M_count_store_q_319" BEL "M_count_store_q_274" BEL
-        "M_count_store_q_275" BEL "M_count_store_q_330" BEL
-        "M_count_store_q_325" BEL "M_count_store_q_280" BEL
-        "M_count_store_q_276" BEL "M_count_store_q_331" BEL
-        "M_count_store_q_326" BEL "M_count_store_q_281" BEL
-        "M_count_store_q_277" BEL "M_count_store_q_332" BEL
-        "M_count_store_q_327" BEL "M_count_store_q_282" BEL
-        "M_count_store_q_278" BEL "M_count_store_q_333" BEL
-        "M_count_store_q_328" BEL "M_count_store_q_283" BEL
-        "M_count_store_q_279" BEL "M_count_store_q_334" BEL
-        "M_count_store_q_329" BEL "M_count_store_q_284" BEL
-        "M_count_store_q_285" BEL "M_count_store_q_340" BEL
-        "M_count_store_q_335" BEL "M_count_store_q_290" BEL
-        "M_count_store_q_286" BEL "M_count_store_q_341" BEL
-        "M_count_store_q_336" BEL "M_count_store_q_291" BEL
-        "M_count_store_q_287" BEL "M_count_store_q_342" BEL
-        "M_count_store_q_337" BEL "M_count_store_q_292" BEL
-        "M_count_store_q_288" BEL "M_count_store_q_343" BEL
-        "M_count_store_q_338" BEL "M_count_store_q_293" BEL
-        "M_count_store_q_289" BEL "M_count_store_q_344" BEL
-        "M_count_store_q_339" BEL "M_count_store_q_294" BEL
-        "M_count_store_q_295" BEL "M_count_store_q_350" BEL
-        "M_count_store_q_400" BEL "M_count_store_q_345" BEL
-        "M_count_store_q_296" BEL "M_count_store_q_351" BEL
-        "M_count_store_q_401" BEL "M_count_store_q_346" BEL
-        "M_count_store_q_297" BEL "M_count_store_q_352" BEL
-        "M_count_store_q_402" BEL "M_count_store_q_347" BEL
-        "M_count_store_q_298" BEL "M_count_store_q_353" BEL
-        "M_count_store_q_403" BEL "M_count_store_q_348" BEL
-        "M_count_store_q_299" BEL "M_count_store_q_354" BEL
-        "M_count_store_q_404" BEL "M_count_store_q_349" BEL
-        "M_count_store_q_355" BEL "M_count_store_q_405" BEL
-        "M_count_store_q_410" BEL "M_count_store_q_360" BEL
-        "M_count_store_q_356" BEL "M_count_store_q_406" BEL
-        "M_count_store_q_411" BEL "M_count_store_q_361" BEL
-        "M_count_store_q_357" BEL "M_count_store_q_407" BEL
-        "M_count_store_q_412" BEL "M_count_store_q_362" BEL
-        "M_count_store_q_358" BEL "M_count_store_q_408" BEL
-        "M_count_store_q_413" BEL "M_count_store_q_363" BEL
-        "M_count_store_q_359" BEL "M_count_store_q_409" BEL
-        "M_count_store_q_414" BEL "M_count_store_q_364" BEL
-        "M_count_store_q_365" BEL "M_count_store_q_415" BEL
-        "M_count_store_q_420" BEL "M_count_store_q_370" BEL
-        "M_count_store_q_371" BEL "M_count_store_q_416" BEL
-        "M_count_store_q_421" BEL "M_count_store_q_366" BEL
-        "M_count_store_q_372" BEL "M_count_store_q_417" BEL
-        "M_count_store_q_422" BEL "M_count_store_q_367" BEL
-        "M_count_store_q_373" BEL "M_count_store_q_418" BEL
-        "M_count_store_q_423" BEL "M_count_store_q_368" BEL
-        "M_count_store_q_374" BEL "M_count_store_q_419" BEL
-        "M_count_store_q_424" BEL "M_count_store_q_369" BEL
-        "M_count_store_q_380" BEL "M_count_store_q_425" BEL
-        "M_count_store_q_430" BEL "M_count_store_q_375" BEL
-        "M_count_store_q_381" BEL "M_count_store_q_426" BEL
-        "M_count_store_q_431" BEL "M_count_store_q_376" BEL
-        "M_count_store_q_382" BEL "M_count_store_q_427" BEL
-        "M_count_store_q_432" BEL "M_count_store_q_377" BEL
-        "M_count_store_q_383" BEL "M_count_store_q_428" BEL
-        "M_count_store_q_433" BEL "M_count_store_q_378" BEL
-        "M_count_store_q_384" BEL "M_count_store_q_429" BEL
-        "M_count_store_q_434" BEL "M_count_store_q_379" BEL
-        "M_count_store_q_390" BEL "M_count_store_q_435" BEL
-        "M_count_store_q_440" BEL "M_count_store_q_385" BEL
-        "M_count_store_q_391" BEL "M_count_store_q_436" BEL
-        "M_count_store_q_441" BEL "M_count_store_q_386" BEL
-        "M_count_store_q_392" BEL "M_count_store_q_437" BEL
-        "M_count_store_q_442" BEL "M_count_store_q_387" BEL
-        "M_count_store_q_393" BEL "M_count_store_q_438" BEL
-        "M_count_store_q_443" BEL "M_count_store_q_388" BEL
-        "M_count_store_q_394" BEL "M_count_store_q_439" BEL
-        "M_count_store_q_444" BEL "M_count_store_q_389" BEL
-        "M_count_store_q_445" BEL "M_count_store_q_450" BEL
-        "M_count_store_q_500" BEL "M_count_store_q_395" BEL
-        "M_count_store_q_446" BEL "M_count_store_q_451" BEL
-        "M_count_store_q_501" BEL "M_count_store_q_396" BEL
-        "M_count_store_q_447" BEL "M_count_store_q_452" BEL
-        "M_count_store_q_502" BEL "M_count_store_q_397" BEL
-        "M_count_store_q_448" BEL "M_count_store_q_453" BEL
-        "M_count_store_q_503" BEL "M_count_store_q_398" BEL
-        "M_count_store_q_449" BEL "M_count_store_q_454" BEL
-        "M_count_store_q_504" BEL "M_count_store_q_399" BEL
-        "M_count_store_q_460" BEL "M_count_store_q_505" BEL
-        "M_count_store_q_510" BEL "M_count_store_q_455" BEL
-        "M_count_store_q_461" BEL "M_count_store_q_506" BEL
-        "M_count_store_q_511" BEL "M_count_store_q_456" BEL
-        "M_count_store_q_462" BEL "M_count_store_q_507" BEL
-        "M_count_store_q_512" BEL "M_count_store_q_457" BEL
-        "M_count_store_q_463" BEL "M_count_store_q_508" BEL
-        "M_count_store_q_513" BEL "M_count_store_q_458" BEL
-        "M_count_store_q_464" BEL "M_count_store_q_509" BEL
-        "M_count_store_q_514" BEL "M_count_store_q_459" BEL
-        "M_count_store_q_470" BEL "M_count_store_q_515" BEL
-        "M_count_store_q_520" BEL "M_count_store_q_465" BEL
-        "M_count_store_q_471" BEL "M_count_store_q_516" BEL
-        "M_count_store_q_521" BEL "M_count_store_q_466" BEL
-        "M_count_store_q_472" BEL "M_count_store_q_517" BEL
-        "M_count_store_q_522" BEL "M_count_store_q_467" BEL
-        "M_count_store_q_473" BEL "M_count_store_q_518" BEL
-        "M_count_store_q_523" BEL "M_count_store_q_468" BEL
-        "M_count_store_q_474" BEL "M_count_store_q_519" BEL
-        "M_count_store_q_524" BEL "M_count_store_q_469" BEL
-        "M_count_store_q_480" BEL "M_count_store_q_525" BEL
-        "M_count_store_q_530" BEL "M_count_store_q_475" BEL
-        "M_count_store_q_481" BEL "M_count_store_q_526" BEL
-        "M_count_store_q_531" BEL "M_count_store_q_476" BEL
-        "M_count_store_q_482" BEL "M_count_store_q_527" BEL
-        "M_count_store_q_532" BEL "M_count_store_q_477" BEL
-        "M_count_store_q_483" BEL "M_count_store_q_528" BEL
-        "M_count_store_q_533" BEL "M_count_store_q_478" BEL
-        "M_count_store_q_484" BEL "M_count_store_q_529" BEL
-        "M_count_store_q_534" BEL "M_count_store_q_479" BEL
-        "M_count_store_q_490" BEL "M_count_store_q_535" BEL
-        "M_count_store_q_540" BEL "M_count_store_q_485" BEL
-        "M_count_store_q_491" BEL "M_count_store_q_536" BEL
-        "M_count_store_q_541" BEL "M_count_store_q_486" BEL
-        "M_count_store_q_492" BEL "M_count_store_q_537" BEL
-        "M_count_store_q_542" BEL "M_count_store_q_487" BEL
-        "M_count_store_q_493" BEL "M_count_store_q_538" BEL
-        "M_count_store_q_543" BEL "M_count_store_q_488" BEL
-        "M_count_store_q_494" BEL "M_count_store_q_539" BEL
-        "M_count_store_q_544" BEL "M_count_store_q_489" BEL
-        "M_count_store_q_545" BEL "M_count_store_q_550" BEL
-        "M_count_store_q_600" BEL "M_count_store_q_495" BEL
-        "M_count_store_q_546" BEL "M_count_store_q_551" BEL
-        "M_count_store_q_601" BEL "M_count_store_q_496" BEL
-        "M_count_store_q_547" BEL "M_count_store_q_552" BEL
-        "M_count_store_q_602" BEL "M_count_store_q_497" BEL
-        "M_count_store_q_548" BEL "M_count_store_q_553" BEL
-        "M_count_store_q_603" BEL "M_count_store_q_498" BEL
-        "M_count_store_q_549" BEL "M_count_store_q_554" BEL
-        "M_count_store_q_604" BEL "M_count_store_q_499" BEL
-        "M_count_store_q_560" BEL "M_count_store_q_605" BEL
-        "M_count_store_q_610" BEL "M_count_store_q_555" BEL
-        "M_count_store_q_561" BEL "M_count_store_q_606" BEL
-        "M_count_store_q_611" BEL "M_count_store_q_556" BEL
-        "M_count_store_q_562" BEL "M_count_store_q_607" BEL
-        "M_count_store_q_612" BEL "M_count_store_q_557" BEL
-        "M_count_store_q_563" BEL "M_count_store_q_608" BEL
-        "M_count_store_q_613" BEL "M_count_store_q_558" BEL
-        "M_count_store_q_564" BEL "M_count_store_q_609" BEL
-        "M_count_store_q_614" BEL "M_count_store_q_559" BEL
-        "M_count_store_q_570" BEL "M_count_store_q_615" BEL
-        "M_count_store_q_620" BEL "M_count_store_q_565" BEL
-        "M_count_store_q_571" BEL "M_count_store_q_616" BEL
-        "M_count_store_q_621" BEL "M_count_store_q_566" BEL
-        "M_count_store_q_572" BEL "M_count_store_q_617" BEL
-        "M_count_store_q_622" BEL "M_count_store_q_567" BEL
-        "M_count_store_q_573" BEL "M_count_store_q_618" BEL
-        "M_count_store_q_623" BEL "M_count_store_q_568" BEL
-        "M_count_store_q_574" BEL "M_count_store_q_619" BEL
-        "M_count_store_q_624" BEL "M_count_store_q_569" BEL
-        "M_count_store_q_580" BEL "M_count_store_q_625" BEL
-        "M_count_store_q_630" BEL "M_count_store_q_575" BEL
-        "M_count_store_q_581" BEL "M_count_store_q_626" BEL
-        "M_count_store_q_631" BEL "M_count_store_q_576" BEL
-        "M_count_store_q_582" BEL "M_count_store_q_627" BEL
-        "M_count_store_q_632" BEL "M_count_store_q_577" BEL
-        "M_count_store_q_583" BEL "M_count_store_q_628" BEL
-        "M_count_store_q_633" BEL "M_count_store_q_578" BEL
-        "M_count_store_q_579" BEL "M_count_store_q_584" BEL
-        "M_count_store_q_629" BEL "M_count_store_q_634" BEL
-        "M_count_store_q_585" BEL "M_count_store_q_590" BEL
-        "M_count_store_q_635" BEL "M_count_store_q_640" BEL
-        "M_count_store_q_586" BEL "M_count_store_q_591" BEL
-        "M_count_store_q_636" BEL "M_count_store_q_641" BEL
-        "M_count_store_q_587" BEL "M_count_store_q_592" BEL
-        "M_count_store_q_637" BEL "M_count_store_q_642" BEL
-        "M_count_store_q_588" BEL "M_count_store_q_593" BEL
-        "M_count_store_q_638" BEL "M_count_store_q_643" BEL
-        "M_count_store_q_589" BEL "M_count_store_q_594" BEL
-        "M_count_store_q_639" BEL "M_count_store_q_644" BEL
-        "M_count_store_q_595" BEL "M_count_store_q_645" BEL
-        "M_count_store_q_650" BEL "M_count_store_q_596" BEL
+        "avr/cclk_detector/M_ctr_q_15" BEL "avr/cclk_detector/M_ctr_q_14" BEL
+        "avr/cclk_detector/M_ctr_q_13" BEL "avr/cclk_detector/M_ctr_q_12" BEL
+        "avr/cclk_detector/M_ctr_q_11" BEL "avr/cclk_detector/M_ctr_q_10" BEL
+        "avr/cclk_detector/M_ctr_q_9" BEL "avr/cclk_detector/M_ctr_q_8" BEL
+        "avr/cclk_detector/M_ctr_q_7" BEL "avr/cclk_detector/M_ctr_q_6" BEL
+        "avr/cclk_detector/M_ctr_q_5" BEL "avr/cclk_detector/M_ctr_q_4" BEL
+        "avr/cclk_detector/M_ctr_q_2" BEL "avr/cclk_detector/M_ctr_q_1" BEL
+        "avr/cclk_detector/M_ctr_q_3" BEL "avr/cclk_detector/M_ctr_q_0" BEL
+        "avr/uart_rx/M_bitCtr_q_2" BEL "avr/uart_rx/M_bitCtr_q_1" BEL
+        "avr/uart_rx/M_state_q_FSM_FFd2" BEL "avr/uart_rx/M_ctr_q_8" BEL
+        "avr/uart_rx/M_ctr_q_7" BEL "avr/uart_rx/M_ctr_q_6" BEL
+        "avr/uart_rx/M_ctr_q_5" BEL "avr/uart_rx/M_ctr_q_4" BEL
+        "avr/uart_rx/M_ctr_q_3" BEL "avr/uart_rx/M_ctr_q_2" BEL
+        "avr/uart_rx/M_ctr_q_1" BEL "avr/uart_rx/M_ctr_q_0" BEL
+        "avr/uart_rx/M_savedData_q_7" BEL "avr/uart_rx/M_savedData_q_6" BEL
+        "avr/uart_rx/M_savedData_q_5" BEL "avr/uart_rx/M_savedData_q_4" BEL
+        "avr/uart_rx/M_savedData_q_3" BEL "avr/uart_rx/M_savedData_q_2" BEL
+        "avr/uart_rx/M_savedData_q_1" BEL "avr/uart_rx/M_savedData_q_0" BEL
+        "avr/uart_rx/M_rxd_q" BEL "avr/uart_rx/M_newData_q" BEL
+        "avr/uart_rx/M_bitCtr_q_0" BEL "avr/uart_rx/M_state_q_FSM_FFd1" BEL
+        "avr/uart_tx/M_state_q_FSM_FFd2" BEL "avr/uart_tx/M_bitCtr_q_2" BEL
+        "avr/uart_tx/M_bitCtr_q_1" BEL "avr/uart_tx/M_bitCtr_q_0" BEL
+        "avr/uart_tx/M_ctr_q_8" BEL "avr/uart_tx/M_ctr_q_7" BEL
+        "avr/uart_tx/M_ctr_q_6" BEL "avr/uart_tx/M_ctr_q_5" BEL
+        "avr/uart_tx/M_ctr_q_4" BEL "avr/uart_tx/M_ctr_q_3" BEL
+        "avr/uart_tx/M_ctr_q_2" BEL "avr/uart_tx/M_ctr_q_1" BEL
+        "avr/uart_tx/M_ctr_q_0" BEL "avr/uart_tx/M_txReg_q" BEL
+        "avr/uart_tx/M_savedData_q_7" BEL "avr/uart_tx/M_savedData_q_6" BEL
+        "avr/uart_tx/M_savedData_q_5" BEL "avr/uart_tx/M_savedData_q_4" BEL
+        "avr/uart_tx/M_savedData_q_3" BEL "avr/uart_tx/M_savedData_q_2" BEL
+        "avr/uart_tx/M_savedData_q_1" BEL "avr/uart_tx/M_savedData_q_0" BEL
+        "avr/uart_tx/M_blockFlag_q" BEL "avr/uart_tx/M_state_q_FSM_FFd1" BEL
+        "avr/Mshreg_M_block_q_2" BEL "M_count_store_q_0" BEL
+        "M_count_store_q_1" BEL "M_count_store_q_2" BEL "M_count_store_q_3"
+        BEL "M_count_store_q_4" BEL "M_count_store_q_5" BEL
+        "M_count_store_q_6" BEL "M_count_store_q_7" BEL "M_count_store_q_8"
+        BEL "M_count_store_q_9" BEL "tmr/M_ctr_q_0" BEL "tmr/M_ctr_q_1" BEL
+        "tmr/M_ctr_q_2" BEL "tmr/M_ctr_q_3" BEL "tmr/M_ctr_q_6" BEL
+        "tmr/M_ctr_q_4" BEL "tmr/M_ctr_q_5" BEL "tmr/M_ctr_q_7" BEL
+        "tmr/M_ctr_q_8" BEL "tmr/M_ctr_q_9" BEL "tmr/M_ctr_q_10" BEL
+        "tmr/M_ctr_q_13" BEL "tmr/M_ctr_q_11" BEL "tmr/M_ctr_q_12" BEL
+        "tmr/M_ctr_q_14" BEL "tmr/M_ctr_q_15" BEL "tmr/M_ctr_q_16" BEL
+        "tmr/M_ctr_q_17" BEL "tmr/M_ctr_q_20" BEL "tmr/M_ctr_q_18" BEL
+        "tmr/M_ctr_q_19" BEL "tmr/M_ctr_q_23" BEL "tmr/M_ctr_q_21" BEL
+        "tmr/M_ctr_q_22" BEL "tmr/M_ctr_q_26" BEL "tmr/M_ctr_q_24" BEL
+        "tmr/M_ctr_q_25" BEL "M_pulse_length_q_0" BEL "M_pulse_length_q_1" BEL
+        "M_pulse_length_q_2" BEL "M_pulse_length_q_3" BEL "M_pulse_length_q_4"
+        BEL "M_pulse_length_q_5" BEL "M_pulse_length_q_6" BEL
+        "M_pulse_length_q_7" BEL "M_count_store_q_100" BEL
+        "M_count_store_q_101" BEL "M_count_store_q_102" BEL
+        "M_count_store_q_103" BEL "M_count_store_q_104" BEL
+        "M_count_store_q_105" BEL "M_count_store_q_110" BEL
+        "M_count_store_q_106" BEL "M_count_store_q_111" BEL
+        "M_count_store_q_107" BEL "M_count_store_q_112" BEL
+        "M_count_store_q_108" BEL "M_count_store_q_113" BEL
+        "M_count_store_q_109" BEL "M_count_store_q_114" BEL
+        "M_count_store_q_115" BEL "M_count_store_q_120" BEL
+        "M_count_store_q_116" BEL "M_count_store_q_121" BEL
+        "M_count_store_q_117" BEL "M_count_store_q_122" BEL
+        "M_count_store_q_118" BEL "M_count_store_q_123" BEL
+        "M_count_store_q_119" BEL "M_count_store_q_124" BEL
+        "M_count_store_q_125" BEL "M_count_store_q_130" BEL
+        "M_count_store_q_126" BEL "M_count_store_q_131" BEL
+        "M_count_store_q_127" BEL "M_count_store_q_132" BEL
+        "M_count_store_q_128" BEL "M_count_store_q_133" BEL
+        "M_count_store_q_129" BEL "M_count_store_q_134" BEL
+        "M_count_store_q_135" BEL "M_count_store_q_140" BEL
+        "M_count_store_q_136" BEL "M_count_store_q_141" BEL
+        "M_count_store_q_137" BEL "M_count_store_q_142" BEL
+        "M_count_store_q_138" BEL "M_count_store_q_143" BEL
+        "M_count_store_q_144" BEL "M_count_store_q_139" BEL
+        "M_count_store_q_200" BEL "M_count_store_q_150" BEL
+        "M_count_store_q_145" BEL "M_count_store_q_201" BEL
+        "M_count_store_q_151" BEL "M_count_store_q_146" BEL
+        "M_count_store_q_202" BEL "M_count_store_q_152" BEL
+        "M_count_store_q_147" BEL "M_count_store_q_203" BEL
+        "M_count_store_q_153" BEL "M_count_store_q_148" BEL
+        "M_count_store_q_204" BEL "M_count_store_q_154" BEL
+        "M_count_store_q_149" BEL "M_count_store_q_210" BEL
+        "M_count_store_q_205" BEL "M_count_store_q_160" BEL
+        "M_count_store_q_155" BEL "M_count_store_q_211" BEL
+        "M_count_store_q_206" BEL "M_count_store_q_161" BEL
+        "M_count_store_q_156" BEL "M_count_store_q_157" BEL
+        "M_count_store_q_212" BEL "M_count_store_q_207" BEL
+        "M_count_store_q_162" BEL "M_count_store_q_158" BEL
+        "M_count_store_q_213" BEL "M_count_store_q_208" BEL
+        "M_count_store_q_163" BEL "M_count_store_q_159" BEL
+        "M_count_store_q_214" BEL "M_count_store_q_209" BEL
+        "M_count_store_q_164" BEL "M_count_store_q_165" BEL
+        "M_count_store_q_220" BEL "M_count_store_q_215" BEL
+        "M_count_store_q_170" BEL "M_count_store_q_166" BEL
+        "M_count_store_q_221" BEL "M_count_store_q_216" BEL
+        "M_count_store_q_171" BEL "M_count_store_q_167" BEL
+        "M_count_store_q_222" BEL "M_count_store_q_217" BEL
+        "M_count_store_q_172" BEL "M_count_store_q_168" BEL
+        "M_count_store_q_223" BEL "M_count_store_q_218" BEL
+        "M_count_store_q_173" BEL "M_count_store_q_169" BEL
+        "M_count_store_q_224" BEL "M_count_store_q_219" BEL
+        "M_count_store_q_174" BEL "M_count_store_q_175" BEL
+        "M_count_store_q_230" BEL "M_count_store_q_225" BEL
+        "M_count_store_q_180" BEL "M_count_store_q_176" BEL
+        "M_count_store_q_231" BEL "M_count_store_q_226" BEL
+        "M_count_store_q_181" BEL "M_count_store_q_177" BEL
+        "M_count_store_q_232" BEL "M_count_store_q_227" BEL
+        "M_count_store_q_182" BEL "M_count_store_q_178" BEL
+        "M_count_store_q_233" BEL "M_count_store_q_228" BEL
+        "M_count_store_q_183" BEL "M_count_store_q_179" BEL
+        "M_count_store_q_234" BEL "M_count_store_q_229" BEL
+        "M_count_store_q_184" BEL "M_count_store_q_185" BEL
+        "M_count_store_q_240" BEL "M_count_store_q_235" BEL
+        "M_count_store_q_190" BEL "M_count_store_q_186" BEL
+        "M_count_store_q_241" BEL "M_count_store_q_236" BEL
+        "M_count_store_q_191" BEL "M_count_store_q_187" BEL
+        "M_count_store_q_242" BEL "M_count_store_q_237" BEL
+        "M_count_store_q_192" BEL "M_count_store_q_188" BEL
+        "M_count_store_q_243" BEL "M_count_store_q_238" BEL
+        "M_count_store_q_193" BEL "M_count_store_q_189" BEL
+        "M_count_store_q_244" BEL "M_count_store_q_239" BEL
+        "M_count_store_q_194" BEL "M_count_store_q_195" BEL
+        "M_count_store_q_300" BEL "M_count_store_q_250" BEL
+        "M_count_store_q_245" BEL "M_count_store_q_196" BEL
+        "M_count_store_q_301" BEL "M_count_store_q_251" BEL
+        "M_count_store_q_246" BEL "M_count_store_q_197" BEL
+        "M_count_store_q_302" BEL "M_count_store_q_252" BEL
+        "M_count_store_q_247" BEL "M_count_store_q_198" BEL
+        "M_count_store_q_303" BEL "M_count_store_q_253" BEL
+        "M_count_store_q_248" BEL "M_count_store_q_199" BEL
+        "M_count_store_q_304" BEL "M_count_store_q_254" BEL
+        "M_count_store_q_249" BEL "M_count_store_q_255" BEL
+        "M_count_store_q_310" BEL "M_count_store_q_305" BEL
+        "M_count_store_q_260" BEL "M_count_store_q_256" BEL
+        "M_count_store_q_311" BEL "M_count_store_q_306" BEL
+        "M_count_store_q_261" BEL "M_count_store_q_257" BEL
+        "M_count_store_q_312" BEL "M_count_store_q_307" BEL
+        "M_count_store_q_262" BEL "M_count_store_q_258" BEL
+        "M_count_store_q_313" BEL "M_count_store_q_308" BEL
+        "M_count_store_q_263" BEL "M_count_store_q_259" BEL
+        "M_count_store_q_314" BEL "M_count_store_q_309" BEL
+        "M_count_store_q_264" BEL "M_count_store_q_265" BEL
+        "M_count_store_q_320" BEL "M_count_store_q_315" BEL
+        "M_count_store_q_270" BEL "M_count_store_q_266" BEL
+        "M_count_store_q_321" BEL "M_count_store_q_316" BEL
+        "M_count_store_q_271" BEL "M_count_store_q_267" BEL
+        "M_count_store_q_322" BEL "M_count_store_q_317" BEL
+        "M_count_store_q_272" BEL "M_count_store_q_268" BEL
+        "M_count_store_q_323" BEL "M_count_store_q_318" BEL
+        "M_count_store_q_273" BEL "M_count_store_q_269" BEL
+        "M_count_store_q_324" BEL "M_count_store_q_319" BEL
+        "M_count_store_q_274" BEL "M_count_store_q_275" BEL
+        "M_count_store_q_330" BEL "M_count_store_q_325" BEL
+        "M_count_store_q_280" BEL "M_count_store_q_276" BEL
+        "M_count_store_q_331" BEL "M_count_store_q_326" BEL
+        "M_count_store_q_281" BEL "M_count_store_q_277" BEL
+        "M_count_store_q_332" BEL "M_count_store_q_327" BEL
+        "M_count_store_q_282" BEL "M_count_store_q_278" BEL
+        "M_count_store_q_333" BEL "M_count_store_q_328" BEL
+        "M_count_store_q_283" BEL "M_count_store_q_279" BEL
+        "M_count_store_q_334" BEL "M_count_store_q_329" BEL
+        "M_count_store_q_284" BEL "M_count_store_q_285" BEL
+        "M_count_store_q_340" BEL "M_count_store_q_335" BEL
+        "M_count_store_q_290" BEL "M_count_store_q_286" BEL
+        "M_count_store_q_341" BEL "M_count_store_q_336" BEL
+        "M_count_store_q_291" BEL "M_count_store_q_287" BEL
+        "M_count_store_q_342" BEL "M_count_store_q_337" BEL
+        "M_count_store_q_292" BEL "M_count_store_q_288" BEL
+        "M_count_store_q_343" BEL "M_count_store_q_338" BEL
+        "M_count_store_q_293" BEL "M_count_store_q_289" BEL
+        "M_count_store_q_344" BEL "M_count_store_q_339" BEL
+        "M_count_store_q_294" BEL "M_count_store_q_295" BEL
+        "M_count_store_q_350" BEL "M_count_store_q_400" BEL
+        "M_count_store_q_345" BEL "M_count_store_q_296" BEL
+        "M_count_store_q_351" BEL "M_count_store_q_401" BEL
+        "M_count_store_q_346" BEL "M_count_store_q_297" BEL
+        "M_count_store_q_352" BEL "M_count_store_q_402" BEL
+        "M_count_store_q_347" BEL "M_count_store_q_298" BEL
+        "M_count_store_q_353" BEL "M_count_store_q_403" BEL
+        "M_count_store_q_348" BEL "M_count_store_q_299" BEL
+        "M_count_store_q_354" BEL "M_count_store_q_404" BEL
+        "M_count_store_q_349" BEL "M_count_store_q_355" BEL
+        "M_count_store_q_405" BEL "M_count_store_q_410" BEL
+        "M_count_store_q_360" BEL "M_count_store_q_356" BEL
+        "M_count_store_q_406" BEL "M_count_store_q_411" BEL
+        "M_count_store_q_361" BEL "M_count_store_q_357" BEL
+        "M_count_store_q_407" BEL "M_count_store_q_412" BEL
+        "M_count_store_q_362" BEL "M_count_store_q_358" BEL
+        "M_count_store_q_408" BEL "M_count_store_q_413" BEL
+        "M_count_store_q_363" BEL "M_count_store_q_359" BEL
+        "M_count_store_q_409" BEL "M_count_store_q_414" BEL
+        "M_count_store_q_364" BEL "M_count_store_q_365" BEL
+        "M_count_store_q_415" BEL "M_count_store_q_420" BEL
+        "M_count_store_q_370" BEL "M_count_store_q_371" BEL
+        "M_count_store_q_416" BEL "M_count_store_q_421" BEL
+        "M_count_store_q_366" BEL "M_count_store_q_372" BEL
+        "M_count_store_q_417" BEL "M_count_store_q_422" BEL
+        "M_count_store_q_367" BEL "M_count_store_q_373" BEL
+        "M_count_store_q_418" BEL "M_count_store_q_423" BEL
+        "M_count_store_q_368" BEL "M_count_store_q_374" BEL
+        "M_count_store_q_419" BEL "M_count_store_q_424" BEL
+        "M_count_store_q_369" BEL "M_count_store_q_380" BEL
+        "M_count_store_q_425" BEL "M_count_store_q_430" BEL
+        "M_count_store_q_375" BEL "M_count_store_q_381" BEL
+        "M_count_store_q_426" BEL "M_count_store_q_431" BEL
+        "M_count_store_q_376" BEL "M_count_store_q_382" BEL
+        "M_count_store_q_427" BEL "M_count_store_q_432" BEL
+        "M_count_store_q_377" BEL "M_count_store_q_383" BEL
+        "M_count_store_q_428" BEL "M_count_store_q_433" BEL
+        "M_count_store_q_378" BEL "M_count_store_q_384" BEL
+        "M_count_store_q_429" BEL "M_count_store_q_434" BEL
+        "M_count_store_q_379" BEL "M_count_store_q_390" BEL
+        "M_count_store_q_435" BEL "M_count_store_q_440" BEL
+        "M_count_store_q_385" BEL "M_count_store_q_391" BEL
+        "M_count_store_q_436" BEL "M_count_store_q_441" BEL
+        "M_count_store_q_386" BEL "M_count_store_q_392" BEL
+        "M_count_store_q_437" BEL "M_count_store_q_442" BEL
+        "M_count_store_q_387" BEL "M_count_store_q_393" BEL
+        "M_count_store_q_438" BEL "M_count_store_q_443" BEL
+        "M_count_store_q_388" BEL "M_count_store_q_394" BEL
+        "M_count_store_q_439" BEL "M_count_store_q_444" BEL
+        "M_count_store_q_389" BEL "M_count_store_q_445" BEL
+        "M_count_store_q_450" BEL "M_count_store_q_500" BEL
+        "M_count_store_q_395" BEL "M_count_store_q_446" BEL
+        "M_count_store_q_451" BEL "M_count_store_q_501" BEL
+        "M_count_store_q_396" BEL "M_count_store_q_447" BEL
+        "M_count_store_q_452" BEL "M_count_store_q_502" BEL
+        "M_count_store_q_397" BEL "M_count_store_q_448" BEL
+        "M_count_store_q_453" BEL "M_count_store_q_503" BEL
+        "M_count_store_q_398" BEL "M_count_store_q_449" BEL
+        "M_count_store_q_454" BEL "M_count_store_q_504" BEL
+        "M_count_store_q_399" BEL "M_count_store_q_460" BEL
+        "M_count_store_q_505" BEL "M_count_store_q_510" BEL
+        "M_count_store_q_455" BEL "M_count_store_q_461" BEL
+        "M_count_store_q_506" BEL "M_count_store_q_511" BEL
+        "M_count_store_q_456" BEL "M_count_store_q_462" BEL
+        "M_count_store_q_507" BEL "M_count_store_q_512" BEL
+        "M_count_store_q_457" BEL "M_count_store_q_463" BEL
+        "M_count_store_q_508" BEL "M_count_store_q_513" BEL
+        "M_count_store_q_458" BEL "M_count_store_q_464" BEL
+        "M_count_store_q_509" BEL "M_count_store_q_514" BEL
+        "M_count_store_q_459" BEL "M_count_store_q_470" BEL
+        "M_count_store_q_515" BEL "M_count_store_q_520" BEL
+        "M_count_store_q_465" BEL "M_count_store_q_471" BEL
+        "M_count_store_q_516" BEL "M_count_store_q_521" BEL
+        "M_count_store_q_466" BEL "M_count_store_q_472" BEL
+        "M_count_store_q_517" BEL "M_count_store_q_522" BEL
+        "M_count_store_q_467" BEL "M_count_store_q_473" BEL
+        "M_count_store_q_518" BEL "M_count_store_q_523" BEL
+        "M_count_store_q_468" BEL "M_count_store_q_474" BEL
+        "M_count_store_q_519" BEL "M_count_store_q_524" BEL
+        "M_count_store_q_469" BEL "M_count_store_q_480" BEL
+        "M_count_store_q_525" BEL "M_count_store_q_530" BEL
+        "M_count_store_q_475" BEL "M_count_store_q_481" BEL
+        "M_count_store_q_526" BEL "M_count_store_q_531" BEL
+        "M_count_store_q_476" BEL "M_count_store_q_482" BEL
+        "M_count_store_q_527" BEL "M_count_store_q_532" BEL
+        "M_count_store_q_477" BEL "M_count_store_q_483" BEL
+        "M_count_store_q_528" BEL "M_count_store_q_533" BEL
+        "M_count_store_q_478" BEL "M_count_store_q_484" BEL
+        "M_count_store_q_529" BEL "M_count_store_q_534" BEL
+        "M_count_store_q_479" BEL "M_count_store_q_490" BEL
+        "M_count_store_q_535" BEL "M_count_store_q_540" BEL
+        "M_count_store_q_485" BEL "M_count_store_q_491" BEL
+        "M_count_store_q_536" BEL "M_count_store_q_541" BEL
+        "M_count_store_q_486" BEL "M_count_store_q_492" BEL
+        "M_count_store_q_537" BEL "M_count_store_q_542" BEL
+        "M_count_store_q_487" BEL "M_count_store_q_493" BEL
+        "M_count_store_q_538" BEL "M_count_store_q_543" BEL
+        "M_count_store_q_488" BEL "M_count_store_q_494" BEL
+        "M_count_store_q_539" BEL "M_count_store_q_544" BEL
+        "M_count_store_q_489" BEL "M_count_store_q_545" BEL
+        "M_count_store_q_550" BEL "M_count_store_q_600" BEL
+        "M_count_store_q_495" BEL "M_count_store_q_546" BEL
+        "M_count_store_q_551" BEL "M_count_store_q_601" BEL
+        "M_count_store_q_496" BEL "M_count_store_q_547" BEL
+        "M_count_store_q_552" BEL "M_count_store_q_602" BEL
+        "M_count_store_q_497" BEL "M_count_store_q_548" BEL
+        "M_count_store_q_553" BEL "M_count_store_q_603" BEL
+        "M_count_store_q_498" BEL "M_count_store_q_549" BEL
+        "M_count_store_q_554" BEL "M_count_store_q_604" BEL
+        "M_count_store_q_499" BEL "M_count_store_q_560" BEL
+        "M_count_store_q_605" BEL "M_count_store_q_610" BEL
+        "M_count_store_q_555" BEL "M_count_store_q_561" BEL
+        "M_count_store_q_606" BEL "M_count_store_q_611" BEL
+        "M_count_store_q_556" BEL "M_count_store_q_562" BEL
+        "M_count_store_q_607" BEL "M_count_store_q_612" BEL
+        "M_count_store_q_557" BEL "M_count_store_q_563" BEL
+        "M_count_store_q_608" BEL "M_count_store_q_613" BEL
+        "M_count_store_q_558" BEL "M_count_store_q_564" BEL
+        "M_count_store_q_609" BEL "M_count_store_q_614" BEL
+        "M_count_store_q_559" BEL "M_count_store_q_570" BEL
+        "M_count_store_q_615" BEL "M_count_store_q_620" BEL
+        "M_count_store_q_565" BEL "M_count_store_q_571" BEL
+        "M_count_store_q_616" BEL "M_count_store_q_621" BEL
+        "M_count_store_q_566" BEL "M_count_store_q_572" BEL
+        "M_count_store_q_617" BEL "M_count_store_q_622" BEL
+        "M_count_store_q_567" BEL "M_count_store_q_573" BEL
+        "M_count_store_q_618" BEL "M_count_store_q_623" BEL
+        "M_count_store_q_568" BEL "M_count_store_q_574" BEL
+        "M_count_store_q_619" BEL "M_count_store_q_624" BEL
+        "M_count_store_q_569" BEL "M_count_store_q_580" BEL
+        "M_count_store_q_625" BEL "M_count_store_q_630" BEL
+        "M_count_store_q_575" BEL "M_count_store_q_581" BEL
+        "M_count_store_q_626" BEL "M_count_store_q_631" BEL
+        "M_count_store_q_576" BEL "M_count_store_q_582" BEL
+        "M_count_store_q_627" BEL "M_count_store_q_632" BEL
+        "M_count_store_q_577" BEL "M_count_store_q_583" BEL
+        "M_count_store_q_628" BEL "M_count_store_q_633" BEL
+        "M_count_store_q_578" BEL "M_count_store_q_579" BEL
+        "M_count_store_q_584" BEL "M_count_store_q_629" BEL
+        "M_count_store_q_634" BEL "M_count_store_q_585" BEL
+        "M_count_store_q_590" BEL "M_count_store_q_635" BEL
+        "M_count_store_q_640" BEL "M_count_store_q_586" BEL
+        "M_count_store_q_591" BEL "M_count_store_q_636" BEL
+        "M_count_store_q_641" BEL "M_count_store_q_587" BEL
+        "M_count_store_q_592" BEL "M_count_store_q_637" BEL
+        "M_count_store_q_642" BEL "M_count_store_q_588" BEL
+        "M_count_store_q_593" BEL "M_count_store_q_638" BEL
+        "M_count_store_q_643" BEL "M_count_store_q_589" BEL
+        "M_count_store_q_594" BEL "M_count_store_q_639" BEL
+        "M_count_store_q_644" BEL "M_count_store_q_595" BEL
+        "M_count_store_q_645" BEL "M_count_store_q_650" BEL
+        "M_count_store_q_700" BEL "M_count_store_q_596" BEL
         "M_count_store_q_646" BEL "M_count_store_q_651" BEL
-        "M_count_store_q_597" BEL "M_count_store_q_647" BEL
-        "M_count_store_q_652" BEL "M_count_store_q_598" BEL
+        "M_count_store_q_701" BEL "M_count_store_q_597" BEL
+        "M_count_store_q_647" BEL "M_count_store_q_652" BEL
+        "M_count_store_q_702" BEL "M_count_store_q_598" BEL
         "M_count_store_q_648" BEL "M_count_store_q_653" BEL
-        "M_count_store_q_599" BEL "M_count_store_q_649" BEL
-        "M_count_store_q_654" BEL "M_count_store_q_655" BEL
-        "M_count_store_q_660" BEL "M_count_store_q_656" BEL
-        "M_count_store_q_661" BEL "M_count_store_q_657" BEL
-        "M_count_store_q_662" BEL "M_count_store_q_658" BEL
-        "M_count_store_q_663" BEL "M_count_store_q_659" BEL
-        "M_count_store_q_664" BEL "M_count_store_q_665" BEL
-        "M_count_store_q_670" BEL "M_count_store_q_666" BEL
-        "M_count_store_q_671" BEL "M_count_store_q_667" BEL
-        "M_count_store_q_672" BEL "M_count_store_q_668" BEL "xcompA/M_state_q"
+        "M_count_store_q_703" BEL "M_count_store_q_599" BEL
+        "M_count_store_q_649" BEL "M_count_store_q_654" BEL
+        "M_count_store_q_704" BEL "M_count_store_q_655" BEL
+        "M_count_store_q_660" BEL "M_count_store_q_705" BEL
+        "M_count_store_q_710" BEL "M_count_store_q_656" BEL
+        "M_count_store_q_661" BEL "M_count_store_q_706" BEL
+        "M_count_store_q_711" BEL "M_count_store_q_657" BEL
+        "M_count_store_q_662" BEL "M_count_store_q_707" BEL
+        "M_count_store_q_712" BEL "M_count_store_q_658" BEL
+        "M_count_store_q_663" BEL "M_count_store_q_708" BEL
+        "M_count_store_q_713" BEL "M_count_store_q_659" BEL
+        "M_count_store_q_664" BEL "M_count_store_q_709" BEL
+        "M_count_store_q_714" BEL "M_count_store_q_665" BEL
+        "M_count_store_q_670" BEL "M_count_store_q_715" BEL
+        "M_count_store_q_720" BEL "M_count_store_q_666" BEL
+        "M_count_store_q_671" BEL "M_count_store_q_716" BEL
+        "M_count_store_q_721" BEL "M_count_store_q_667" BEL
+        "M_count_store_q_672" BEL "M_count_store_q_717" BEL
+        "M_count_store_q_722" BEL "M_count_store_q_668" BEL "xcompA/M_ctr_q_2"
+        BEL "xcompA/M_ctr_q_1" BEL "xcompA/M_ctr_q_3" BEL "xcompA/M_state_q"
         BEL "xcompA/M_ctr_q_0" BEL "M_count_store_q_673" BEL
-        "M_count_store_q_669" BEL "xcompB/M_state_q" BEL "xcompB/M_ctr_q_0"
-        BEL "M_count_store_q_674" BEL "M_count_store_q_675" BEL
-        "xcompC/M_state_q" BEL "xcompC/M_ctr_q_0" BEL "M_count_store_q_680"
-        BEL "M_count_store_q_676" BEL "xcompD/M_state_q" BEL
-        "xcompD/M_ctr_q_0" BEL "M_count_store_q_681" BEL "M_count_store_q_677"
-        BEL "M_count_store_q_682" BEL "M_count_store_q_678" BEL
-        "M_count_store_q_683" BEL "M_count_store_q_679" BEL
-        "M_count_store_q_684" BEL "M_count_store_q_685" BEL
-        "M_count_store_q_686" BEL "M_count_store_q_687" BEL
-        "M_count_store_q_688" BEL "M_count_store_q_689" BEL
-        "ycompABC/M_ctr_q_3" BEL "ycompABC/M_ctr_q_2" BEL "ycompABC/M_ctr_q_0"
-        BEL "ycompABC/M_ctr_q_1" BEL "ycompABC/M_state_q" BEL
-        "ycompABD/M_ctr_q_3" BEL "ycompABD/M_ctr_q_2" BEL "ycompABD/M_ctr_q_0"
-        BEL "ycompABD/M_ctr_q_1" BEL "ycompABD/M_state_q" BEL
-        "ycompACD/M_ctr_q_3" BEL "ycompACD/M_ctr_q_2" BEL "ycompACD/M_ctr_q_0"
-        BEL "ycompACD/M_ctr_q_1" BEL "ycompACD/M_state_q" BEL
-        "ycompBCD/M_ctr_q_3" BEL "ycompBCD/M_ctr_q_2" BEL "ycompBCD/M_ctr_q_0"
-        BEL "ycompBCD/M_ctr_q_1" BEL "ycompBCD/M_state_q" BEL
-        "xcompAB/M_state_q" BEL "xcompAB/M_ctr_q_0" BEL "xcompAC/M_state_q"
-        BEL "xcompAC/M_ctr_q_0" BEL "xcompAD/M_state_q" BEL
-        "xcompAD/M_ctr_q_0" BEL "xcompBC/M_state_q" BEL "xcompBC/M_ctr_q_0"
-        BEL "xcompBD/M_state_q" BEL "xcompBD/M_ctr_q_0" BEL
-        "xcompCD/M_state_q" BEL "xcompCD/M_ctr_q_0" BEL "ycompABCD/M_ctr_q_3"
-        BEL "ycompABCD/M_ctr_q_2" BEL "ycompABCD/M_ctr_q_0" BEL
-        "ycompABCD/M_ctr_q_1" BEL "ycompABCD/M_state_q" BEL "M_counts_q_10"
+        "M_count_store_q_718" BEL "M_count_store_q_723" BEL
+        "M_count_store_q_669" BEL "xcompB/M_ctr_q_2" BEL "xcompB/M_ctr_q_1"
+        BEL "xcompB/M_ctr_q_3" BEL "xcompB/M_state_q" BEL "xcompB/M_ctr_q_0"
+        BEL "M_count_store_q_674" BEL "M_count_store_q_719" BEL
+        "M_count_store_q_724" BEL "M_count_store_q_675" BEL "xcompC/M_ctr_q_2"
+        BEL "xcompC/M_ctr_q_1" BEL "xcompC/M_ctr_q_3" BEL "xcompC/M_state_q"
+        BEL "xcompC/M_ctr_q_0" BEL "M_count_store_q_680" BEL
+        "M_count_store_q_725" BEL "M_count_store_q_730" BEL
+        "M_count_store_q_676" BEL "xcompD/M_ctr_q_2" BEL "xcompD/M_ctr_q_1"
+        BEL "xcompD/M_ctr_q_3" BEL "xcompD/M_state_q" BEL "xcompD/M_ctr_q_0"
+        BEL "M_count_store_q_681" BEL "M_count_store_q_726" BEL
+        "M_count_store_q_731" BEL "M_count_store_q_677" BEL
+        "M_count_store_q_682" BEL "M_count_store_q_727" BEL
+        "M_count_store_q_732" BEL "M_count_store_q_678" BEL
+        "M_count_store_q_683" BEL "M_count_store_q_728" BEL
+        "M_count_store_q_733" BEL "M_count_store_q_679" BEL
+        "M_count_store_q_684" BEL "M_count_store_q_729" BEL
+        "M_count_store_q_734" BEL "M_count_store_q_685" BEL
+        "M_count_store_q_690" BEL "M_count_store_q_735" BEL
+        "M_count_store_q_740" BEL "M_count_store_q_686" BEL
+        "M_count_store_q_691" BEL "M_count_store_q_736" BEL
+        "M_count_store_q_741" BEL "M_count_store_q_687" BEL
+        "M_count_store_q_692" BEL "M_count_store_q_737" BEL
+        "M_count_store_q_742" BEL "M_count_store_q_688" BEL
+        "M_count_store_q_693" BEL "M_count_store_q_738" BEL
+        "M_count_store_q_743" BEL "M_count_store_q_689" BEL
+        "M_count_store_q_694" BEL "M_count_store_q_739" BEL
+        "M_count_store_q_744" BEL "M_count_store_q_695" BEL
+        "M_count_store_q_745" BEL "M_count_store_q_750" BEL
+        "M_count_store_q_696" BEL "M_count_store_q_751" BEL
+        "M_count_store_q_746" BEL "M_count_store_q_697" BEL
+        "M_count_store_q_752" BEL "M_count_store_q_747" BEL
+        "M_count_store_q_698" BEL "M_count_store_q_753" BEL
+        "M_count_store_q_748" BEL "M_count_store_q_699" BEL
+        "M_count_store_q_754" BEL "M_count_store_q_749" BEL
+        "M_count_store_q_755" BEL "M_count_store_q_760" BEL
+        "M_count_store_q_756" BEL "M_count_store_q_761" BEL
+        "M_count_store_q_757" BEL "M_count_store_q_762" BEL
+        "M_count_store_q_758" BEL "M_count_store_q_763" BEL
+        "M_count_store_q_759" BEL "M_count_store_q_764" BEL
+        "M_count_store_q_765" BEL "M_count_store_q_770" BEL
+        "M_count_store_q_766" BEL "M_count_store_q_771" BEL
+        "M_count_store_q_767" BEL "M_count_store_q_772" BEL
+        "M_count_store_q_768" BEL "M_count_store_q_773" BEL
+        "M_count_store_q_769" BEL "M_count_store_q_774" BEL
+        "M_count_store_q_775" BEL "M_count_store_q_776" BEL
+        "M_count_store_q_777" BEL "M_count_store_q_778" BEL
+        "M_count_store_q_779" BEL "ycompABC/M_ctr_q_2" BEL
+        "ycompABC/M_ctr_q_1" BEL "ycompABC/M_ctr_q_3" BEL "ycompABC/M_state_q"
+        BEL "ycompABC/M_ctr_q_0" BEL "ycompABD/M_ctr_q_2" BEL
+        "ycompABD/M_ctr_q_1" BEL "ycompABD/M_ctr_q_3" BEL "ycompABD/M_state_q"
+        BEL "ycompABD/M_ctr_q_0" BEL "ycompACD/M_ctr_q_2" BEL
+        "ycompACD/M_ctr_q_1" BEL "ycompACD/M_ctr_q_3" BEL "ycompACD/M_state_q"
+        BEL "ycompACD/M_ctr_q_0" BEL "ycompBCD/M_ctr_q_2" BEL
+        "ycompBCD/M_ctr_q_1" BEL "ycompBCD/M_ctr_q_3" BEL "ycompBCD/M_state_q"
+        BEL "ycompBCD/M_ctr_q_0" BEL "xcompAB/M_ctr_q_2" BEL
+        "xcompAB/M_ctr_q_1" BEL "xcompAB/M_ctr_q_3" BEL "xcompAB/M_state_q"
+        BEL "xcompAB/M_ctr_q_0" BEL "xcompAC/M_ctr_q_2" BEL
+        "xcompAC/M_ctr_q_1" BEL "xcompAC/M_ctr_q_3" BEL "xcompAC/M_state_q"
+        BEL "xcompAC/M_ctr_q_0" BEL "xcompAD/M_ctr_q_2" BEL
+        "xcompAD/M_ctr_q_1" BEL "xcompAD/M_ctr_q_3" BEL "xcompAD/M_state_q"
+        BEL "xcompAD/M_ctr_q_0" BEL "xcompBC/M_ctr_q_2" BEL
+        "xcompBC/M_ctr_q_1" BEL "xcompBC/M_ctr_q_3" BEL "xcompBC/M_state_q"
+        BEL "xcompBC/M_ctr_q_0" BEL "xcompBD/M_ctr_q_2" BEL
+        "xcompBD/M_ctr_q_1" BEL "xcompBD/M_ctr_q_3" BEL "xcompBD/M_state_q"
+        BEL "xcompBD/M_ctr_q_0" BEL "xcompCD/M_ctr_q_2" BEL
+        "xcompCD/M_ctr_q_1" BEL "xcompCD/M_ctr_q_3" BEL "xcompCD/M_state_q"
+        BEL "xcompCD/M_ctr_q_0" BEL "ycompABCD/M_ctr_q_2" BEL
+        "ycompABCD/M_ctr_q_1" BEL "ycompABCD/M_ctr_q_3" BEL
+        "ycompABCD/M_state_q" BEL "ycompABCD/M_ctr_q_0" BEL "M_counts_q_10"
         BEL "M_counts_q_11" BEL "M_counts_q_12" BEL "M_counts_q_13" BEL
         "M_counts_q_14" BEL "M_counts_q_15" BEL "M_counts_q_20" BEL
-        "M_counts_q_16" BEL "M_counts_q_21" BEL "M_counts_q_17" BEL
-        "M_counts_q_22" BEL "M_counts_q_23" BEL "M_counts_q_18" BEL
-        "M_counts_q_24" BEL "M_counts_q_19" BEL "M_counts_q_30" BEL
-        "M_counts_q_25" BEL "M_counts_q_26" BEL "M_counts_q_31" BEL
-        "M_counts_q_27" BEL "M_counts_q_32" BEL "M_counts_q_33" BEL
-        "M_counts_q_28" BEL "M_counts_q_34" BEL "M_counts_q_29" BEL
-        "M_counts_q_40" BEL "M_counts_q_35" BEL "M_counts_q_36" BEL
-        "M_counts_q_41" BEL "M_counts_q_37" BEL "M_counts_q_42" BEL
-        "M_counts_q_43" BEL "M_counts_q_38" BEL "M_counts_q_44" BEL
-        "M_counts_q_39" BEL "M_counts_q_50" BEL "M_counts_q_45" BEL
-        "M_counts_q_51" BEL "M_counts_q_46" BEL "M_counts_q_52" BEL
-        "M_counts_q_47" BEL "M_counts_q_48" BEL "M_counts_q_53" BEL
-        "M_counts_q_54" BEL "M_counts_q_49" BEL "M_counts_q_60" BEL
-        "M_counts_q_55" BEL "M_counts_q_56" BEL "M_counts_q_61" BEL
-        "M_counts_q_62" BEL "M_counts_q_57" BEL "M_counts_q_63" BEL
-        "M_counts_q_58" BEL "M_counts_q_64" BEL "M_counts_q_59" BEL
-        "M_counts_q_70" BEL "M_counts_q_65" BEL "M_counts_q_71" BEL
-        "M_counts_q_66" BEL "M_counts_q_72" BEL "M_counts_q_67" BEL
-        "M_counts_q_73" BEL "M_counts_q_68" BEL "M_counts_q_74" BEL
-        "M_counts_q_69" BEL "M_counts_q_80" BEL "M_counts_q_75" BEL
-        "M_counts_q_76" BEL "M_counts_q_81" BEL "M_counts_q_82" BEL
-        "M_counts_q_77" BEL "M_counts_q_78" BEL "M_counts_q_83" BEL
-        "M_counts_q_84" BEL "M_counts_q_79" BEL "M_counts_q_90" BEL
-        "M_counts_q_85" BEL "M_counts_q_91" BEL "M_counts_q_86" BEL
-        "M_counts_q_92" BEL "M_counts_q_87" BEL "M_counts_q_93" BEL
-        "M_counts_q_88" BEL "M_counts_q_94" BEL "M_counts_q_89" BEL
+        "M_counts_q_21" BEL "M_counts_q_16" BEL "M_counts_q_17" BEL
+        "M_counts_q_22" BEL "M_counts_q_18" BEL "M_counts_q_23" BEL
+        "M_counts_q_19" BEL "M_counts_q_24" BEL "M_counts_q_25" BEL
+        "M_counts_q_30" BEL "M_counts_q_31" BEL "M_counts_q_26" BEL
+        "M_counts_q_27" BEL "M_counts_q_32" BEL "M_counts_q_28" BEL
+        "M_counts_q_33" BEL "M_counts_q_29" BEL "M_counts_q_34" BEL
+        "M_counts_q_35" BEL "M_counts_q_40" BEL "M_counts_q_41" BEL
+        "M_counts_q_36" BEL "M_counts_q_37" BEL "M_counts_q_42" BEL
+        "M_counts_q_38" BEL "M_counts_q_43" BEL "M_counts_q_39" BEL
+        "M_counts_q_44" BEL "M_counts_q_45" BEL "M_counts_q_50" BEL
+        "M_counts_q_51" BEL "M_counts_q_46" BEL "M_counts_q_47" BEL
+        "M_counts_q_52" BEL "M_counts_q_48" BEL "M_counts_q_53" BEL
+        "M_counts_q_49" BEL "M_counts_q_54" BEL "M_counts_q_55" BEL
+        "M_counts_q_60" BEL "M_counts_q_56" BEL "M_counts_q_61" BEL
+        "M_counts_q_62" BEL "M_counts_q_57" BEL "M_counts_q_58" BEL
+        "M_counts_q_63" BEL "M_counts_q_59" BEL "M_counts_q_64" BEL
+        "M_counts_q_70" BEL "M_counts_q_65" BEL "M_counts_q_66" BEL
+        "M_counts_q_71" BEL "M_counts_q_67" BEL "M_counts_q_72" BEL
+        "M_counts_q_68" BEL "M_counts_q_73" BEL "M_counts_q_69" BEL
+        "M_counts_q_74" BEL "M_counts_q_80" BEL "M_counts_q_75" BEL
+        "M_counts_q_76" BEL "M_counts_q_81" BEL "M_counts_q_77" BEL
+        "M_counts_q_82" BEL "M_counts_q_83" BEL "M_counts_q_78" BEL
+        "M_counts_q_79" BEL "M_counts_q_84" BEL "M_counts_q_90" BEL
+        "M_counts_q_85" BEL "M_counts_q_86" BEL "M_counts_q_91" BEL
+        "M_counts_q_87" BEL "M_counts_q_92" BEL "M_counts_q_88" BEL
+        "M_counts_q_93" BEL "M_counts_q_89" BEL "M_counts_q_94" BEL
         "M_counts_q_95" BEL "M_counts_q_96" BEL "M_counts_q_97" BEL
         "M_counts_q_98" BEL "M_counts_q_99" BEL "M_counts_q_0" BEL
         "M_counts_q_1" BEL "M_counts_q_2" BEL "M_counts_q_3" BEL
         "M_counts_q_4" BEL "M_counts_q_5" BEL "M_counts_q_6" BEL
         "M_counts_q_7" BEL "M_counts_q_8" BEL "M_counts_q_9" BEL
-        "xdupA/M_ctr_q_0" BEL "xdupA/sync_gen_0[0].sync/M_pipe_q_0" BEL
-        "xdupA/L_edge/M_last_q" BEL "xdupB/M_ctr_q_0" BEL
-        "xdupB/sync_gen_0[0].sync/M_pipe_q_0" BEL "xdupB/L_edge/M_last_q" BEL
-        "xdupC/M_ctr_q_0" BEL "xdupC/sync_gen_0[0].sync/M_pipe_q_0" BEL
-        "xdupC/L_edge/M_last_q" BEL "xdupD/M_ctr_q_0" BEL
-        "xdupD/L_edge/M_last_q" BEL "xdupD/sync_gen_0[0].sync/M_pipe_q_0" BEL
-        "fast/clkout1_buf" BEL "M_pins_q_0" BEL "M_pins_q_1" BEL "M_pins_q_2"
-        BEL "M_pins_q_3" BEL "M_pins_q_4" BEL "M_pins_q_5" BEL "M_pins_q_6"
-        BEL "M_pins_q_7" BEL "xcompABC/M_state_q" BEL "xcompABC/M_ctr_q_0" BEL
-        "xcompABD/M_state_q" BEL "xcompABD/M_ctr_q_0" BEL "xcompACD/M_state_q"
-        BEL "xcompACD/M_ctr_q_0" BEL "xcompBCD/M_state_q" BEL
-        "xcompBCD/M_ctr_q_0" BEL "ydupA/M_ctr_q_0" BEL "ydupA/M_ctr_q_3" BEL
-        "ydupA/M_ctr_q_1" BEL "ydupA/M_ctr_q_2" BEL "ydupA/M_state_q" BEL
-        "ydupB/M_ctr_q_2" BEL "ydupB/M_ctr_q_0" BEL "ydupB/M_ctr_q_1" BEL
-        "ydupB/M_ctr_q_3" BEL "ydupB/M_state_q" BEL "ydupC/M_ctr_q_0" BEL
-        "ydupC/M_ctr_q_1" BEL "ydupC/M_ctr_q_2" BEL "ydupC/M_ctr_q_3" BEL
-        "ydupC/M_state_q" BEL "ydupD/M_ctr_q_0" BEL "ydupD/M_ctr_q_1" BEL
-        "ydupD/M_ctr_q_2" BEL "ydupD/M_ctr_q_3" BEL "ydupD/M_state_q" BEL
+        "xdupA/M_ctr_q_2" BEL "xdupA/M_ctr_q_1" BEL "xdupA/M_ctr_q_3" BEL
+        "xdupA/M_ctr_q_0" BEL "xdupB/M_ctr_q_2" BEL "xdupB/M_ctr_q_1" BEL
+        "xdupB/M_ctr_q_3" BEL "xdupB/M_ctr_q_0" BEL "xdupC/M_ctr_q_2" BEL
+        "xdupC/M_ctr_q_1" BEL "xdupC/M_ctr_q_3" BEL "xdupC/M_ctr_q_0" BEL
+        "xdupD/M_ctr_q_2" BEL "xdupD/M_ctr_q_1" BEL "xdupD/M_ctr_q_3" BEL
+        "xdupD/M_ctr_q_0" BEL "fast/clkout2_buf" BEL "M_pins_q_0" BEL
+        "M_pins_q_1" BEL "M_pins_q_2" BEL "M_pins_q_3" BEL "M_pins_q_4" BEL
+        "M_pins_q_5" BEL "M_pins_q_6" BEL "M_pins_q_7" BEL
+        "xcompABC/M_ctr_q_2" BEL "xcompABC/M_ctr_q_1" BEL "xcompABC/M_ctr_q_3"
+        BEL "xcompABC/M_state_q" BEL "xcompABC/M_ctr_q_0" BEL
+        "xcompABD/M_ctr_q_2" BEL "xcompABD/M_ctr_q_1" BEL "xcompABD/M_ctr_q_3"
+        BEL "xcompABD/M_state_q" BEL "xcompABD/M_ctr_q_0" BEL
+        "xcompACD/M_ctr_q_2" BEL "xcompACD/M_ctr_q_1" BEL "xcompACD/M_ctr_q_3"
+        BEL "xcompACD/M_state_q" BEL "xcompACD/M_ctr_q_0" BEL
+        "xcompBCD/M_ctr_q_2" BEL "xcompBCD/M_ctr_q_1" BEL "xcompBCD/M_ctr_q_3"
+        BEL "xcompBCD/M_state_q" BEL "xcompBCD/M_ctr_q_0" BEL
+        "ydupA/M_ctr_q_2" BEL "ydupA/M_ctr_q_1" BEL "ydupA/M_ctr_q_3" BEL
+        "ydupA/M_ctr_q_0" BEL "ydupA/sync_gen_0[0].sync/M_pipe_q_0" BEL
+        "ydupA/L_edge/M_last_q" BEL "ydupB/M_ctr_q_2" BEL "ydupB/M_ctr_q_1"
+        BEL "ydupB/M_ctr_q_3" BEL "ydupB/M_ctr_q_0" BEL
+        "ydupB/L_edge/M_last_q" BEL "ydupB/sync_gen_0[0].sync/M_pipe_q_0" BEL
+        "ydupC/M_ctr_q_2" BEL "ydupC/M_ctr_q_1" BEL "ydupC/M_ctr_q_3" BEL
+        "ydupC/M_ctr_q_0" BEL "ydupC/L_edge/M_last_q" BEL
+        "ydupC/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupD/M_ctr_q_2" BEL
+        "ydupD/M_ctr_q_1" BEL "ydupD/M_ctr_q_3" BEL "ydupD/M_ctr_q_0" BEL
+        "ydupD/sync_gen_0[0].sync/M_pipe_q_0" BEL "ydupD/L_edge/M_last_q" BEL
         "M_count_store_q_10" BEL "M_count_store_q_11" BEL "M_count_store_q_12"
         BEL "M_count_store_q_13" BEL "M_count_store_q_14" BEL
         "M_count_store_q_15" BEL "M_count_store_q_20" BEL "M_count_store_q_16"
@@ -557,93 +622,93 @@ TIMEGRP fast_clkout0 = BEL "ycompA/M_ctr_q_3" BEL "ycompA/M_ctr_q_2" BEL
         "reset_cond/M_stage_q_3" BEL "reset_cond/M_stage_q_2" BEL
         "reset_cond/M_stage_q_1" BEL "reset_cond/M_stage_q_0" BEL
         "M_counts_q_100" BEL "M_counts_q_101" BEL "M_counts_q_102" BEL
-        "M_counts_q_103" BEL "M_counts_q_104" BEL "M_counts_q_110" BEL
-        "M_counts_q_105" BEL "M_counts_q_106" BEL "M_counts_q_111" BEL
-        "M_counts_q_112" BEL "M_counts_q_107" BEL "M_counts_q_108" BEL
-        "M_counts_q_113" BEL "M_counts_q_114" BEL "M_counts_q_109" BEL
-        "M_counts_q_120" BEL "M_counts_q_115" BEL "M_counts_q_116" BEL
+        "M_counts_q_103" BEL "M_counts_q_104" BEL "M_counts_q_105" BEL
+        "M_counts_q_110" BEL "M_counts_q_106" BEL "M_counts_q_111" BEL
+        "M_counts_q_107" BEL "M_counts_q_112" BEL "M_counts_q_113" BEL
+        "M_counts_q_108" BEL "M_counts_q_114" BEL "M_counts_q_109" BEL
+        "M_counts_q_115" BEL "M_counts_q_120" BEL "M_counts_q_116" BEL
         "M_counts_q_121" BEL "M_counts_q_122" BEL "M_counts_q_117" BEL
         "M_counts_q_123" BEL "M_counts_q_118" BEL "M_counts_q_124" BEL
         "M_counts_q_119" BEL "M_counts_q_130" BEL "M_counts_q_125" BEL
-        "M_counts_q_126" BEL "M_counts_q_131" BEL "M_counts_q_132" BEL
-        "M_counts_q_127" BEL "M_counts_q_133" BEL "M_counts_q_128" BEL
-        "M_counts_q_129" BEL "M_counts_q_134" BEL "M_counts_q_140" BEL
-        "M_counts_q_135" BEL "M_counts_q_136" BEL "M_counts_q_141" BEL
+        "M_counts_q_126" BEL "M_counts_q_131" BEL "M_counts_q_127" BEL
+        "M_counts_q_132" BEL "M_counts_q_133" BEL "M_counts_q_128" BEL
+        "M_counts_q_134" BEL "M_counts_q_129" BEL "M_counts_q_135" BEL
+        "M_counts_q_140" BEL "M_counts_q_136" BEL "M_counts_q_141" BEL
         "M_counts_q_142" BEL "M_counts_q_137" BEL "M_counts_q_143" BEL
-        "M_counts_q_138" BEL "M_counts_q_139" BEL "M_counts_q_144" BEL
-        "M_counts_q_150" BEL "M_counts_q_200" BEL "M_counts_q_145" BEL
-        "M_counts_q_146" BEL "M_counts_q_151" BEL "M_counts_q_201" BEL
-        "M_counts_q_152" BEL "M_counts_q_202" BEL "M_counts_q_147" BEL
-        "M_counts_q_153" BEL "M_counts_q_203" BEL "M_counts_q_148" BEL
-        "M_counts_q_154" BEL "M_counts_q_204" BEL "M_counts_q_149" BEL
-        "M_counts_q_160" BEL "M_counts_q_205" BEL "M_counts_q_210" BEL
-        "M_counts_q_155" BEL "M_counts_q_156" BEL "M_counts_q_161" BEL
-        "M_counts_q_206" BEL "M_counts_q_211" BEL "M_counts_q_162" BEL
-        "M_counts_q_207" BEL "M_counts_q_212" BEL "M_counts_q_157" BEL
-        "M_counts_q_158" BEL "M_counts_q_163" BEL "M_counts_q_208" BEL
-        "M_counts_q_213" BEL "M_counts_q_159" BEL "M_counts_q_164" BEL
-        "M_counts_q_209" BEL "M_counts_q_214" BEL "M_counts_q_170" BEL
-        "M_counts_q_215" BEL "M_counts_q_220" BEL "M_counts_q_165" BEL
-        "M_counts_q_166" BEL "M_counts_q_171" BEL "M_counts_q_216" BEL
-        "M_counts_q_221" BEL "M_counts_q_172" BEL "M_counts_q_217" BEL
-        "M_counts_q_222" BEL "M_counts_q_167" BEL "M_counts_q_173" BEL
-        "M_counts_q_218" BEL "M_counts_q_223" BEL "M_counts_q_168" BEL
-        "M_counts_q_169" BEL "M_counts_q_174" BEL "M_counts_q_219" BEL
-        "M_counts_q_224" BEL "M_counts_q_180" BEL "M_counts_q_225" BEL
-        "M_counts_q_230" BEL "M_counts_q_175" BEL "M_counts_q_176" BEL
-        "M_counts_q_181" BEL "M_counts_q_226" BEL "M_counts_q_231" BEL
-        "M_counts_q_182" BEL "M_counts_q_227" BEL "M_counts_q_232" BEL
-        "M_counts_q_177" BEL "M_counts_q_183" BEL "M_counts_q_228" BEL
-        "M_counts_q_233" BEL "M_counts_q_178" BEL "M_counts_q_184" BEL
-        "M_counts_q_229" BEL "M_counts_q_234" BEL "M_counts_q_179" BEL
-        "M_counts_q_190" BEL "M_counts_q_235" BEL "M_counts_q_240" BEL
-        "M_counts_q_185" BEL "M_counts_q_186" BEL "M_counts_q_191" BEL
-        "M_counts_q_236" BEL "M_counts_q_241" BEL "M_counts_q_192" BEL
-        "M_counts_q_237" BEL "M_counts_q_242" BEL "M_counts_q_187" BEL
-        "M_counts_q_188" BEL "M_counts_q_193" BEL "M_counts_q_238" BEL
-        "M_counts_q_243" BEL "M_counts_q_194" BEL "M_counts_q_239" BEL
-        "M_counts_q_244" BEL "M_counts_q_189" BEL "M_counts_q_245" BEL
-        "M_counts_q_250" BEL "M_counts_q_300" BEL "M_counts_q_195" BEL
-        "M_counts_q_196" BEL "M_counts_q_246" BEL "M_counts_q_251" BEL
-        "M_counts_q_301" BEL "M_counts_q_247" BEL "M_counts_q_252" BEL
-        "M_counts_q_302" BEL "M_counts_q_197" BEL "M_counts_q_248" BEL
-        "M_counts_q_253" BEL "M_counts_q_303" BEL "M_counts_q_198" BEL
-        "M_counts_q_249" BEL "M_counts_q_254" BEL "M_counts_q_304" BEL
-        "M_counts_q_199" BEL "M_counts_q_255" BEL "M_counts_q_260" BEL
-        "M_counts_q_305" BEL "M_counts_q_310" BEL "M_counts_q_261" BEL
-        "M_counts_q_306" BEL "M_counts_q_311" BEL "M_counts_q_256" BEL
-        "M_counts_q_262" BEL "M_counts_q_307" BEL "M_counts_q_312" BEL
-        "M_counts_q_257" BEL "M_counts_q_263" BEL "M_counts_q_308" BEL
-        "M_counts_q_313" BEL "M_counts_q_258" BEL "M_counts_q_264" BEL
-        "M_counts_q_309" BEL "M_counts_q_314" BEL "M_counts_q_259" BEL
-        "M_counts_q_270" BEL "M_counts_q_315" BEL "M_counts_q_320" BEL
-        "M_counts_q_265" BEL "M_counts_q_271" BEL "M_counts_q_316" BEL
-        "M_counts_q_321" BEL "M_counts_q_266" BEL "M_counts_q_272" BEL
-        "M_counts_q_317" BEL "M_counts_q_322" BEL "M_counts_q_267" BEL
-        "M_counts_q_273" BEL "M_counts_q_318" BEL "M_counts_q_323" BEL
-        "M_counts_q_268" BEL "M_counts_q_274" BEL "M_counts_q_319" BEL
-        "M_counts_q_324" BEL "M_counts_q_269" BEL "M_counts_q_275" BEL
+        "M_counts_q_138" BEL "M_counts_q_144" BEL "M_counts_q_139" BEL
+        "M_counts_q_200" BEL "M_counts_q_150" BEL "M_counts_q_145" BEL
+        "M_counts_q_201" BEL "M_counts_q_151" BEL "M_counts_q_146" BEL
+        "M_counts_q_147" BEL "M_counts_q_202" BEL "M_counts_q_152" BEL
+        "M_counts_q_203" BEL "M_counts_q_153" BEL "M_counts_q_148" BEL
+        "M_counts_q_204" BEL "M_counts_q_154" BEL "M_counts_q_149" BEL
+        "M_counts_q_155" BEL "M_counts_q_210" BEL "M_counts_q_205" BEL
+        "M_counts_q_160" BEL "M_counts_q_211" BEL "M_counts_q_206" BEL
+        "M_counts_q_161" BEL "M_counts_q_156" BEL "M_counts_q_157" BEL
+        "M_counts_q_212" BEL "M_counts_q_207" BEL "M_counts_q_162" BEL
+        "M_counts_q_213" BEL "M_counts_q_208" BEL "M_counts_q_163" BEL
+        "M_counts_q_158" BEL "M_counts_q_214" BEL "M_counts_q_209" BEL
+        "M_counts_q_164" BEL "M_counts_q_159" BEL "M_counts_q_165" BEL
+        "M_counts_q_220" BEL "M_counts_q_215" BEL "M_counts_q_170" BEL
+        "M_counts_q_221" BEL "M_counts_q_216" BEL "M_counts_q_171" BEL
+        "M_counts_q_166" BEL "M_counts_q_167" BEL "M_counts_q_222" BEL
+        "M_counts_q_217" BEL "M_counts_q_172" BEL "M_counts_q_223" BEL
+        "M_counts_q_218" BEL "M_counts_q_173" BEL "M_counts_q_168" BEL
+        "M_counts_q_224" BEL "M_counts_q_219" BEL "M_counts_q_174" BEL
+        "M_counts_q_169" BEL "M_counts_q_175" BEL "M_counts_q_230" BEL
+        "M_counts_q_225" BEL "M_counts_q_180" BEL "M_counts_q_231" BEL
+        "M_counts_q_226" BEL "M_counts_q_181" BEL "M_counts_q_176" BEL
+        "M_counts_q_177" BEL "M_counts_q_232" BEL "M_counts_q_227" BEL
+        "M_counts_q_182" BEL "M_counts_q_233" BEL "M_counts_q_228" BEL
+        "M_counts_q_183" BEL "M_counts_q_178" BEL "M_counts_q_234" BEL
+        "M_counts_q_229" BEL "M_counts_q_184" BEL "M_counts_q_179" BEL
+        "M_counts_q_185" BEL "M_counts_q_240" BEL "M_counts_q_235" BEL
+        "M_counts_q_190" BEL "M_counts_q_241" BEL "M_counts_q_236" BEL
+        "M_counts_q_191" BEL "M_counts_q_186" BEL "M_counts_q_187" BEL
+        "M_counts_q_242" BEL "M_counts_q_237" BEL "M_counts_q_192" BEL
+        "M_counts_q_188" BEL "M_counts_q_243" BEL "M_counts_q_238" BEL
+        "M_counts_q_193" BEL "M_counts_q_244" BEL "M_counts_q_239" BEL
+        "M_counts_q_194" BEL "M_counts_q_189" BEL "M_counts_q_195" BEL
+        "M_counts_q_300" BEL "M_counts_q_250" BEL "M_counts_q_245" BEL
+        "M_counts_q_301" BEL "M_counts_q_251" BEL "M_counts_q_246" BEL
+        "M_counts_q_196" BEL "M_counts_q_197" BEL "M_counts_q_302" BEL
+        "M_counts_q_252" BEL "M_counts_q_247" BEL "M_counts_q_198" BEL
+        "M_counts_q_303" BEL "M_counts_q_253" BEL "M_counts_q_248" BEL
+        "M_counts_q_304" BEL "M_counts_q_254" BEL "M_counts_q_249" BEL
+        "M_counts_q_199" BEL "M_counts_q_255" BEL "M_counts_q_310" BEL
+        "M_counts_q_305" BEL "M_counts_q_260" BEL "M_counts_q_311" BEL
+        "M_counts_q_306" BEL "M_counts_q_261" BEL "M_counts_q_256" BEL
+        "M_counts_q_257" BEL "M_counts_q_312" BEL "M_counts_q_307" BEL
+        "M_counts_q_262" BEL "M_counts_q_258" BEL "M_counts_q_313" BEL
+        "M_counts_q_308" BEL "M_counts_q_263" BEL "M_counts_q_314" BEL
+        "M_counts_q_309" BEL "M_counts_q_264" BEL "M_counts_q_259" BEL
+        "M_counts_q_265" BEL "M_counts_q_320" BEL "M_counts_q_315" BEL
+        "M_counts_q_270" BEL "M_counts_q_321" BEL "M_counts_q_316" BEL
+        "M_counts_q_271" BEL "M_counts_q_266" BEL "M_counts_q_267" BEL
+        "M_counts_q_322" BEL "M_counts_q_317" BEL "M_counts_q_272" BEL
+        "M_counts_q_268" BEL "M_counts_q_323" BEL "M_counts_q_318" BEL
+        "M_counts_q_273" BEL "M_counts_q_269" BEL "M_counts_q_324" BEL
+        "M_counts_q_319" BEL "M_counts_q_274" BEL "M_counts_q_275" BEL
         "M_counts_q_330" BEL "M_counts_q_325" BEL "M_counts_q_280" BEL
-        "M_counts_q_276" BEL "M_counts_q_331" BEL "M_counts_q_326" BEL
-        "M_counts_q_281" BEL "M_counts_q_282" BEL "M_counts_q_332" BEL
-        "M_counts_q_327" BEL "M_counts_q_277" BEL "M_counts_q_283" BEL
-        "M_counts_q_333" BEL "M_counts_q_328" BEL "M_counts_q_278" BEL
-        "M_counts_q_334" BEL "M_counts_q_329" BEL "M_counts_q_284" BEL
-        "M_counts_q_279" BEL "M_counts_q_285" BEL "M_counts_q_340" BEL
-        "M_counts_q_335" BEL "M_counts_q_290" BEL "M_counts_q_291" BEL
-        "M_counts_q_341" BEL "M_counts_q_336" BEL "M_counts_q_286" BEL
-        "M_counts_q_292" BEL "M_counts_q_342" BEL "M_counts_q_337" BEL
-        "M_counts_q_287" BEL "M_counts_q_293" BEL "M_counts_q_343" BEL
-        "M_counts_q_338" BEL "M_counts_q_288" BEL "M_counts_q_294" BEL
-        "M_counts_q_344" BEL "M_counts_q_339" BEL "M_counts_q_289" BEL
+        "M_counts_q_331" BEL "M_counts_q_326" BEL "M_counts_q_281" BEL
+        "M_counts_q_276" BEL "M_counts_q_277" BEL "M_counts_q_332" BEL
+        "M_counts_q_327" BEL "M_counts_q_282" BEL "M_counts_q_278" BEL
+        "M_counts_q_333" BEL "M_counts_q_328" BEL "M_counts_q_283" BEL
+        "M_counts_q_279" BEL "M_counts_q_334" BEL "M_counts_q_329" BEL
+        "M_counts_q_284" BEL "M_counts_q_285" BEL "M_counts_q_340" BEL
+        "M_counts_q_335" BEL "M_counts_q_290" BEL "M_counts_q_341" BEL
+        "M_counts_q_336" BEL "M_counts_q_291" BEL "M_counts_q_286" BEL
+        "M_counts_q_287" BEL "M_counts_q_342" BEL "M_counts_q_337" BEL
+        "M_counts_q_292" BEL "M_counts_q_288" BEL "M_counts_q_343" BEL
+        "M_counts_q_338" BEL "M_counts_q_293" BEL "M_counts_q_289" BEL
+        "M_counts_q_344" BEL "M_counts_q_339" BEL "M_counts_q_294" BEL
         "M_counts_q_295" BEL "M_counts_q_400" BEL "M_counts_q_350" BEL
-        "M_counts_q_345" BEL "M_counts_q_296" BEL "M_counts_q_401" BEL
-        "M_counts_q_351" BEL "M_counts_q_346" BEL "M_counts_q_297" BEL
-        "M_counts_q_402" BEL "M_counts_q_352" BEL "M_counts_q_347" BEL
+        "M_counts_q_345" BEL "M_counts_q_401" BEL "M_counts_q_351" BEL
+        "M_counts_q_346" BEL "M_counts_q_296" BEL "M_counts_q_402" BEL
+        "M_counts_q_352" BEL "M_counts_q_347" BEL "M_counts_q_297" BEL
         "M_counts_q_298" BEL "M_counts_q_403" BEL "M_counts_q_353" BEL
         "M_counts_q_348" BEL "M_counts_q_299" BEL "M_counts_q_404" BEL
-        "M_counts_q_354" BEL "M_counts_q_349" BEL "M_counts_q_410" BEL
-        "M_counts_q_405" BEL "M_counts_q_360" BEL "M_counts_q_355" BEL
+        "M_counts_q_354" BEL "M_counts_q_349" BEL "M_counts_q_355" BEL
+        "M_counts_q_410" BEL "M_counts_q_405" BEL "M_counts_q_360" BEL
         "M_counts_q_356" BEL "M_counts_q_411" BEL "M_counts_q_406" BEL
         "M_counts_q_361" BEL "M_counts_q_357" BEL "M_counts_q_412" BEL
         "M_counts_q_407" BEL "M_counts_q_362" BEL "M_counts_q_358" BEL
@@ -652,54 +717,54 @@ TIMEGRP fast_clkout0 = BEL "ycompA/M_ctr_q_3" BEL "ycompA/M_ctr_q_2" BEL
         "M_counts_q_364" BEL "M_counts_q_420" BEL "M_counts_q_415" BEL
         "M_counts_q_370" BEL "M_counts_q_365" BEL "M_counts_q_366" BEL
         "M_counts_q_421" BEL "M_counts_q_416" BEL "M_counts_q_371" BEL
-        "M_counts_q_367" BEL "M_counts_q_422" BEL "M_counts_q_417" BEL
-        "M_counts_q_372" BEL "M_counts_q_368" BEL "M_counts_q_423" BEL
+        "M_counts_q_422" BEL "M_counts_q_417" BEL "M_counts_q_372" BEL
+        "M_counts_q_367" BEL "M_counts_q_368" BEL "M_counts_q_423" BEL
         "M_counts_q_418" BEL "M_counts_q_373" BEL "M_counts_q_369" BEL
         "M_counts_q_424" BEL "M_counts_q_419" BEL "M_counts_q_374" BEL
         "M_counts_q_430" BEL "M_counts_q_425" BEL "M_counts_q_380" BEL
         "M_counts_q_375" BEL "M_counts_q_376" BEL "M_counts_q_431" BEL
-        "M_counts_q_426" BEL "M_counts_q_381" BEL "M_counts_q_377" BEL
-        "M_counts_q_432" BEL "M_counts_q_427" BEL "M_counts_q_382" BEL
+        "M_counts_q_426" BEL "M_counts_q_381" BEL "M_counts_q_432" BEL
+        "M_counts_q_427" BEL "M_counts_q_382" BEL "M_counts_q_377" BEL
         "M_counts_q_378" BEL "M_counts_q_433" BEL "M_counts_q_428" BEL
         "M_counts_q_383" BEL "M_counts_q_379" BEL "M_counts_q_434" BEL
-        "M_counts_q_429" BEL "M_counts_q_384" BEL "M_counts_q_440" BEL
-        "M_counts_q_435" BEL "M_counts_q_390" BEL "M_counts_q_385" BEL
+        "M_counts_q_429" BEL "M_counts_q_384" BEL "M_counts_q_385" BEL
+        "M_counts_q_440" BEL "M_counts_q_435" BEL "M_counts_q_390" BEL
         "M_counts_q_386" BEL "M_counts_q_441" BEL "M_counts_q_436" BEL
         "M_counts_q_391" BEL "M_counts_q_387" BEL "M_counts_q_442" BEL
         "M_counts_q_437" BEL "M_counts_q_392" BEL "M_counts_q_388" BEL
         "M_counts_q_443" BEL "M_counts_q_438" BEL "M_counts_q_393" BEL
-        "M_counts_q_389" BEL "M_counts_q_444" BEL "M_counts_q_439" BEL
-        "M_counts_q_394" BEL "M_counts_q_500" BEL "M_counts_q_450" BEL
-        "M_counts_q_445" BEL "M_counts_q_395" BEL "M_counts_q_396" BEL
+        "M_counts_q_444" BEL "M_counts_q_439" BEL "M_counts_q_394" BEL
+        "M_counts_q_389" BEL "M_counts_q_395" BEL "M_counts_q_500" BEL
+        "M_counts_q_450" BEL "M_counts_q_445" BEL "M_counts_q_396" BEL
         "M_counts_q_501" BEL "M_counts_q_451" BEL "M_counts_q_446" BEL
         "M_counts_q_397" BEL "M_counts_q_502" BEL "M_counts_q_452" BEL
         "M_counts_q_447" BEL "M_counts_q_398" BEL "M_counts_q_503" BEL
         "M_counts_q_453" BEL "M_counts_q_448" BEL "M_counts_q_399" BEL
         "M_counts_q_504" BEL "M_counts_q_454" BEL "M_counts_q_449" BEL
-        "M_counts_q_510" BEL "M_counts_q_505" BEL "M_counts_q_460" BEL
-        "M_counts_q_455" BEL "M_counts_q_456" BEL "M_counts_q_511" BEL
+        "M_counts_q_455" BEL "M_counts_q_510" BEL "M_counts_q_505" BEL
+        "M_counts_q_460" BEL "M_counts_q_456" BEL "M_counts_q_511" BEL
         "M_counts_q_506" BEL "M_counts_q_461" BEL "M_counts_q_457" BEL
         "M_counts_q_512" BEL "M_counts_q_507" BEL "M_counts_q_462" BEL
         "M_counts_q_458" BEL "M_counts_q_513" BEL "M_counts_q_508" BEL
-        "M_counts_q_463" BEL "M_counts_q_514" BEL "M_counts_q_509" BEL
-        "M_counts_q_464" BEL "M_counts_q_459" BEL "M_counts_q_520" BEL
-        "M_counts_q_515" BEL "M_counts_q_470" BEL "M_counts_q_465" BEL
+        "M_counts_q_463" BEL "M_counts_q_459" BEL "M_counts_q_514" BEL
+        "M_counts_q_509" BEL "M_counts_q_464" BEL "M_counts_q_465" BEL
+        "M_counts_q_520" BEL "M_counts_q_515" BEL "M_counts_q_470" BEL
         "M_counts_q_466" BEL "M_counts_q_521" BEL "M_counts_q_516" BEL
         "M_counts_q_471" BEL "M_counts_q_467" BEL "M_counts_q_522" BEL
         "M_counts_q_517" BEL "M_counts_q_472" BEL "M_counts_q_468" BEL
         "M_counts_q_523" BEL "M_counts_q_518" BEL "M_counts_q_473" BEL
         "M_counts_q_469" BEL "M_counts_q_524" BEL "M_counts_q_519" BEL
-        "M_counts_q_474" BEL "M_counts_q_530" BEL "M_counts_q_525" BEL
-        "M_counts_q_480" BEL "M_counts_q_475" BEL "M_counts_q_476" BEL
+        "M_counts_q_474" BEL "M_counts_q_475" BEL "M_counts_q_530" BEL
+        "M_counts_q_525" BEL "M_counts_q_480" BEL "M_counts_q_476" BEL
         "M_counts_q_531" BEL "M_counts_q_526" BEL "M_counts_q_481" BEL
-        "M_counts_q_532" BEL "M_counts_q_527" BEL "M_counts_q_482" BEL
-        "M_counts_q_477" BEL "M_counts_q_478" BEL "M_counts_q_533" BEL
-        "M_counts_q_528" BEL "M_counts_q_483" BEL "M_counts_q_479" BEL
-        "M_counts_q_534" BEL "M_counts_q_529" BEL "M_counts_q_484" BEL
-        "M_counts_q_540" BEL "M_counts_q_535" BEL "M_counts_q_490" BEL
-        "M_counts_q_485" BEL "M_counts_q_486" BEL "M_counts_q_541" BEL
-        "M_counts_q_536" BEL "M_counts_q_491" BEL "M_counts_q_542" BEL
-        "M_counts_q_537" BEL "M_counts_q_492" BEL "M_counts_q_487" BEL
+        "M_counts_q_477" BEL "M_counts_q_532" BEL "M_counts_q_527" BEL
+        "M_counts_q_482" BEL "M_counts_q_478" BEL "M_counts_q_533" BEL
+        "M_counts_q_528" BEL "M_counts_q_483" BEL "M_counts_q_534" BEL
+        "M_counts_q_529" BEL "M_counts_q_484" BEL "M_counts_q_479" BEL
+        "M_counts_q_485" BEL "M_counts_q_540" BEL "M_counts_q_535" BEL
+        "M_counts_q_490" BEL "M_counts_q_486" BEL "M_counts_q_541" BEL
+        "M_counts_q_536" BEL "M_counts_q_491" BEL "M_counts_q_487" BEL
+        "M_counts_q_542" BEL "M_counts_q_537" BEL "M_counts_q_492" BEL
         "M_counts_q_488" BEL "M_counts_q_543" BEL "M_counts_q_538" BEL
         "M_counts_q_493" BEL "M_counts_q_489" BEL "M_counts_q_544" BEL
         "M_counts_q_539" BEL "M_counts_q_494" BEL "M_counts_q_600" BEL
@@ -722,37 +787,67 @@ TIMEGRP fast_clkout0 = BEL "ycompA/M_ctr_q_3" BEL "ycompA/M_ctr_q_2" BEL
         "M_counts_q_622" BEL "M_counts_q_617" BEL "M_counts_q_572" BEL
         "M_counts_q_568" BEL "M_counts_q_623" BEL "M_counts_q_618" BEL
         "M_counts_q_573" BEL "M_counts_q_569" BEL "M_counts_q_624" BEL
-        "M_counts_q_619" BEL "M_counts_q_574" BEL "M_counts_q_575" BEL
-        "M_counts_q_630" BEL "M_counts_q_625" BEL "M_counts_q_580" BEL
+        "M_counts_q_619" BEL "M_counts_q_574" BEL "M_counts_q_630" BEL
+        "M_counts_q_625" BEL "M_counts_q_580" BEL "M_counts_q_575" BEL
         "M_counts_q_576" BEL "M_counts_q_631" BEL "M_counts_q_626" BEL
         "M_counts_q_581" BEL "M_counts_q_577" BEL "M_counts_q_632" BEL
         "M_counts_q_627" BEL "M_counts_q_582" BEL "M_counts_q_578" BEL
         "M_counts_q_633" BEL "M_counts_q_628" BEL "M_counts_q_583" BEL
         "M_counts_q_579" BEL "M_counts_q_634" BEL "M_counts_q_629" BEL
-        "M_counts_q_584" BEL "M_counts_q_640" BEL "M_counts_q_635" BEL
-        "M_counts_q_590" BEL "M_counts_q_585" BEL "M_counts_q_586" BEL
+        "M_counts_q_584" BEL "M_counts_q_585" BEL "M_counts_q_640" BEL
+        "M_counts_q_635" BEL "M_counts_q_590" BEL "M_counts_q_586" BEL
         "M_counts_q_641" BEL "M_counts_q_636" BEL "M_counts_q_591" BEL
         "M_counts_q_587" BEL "M_counts_q_642" BEL "M_counts_q_637" BEL
         "M_counts_q_592" BEL "M_counts_q_588" BEL "M_counts_q_643" BEL
         "M_counts_q_638" BEL "M_counts_q_593" BEL "M_counts_q_589" BEL
         "M_counts_q_644" BEL "M_counts_q_639" BEL "M_counts_q_594" BEL
-        "M_counts_q_595" BEL "M_counts_q_650" BEL "M_counts_q_645" BEL
-        "M_counts_q_596" BEL "M_counts_q_651" BEL "M_counts_q_646" BEL
-        "M_counts_q_597" BEL "M_counts_q_652" BEL "M_counts_q_647" BEL
-        "M_counts_q_598" BEL "M_counts_q_653" BEL "M_counts_q_648" BEL
-        "M_counts_q_599" BEL "M_counts_q_654" BEL "M_counts_q_649" BEL
-        "M_counts_q_655" BEL "M_counts_q_660" BEL "M_counts_q_656" BEL
-        "M_counts_q_661" BEL "M_counts_q_657" BEL "M_counts_q_662" BEL
-        "M_counts_q_663" BEL "M_counts_q_658" BEL "M_counts_q_659" BEL
-        "M_counts_q_664" BEL "M_counts_q_665" BEL "M_counts_q_670" BEL
-        "M_counts_q_666" BEL "M_counts_q_671" BEL "M_counts_q_667" BEL
-        "M_counts_q_672" BEL "M_counts_q_668" BEL "M_counts_q_673" BEL
-        "M_counts_q_669" BEL "M_counts_q_674" BEL "M_counts_q_675" BEL
-        "M_counts_q_680" BEL "M_counts_q_676" BEL "M_counts_q_681" BEL
-        "M_counts_q_677" BEL "M_counts_q_682" BEL "M_counts_q_678" BEL
-        "M_counts_q_683" BEL "M_counts_q_679" BEL "M_counts_q_684" BEL
-        "M_counts_q_685" BEL "M_counts_q_686" BEL "M_counts_q_687" BEL
-        "M_counts_q_688" BEL "M_counts_q_689";
+        "M_counts_q_595" BEL "M_counts_q_700" BEL "M_counts_q_650" BEL
+        "M_counts_q_645" BEL "M_counts_q_596" BEL "M_counts_q_701" BEL
+        "M_counts_q_651" BEL "M_counts_q_646" BEL "M_counts_q_702" BEL
+        "M_counts_q_652" BEL "M_counts_q_647" BEL "M_counts_q_597" BEL
+        "M_counts_q_598" BEL "M_counts_q_703" BEL "M_counts_q_653" BEL
+        "M_counts_q_648" BEL "M_counts_q_599" BEL "M_counts_q_704" BEL
+        "M_counts_q_654" BEL "M_counts_q_649" BEL "M_counts_q_655" BEL
+        "M_counts_q_710" BEL "M_counts_q_705" BEL "M_counts_q_660" BEL
+        "M_counts_q_656" BEL "M_counts_q_711" BEL "M_counts_q_706" BEL
+        "M_counts_q_661" BEL "M_counts_q_657" BEL "M_counts_q_712" BEL
+        "M_counts_q_707" BEL "M_counts_q_662" BEL "M_counts_q_658" BEL
+        "M_counts_q_713" BEL "M_counts_q_708" BEL "M_counts_q_663" BEL
+        "M_counts_q_659" BEL "M_counts_q_714" BEL "M_counts_q_709" BEL
+        "M_counts_q_664" BEL "M_counts_q_720" BEL "M_counts_q_715" BEL
+        "M_counts_q_670" BEL "M_counts_q_665" BEL "M_counts_q_666" BEL
+        "M_counts_q_721" BEL "M_counts_q_716" BEL "M_counts_q_671" BEL
+        "M_counts_q_667" BEL "M_counts_q_722" BEL "M_counts_q_717" BEL
+        "M_counts_q_672" BEL "M_counts_q_668" BEL "M_counts_q_723" BEL
+        "M_counts_q_718" BEL "M_counts_q_673" BEL "M_counts_q_669" BEL
+        "M_counts_q_724" BEL "M_counts_q_719" BEL "M_counts_q_674" BEL
+        "M_counts_q_730" BEL "M_counts_q_725" BEL "M_counts_q_680" BEL
+        "M_counts_q_675" BEL "M_counts_q_676" BEL "M_counts_q_731" BEL
+        "M_counts_q_726" BEL "M_counts_q_681" BEL "M_counts_q_677" BEL
+        "M_counts_q_732" BEL "M_counts_q_727" BEL "M_counts_q_682" BEL
+        "M_counts_q_678" BEL "M_counts_q_733" BEL "M_counts_q_728" BEL
+        "M_counts_q_683" BEL "M_counts_q_679" BEL "M_counts_q_734" BEL
+        "M_counts_q_729" BEL "M_counts_q_684" BEL "M_counts_q_740" BEL
+        "M_counts_q_735" BEL "M_counts_q_690" BEL "M_counts_q_685" BEL
+        "M_counts_q_686" BEL "M_counts_q_741" BEL "M_counts_q_736" BEL
+        "M_counts_q_691" BEL "M_counts_q_687" BEL "M_counts_q_742" BEL
+        "M_counts_q_737" BEL "M_counts_q_692" BEL "M_counts_q_688" BEL
+        "M_counts_q_743" BEL "M_counts_q_738" BEL "M_counts_q_693" BEL
+        "M_counts_q_744" BEL "M_counts_q_739" BEL "M_counts_q_694" BEL
+        "M_counts_q_689" BEL "M_counts_q_750" BEL "M_counts_q_745" BEL
+        "M_counts_q_695" BEL "M_counts_q_696" BEL "M_counts_q_751" BEL
+        "M_counts_q_746" BEL "M_counts_q_697" BEL "M_counts_q_752" BEL
+        "M_counts_q_747" BEL "M_counts_q_698" BEL "M_counts_q_753" BEL
+        "M_counts_q_748" BEL "M_counts_q_699" BEL "M_counts_q_754" BEL
+        "M_counts_q_749" BEL "M_counts_q_760" BEL "M_counts_q_755" BEL
+        "M_counts_q_756" BEL "M_counts_q_761" BEL "M_counts_q_757" BEL
+        "M_counts_q_762" BEL "M_counts_q_758" BEL "M_counts_q_763" BEL
+        "M_counts_q_759" BEL "M_counts_q_764" BEL "M_counts_q_770" BEL
+        "M_counts_q_765" BEL "M_counts_q_766" BEL "M_counts_q_771" BEL
+        "M_counts_q_767" BEL "M_counts_q_772" BEL "M_counts_q_768" BEL
+        "M_counts_q_773" BEL "M_counts_q_769" BEL "M_counts_q_774" BEL
+        "M_counts_q_775" BEL "M_counts_q_776" BEL "M_counts_q_777" BEL
+        "M_counts_q_778" BEL "M_counts_q_779";
 PIN SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0_pins<0> = BEL
         "SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0" PINNAME DIVCLK;
 PIN fast/pll_base_inst/PLL_ADV_pins<2> = BEL "fast/pll_base_inst/PLL_ADV"
@@ -760,6 +855,6 @@ PIN fast/pll_base_inst/PLL_ADV_pins<2> = BEL "fast/pll_base_inst/PLL_ADV"
 TIMEGRP clk = PIN "SP6_BUFIO2_INSERT_PLL1_ML_BUFIO2_0_pins<0>" PIN
         "fast/pll_base_inst/PLL_ADV_pins<2>";
 TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
-TS_fast_clkout0 = PERIOD TIMEGRP "fast_clkout0" TS_clk * 3 HIGH 50%;
+TS_fast_clkout1 = PERIOD TIMEGRP "fast_clkout1" TS_clk * 4 HIGH 50%;
 SCHEMATIC END;
 

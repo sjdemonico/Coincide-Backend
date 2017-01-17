@@ -18,68 +18,73 @@ module mojo_top (
   ) {
   
   sig rst;                  // reset signal
-  const CLKSPEED = 150000000;
-  const X_PULSE_LEN = 2;
-  const Y_PULSE_LEN = 15;
+  const CLKSPEED = 200000000;
   var i;
   
   fastclk fast(.CLK_IN1(clk));
-  .clk(fast.CLK_OUT1) {
+  .clk(fast.CLK_OUT2) {
     reset_conditioner reset_cond;
     .rst(rst){
       // the avr_interface module is used to talk to the AVR for access to the USB port and analog pins
       avr_interface avr(#CLK_FREQ(CLKSPEED));
       reg_interface reg(#CLK_FREQ(CLKSPEED));
-      timer tmr(#SIZE($clog2(CLKSPEED/10)),#TOP((CLKSPEED/10) - 1));
+      timer tmr(#SIZE($clog2(CLKSPEED/2)),#TOP((CLKSPEED/2) - 1));
       dff pins[2][4];
       dff pulse_length[2][4];
-      dff counts[30][$clog2(CLKSPEED/20)];
-      dff count_store[30][$clog2(CLKSPEED/20)];
+      dff counts[30][$clog2(CLKSPEED/4)];
+      dff count_store[30][$clog2(CLKSPEED/4)];
       dff poll_flag;
       dff noop; //debug
       
       //pulse duplicators
-      duplicator xdupA(#LENGTH(X_PULSE_LEN));
-      duplicator xdupB(#LENGTH(X_PULSE_LEN));
-      duplicator xdupC(#LENGTH(X_PULSE_LEN));
-      duplicator xdupD(#LENGTH(X_PULSE_LEN));
-      duplicator ydupA(#LENGTH(Y_PULSE_LEN));
-      duplicator ydupB(#LENGTH(Y_PULSE_LEN));
-      duplicator ydupC(#LENGTH(Y_PULSE_LEN));
-      duplicator ydupD(#LENGTH(Y_PULSE_LEN));
+      .length(pulse_length.q[0]) {
+        duplicator xdupA;
+        duplicator xdupB;
+        duplicator xdupC;
+        duplicator xdupD;
+      }
+      .length(pulse_length.q[1]) {
+        duplicator ydupA;
+        duplicator ydupB;
+        duplicator ydupC;
+        duplicator ydupD;
+      }
       
       //channel comparators
-      comparator xcompA(#LENGTH(X_PULSE_LEN));
-      comparator xcompB(#LENGTH(X_PULSE_LEN));
-      comparator xcompC(#LENGTH(X_PULSE_LEN));
-      comparator xcompD(#LENGTH(X_PULSE_LEN));
-      comparator xcompAB(#LENGTH(X_PULSE_LEN));
-      comparator xcompAC(#LENGTH(X_PULSE_LEN));
-      comparator xcompAD(#LENGTH(X_PULSE_LEN));
-      comparator xcompBC(#LENGTH(X_PULSE_LEN));
-      comparator xcompBD(#LENGTH(X_PULSE_LEN));
-      comparator xcompCD(#LENGTH(X_PULSE_LEN));
-      comparator xcompABC(#LENGTH(X_PULSE_LEN));
-      comparator xcompABD(#LENGTH(X_PULSE_LEN));
-      comparator xcompACD(#LENGTH(X_PULSE_LEN));
-      comparator xcompBCD(#LENGTH(X_PULSE_LEN));
-      comparator xcompABCD(#LENGTH(X_PULSE_LEN));
-      comparator ycompA(#LENGTH(Y_PULSE_LEN));
-      comparator ycompB(#LENGTH(Y_PULSE_LEN));
-      comparator ycompC(#LENGTH(Y_PULSE_LEN));
-      comparator ycompD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompAB(#LENGTH(Y_PULSE_LEN));
-      comparator ycompAC(#LENGTH(Y_PULSE_LEN));
-      comparator ycompAD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompBC(#LENGTH(Y_PULSE_LEN));
-      comparator ycompBD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompCD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompABC(#LENGTH(Y_PULSE_LEN));
-      comparator ycompABD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompACD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompBCD(#LENGTH(Y_PULSE_LEN));
-      comparator ycompABCD(#LENGTH(Y_PULSE_LEN));
-
+      .length(pulse_length.q[0]) {
+        comparator xcompA;
+        comparator xcompB;
+        comparator xcompC;
+        comparator xcompD;
+        comparator xcompAB;
+        comparator xcompAC;
+        comparator xcompAD;
+        comparator xcompBC;
+        comparator xcompBD;
+        comparator xcompCD;
+        comparator xcompABC;
+        comparator xcompABD;
+        comparator xcompACD;
+        comparator xcompBCD;
+        comparator xcompABCD;
+      }
+      .length(pulse_length.q[1]) {
+        comparator ycompA;
+        comparator ycompB;
+        comparator ycompC;
+        comparator ycompD;
+        comparator ycompAB;
+        comparator ycompAC;
+        comparator ycompAD;
+        comparator ycompBC;
+        comparator ycompBD;
+        comparator ycompCD;
+        comparator ycompABC;
+        comparator ycompABD;
+        comparator ycompACD;
+        comparator ycompBCD;
+        comparator ycompABCD;
+      }
     }
   }
   

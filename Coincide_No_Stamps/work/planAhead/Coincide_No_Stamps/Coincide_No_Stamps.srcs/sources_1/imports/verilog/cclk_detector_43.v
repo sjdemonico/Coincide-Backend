@@ -15,12 +15,12 @@ module cclk_detector_43 (
     output reg ready
   );
   
-  localparam CLK_FREQ = 28'h8f0d180;
+  localparam CLK_FREQ = 28'hbebc200;
   
   
-  localparam CTR_SIZE = 4'hf;
+  localparam CTR_SIZE = 5'h10;
   
-  reg [14:0] M_ctr_d, M_ctr_q = 1'h0;
+  reg [15:0] M_ctr_d, M_ctr_q = 1'h0;
   
   always @* begin
     M_ctr_d = M_ctr_q;

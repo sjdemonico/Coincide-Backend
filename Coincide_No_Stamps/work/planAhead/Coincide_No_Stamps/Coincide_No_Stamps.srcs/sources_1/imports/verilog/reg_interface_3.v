@@ -20,7 +20,7 @@ module reg_interface_3 (
     input [32:0] regIn
   );
   
-  localparam CLK_FREQ = 28'h8f0d180;
+  localparam CLK_FREQ = 28'hbebc200;
   
   
   localparam IDLE_state = 3'd0;

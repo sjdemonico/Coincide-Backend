@@ -1,8 +1,8 @@
-module duplicator #(LENGTH = 2 : LENGTH > 1 && LENGTH < 16)
-(
+module duplicator (
     input clk,  // clock
     input rst,  // reset
     input pulse,
+    input length[4],
     output out
   ) {
   edge_detector edge(#RISE(1),#FALL(0),.clk(clk));
@@ -22,7 +22,7 @@ module duplicator #(LENGTH = 2 : LENGTH > 1 && LENGTH < 16)
         else out = 0;
         
       state.PULSE:
-        if(ctr.q == LENGTH - 1) {
+        if(ctr.q == length - 1) {
           ctr.d = 0;
           state.d = state.LISTEN;
         }
